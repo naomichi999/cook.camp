@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  devise_for :admin_users
+  devise_for :users
+  root 'homes#top'
+  get 'homes/top'
+  get 'homes/about'
+
   namespace :admin do
 
     resources :admin_users, only: [:index]
@@ -35,10 +41,5 @@ Rails.application.routes.draw do
   resources :my_recipes, only: [:index, :new, :show, :edit, :create, :update, :destroy]
   resources :users, only: [:index, :show, :edit, :update]
 
-  root 'homes#top'
-  get 'homes/top'
-  get 'homes/about'
-  devise_for :admin_users
-  devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

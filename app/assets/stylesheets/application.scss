@@ -13,3 +13,26 @@
  *= require_tree .
  *= require_self
  */
+
+// Bootstrapを読み込ませるための記述
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+ * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+body {
+  margin-top: 70px;
+  margin-bottom: 100px;
+  background-color: #cefff7;
+}
+
+// ヘッダー、フッター
+.navbar-brand {
+	background-color: black;
+}
+.logo {
+	background-color: khaki;
+}

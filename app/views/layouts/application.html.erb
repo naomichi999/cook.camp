@@ -1,15 +1,85 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cookcamp</title>
+    <title>cook.camp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+<!-- ヘッダー部分 -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "cook.camp", root_path, class: "navbar-brand" %>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbarEexample">
+
+      <% if user_signed_in? %>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to 'ユーザーメニュー', users_path %></li>
+        <li><%= link_to 'マイページ', user_path(current_user.id) %></li>
+        <li><%= link_to 'マイレシピ', my_recipe_path(current_user.id) %></li>
+        <li><%= link_to 'みんなのレシピ', everyone_recipes_genre_choice_path %></li>
+        <li><%= link_to '基本のレシピ', basic_recipes_genre_choice_path %></li>
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+      </ul>
+
+      <% elsif admin_user_signed_in? %>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to '管理者メニュー', admin_admin_users_path %></li>
+        <li><%= link_to 'ユーザー情報一覧', admin_users_path %></li>
+        <li><%= link_to 'みんなのレシピ', admin_everyone_recipes_genre_choice_path %></li>
+        <li><%= link_to '基本のレシピ', admin_basic_recipes_genre_choice_path %></li>
+        <li><%= link_to 'ログアウト', destroy_admin_user_session_path, method: :delete %></li>
+      </ul>
+
+      <% else %>
+      <ul class="nav navbar-nav navbar-right">
+        <li class=""><%= link_to 'cook.campについて', homes_about_path %></li>
+        <li><%= link_to 'ログイン', new_user_session_path %></li>
+        <li><%= link_to '会員登録', new_user_registration_path %></li>
+      </ul>
+      <% end %>
+
+    </div>
+  </div>
+</nav>
+
+<!-- フッター部分 -->
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+  <div class="container-fluid">
+    <div class="navbar-footer">
+
+      <ul class="nav navbar-nav">
+        <li class="logo"><%= link_to "cook.camp", root_path %></li>
+        <li><%= link_to 'cook.campについて', homes_about_path %></li>
+
+        <% if admin_user_signed_in? %>
+        <li><%= link_to 'お問い合わせ', admin_inquiries_path %></li>
+        <% elsif %>
+        <li><%= link_to 'お問い合わせ', new_inquiry_path %></li>
+        <% end %>
+
+        <li><%= link_to '個人情報保護方針' %></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to '©2019 cook.camp.Japan Inc.' %></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
     <%= yield %>
   </body>
 </html>

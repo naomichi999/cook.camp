@@ -14,3 +14,7 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+// Bootstrapのファイルを呼び出す記述
+  //= require jquery
+  //= require bootstrap-sprockets
