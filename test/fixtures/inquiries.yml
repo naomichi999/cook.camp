@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  inquirer_name: MyString
+  email: MyString
+  inquiry_title: MyString
+  inquiry_content: MyText
+
+two:
+  user_id: 1
+  inquirer_name: MyString
+  email: MyString
+  inquiry_title: MyString
+  inquiry_content: MyText

@@ -1,0 +1,2 @@
+module Admin::BasicRecipesHelper
+end

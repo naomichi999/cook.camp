@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  genre_id: 1
+  cooking_name: MyString
+  cooking_explanation: MyText
+  ingredient: MyText
+  how_to_cook: MyText
+  cooking_image_id: MyString
+  cooking_video: MyString
+  publishment: false
+
+two:
+  user_id: 1
+  genre_id: 1
+  cooking_name: MyString
+  cooking_explanation: MyText
+  ingredient: MyText
+  how_to_cook: MyText
+  cooking_image_id: MyString
+  cooking_video: MyString
+  publishment: false

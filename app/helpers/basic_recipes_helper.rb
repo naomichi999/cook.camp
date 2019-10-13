@@ -1,0 +1,2 @@
+module BasicRecipesHelper
+end

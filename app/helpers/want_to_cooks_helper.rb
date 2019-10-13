@@ -1,0 +1,2 @@
+module WantToCooksHelper
+end

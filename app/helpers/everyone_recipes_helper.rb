@@ -1,0 +1,2 @@
+module EveryoneRecipesHelper
+end

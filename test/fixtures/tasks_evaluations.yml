@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  task_name: MyString
+  total_evaluation: 1.5
+  taste_evaluation: 1.5
+  look_evaluation: 1.5
+  finesse_evaluation: 1.5
+  important_point: MyText
+  improve_point: MyText
+  feeling: MyText
+  cooking_image_id: MyString
+
+two:
+  user_id: 1
+  task_name: MyString
+  total_evaluation: 1.5
+  taste_evaluation: 1.5
+  look_evaluation: 1.5
+  finesse_evaluation: 1.5
+  important_point: MyText
+  improve_point: MyText
+  feeling: MyText
+  cooking_image_id: MyString
