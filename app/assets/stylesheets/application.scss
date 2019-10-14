@@ -24,9 +24,16 @@
    box-sizing: border-box;
 }
 body {
-  margin-top: 70px;
-  margin-bottom: 100px;
-  background-color: #cefff7;
+  font-family: Meiryo, sans-serif;
+}
+.navbar-brand, .logo {
+  font-family: Chalkduster, Meiryo, "Bradley Hand", Courier, "Segoe Print", sans-serif;
+}
+
+body {
+  margin-top: 50px;
+  margin-bottom: 150px;
+  background-color: aliceblue;
 }
 
 // ヘッダー、フッター
@@ -34,5 +41,7 @@ body {
 	background-color: black;
 }
 .logo {
-	background-color: khaki;
+	background-color: wheat;
 }
+
+

@@ -1,3 +1,49 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<!-- トップページ -->
+  <div class="main-visual">
+    <div class="main-visual-content">
+      <p class="main-visual-text">
+        料理未経験から２週間で<br>
+        栄養バランスの取れた料理を作る<br>
+        スキルを身に付ける
+      </p>
+      <p class="main-visual-name">
+        cook.camp
+      </p>
+    </div>
+  </div>
 
+  <main class="clearfix">
+     <section class="introduction">
+      <h2 class="introduction-headline">2週間分のカリキュラム</h2>
+      <div class="introduction-box">
+          <div class="introduction-item clearfix">
+            <div class="introduction-image"><%= image_tag('background-kitchen.jpg',  class: 'introduction-image') %></div>
+            <section class="introduction-text">
+              <span class="category">【基礎知識】<br>栄養バランスの考え方や献立の基本などの<br>料理の上達に必要な基礎知識を学ぶ</span><br>
+              <span class="category2">【実技】<br>"これだけは作れるようになっておきたい"<br>定番のレシピが中心の<br>12種類の課題を通じて料理スキルを習得</span>
+            </section>
+          </div>
+      </div>
+      <h2 class="introduction-headline">スキルの上達度を管理</h2>
+      <div class="introduction-box">
+          <div class="introduction-item clearfix">
+            <div class="introduction-image"><%= image_tag('background-kitchen.jpg',  class: 'introduction-image') %></div>
+            <section class="introduction-text">
+              <span class="category">スキル管理ノートで上達度を管理</span><br>
+              <span class="category2">レーダーチャートで自分のスキルを確認</span>
+            </section>
+          </div>
+      </div>
+      <h2 class="introduction-headline">みんなでレシピを共有</h2>
+      <div class="introduction-box">
+          <div class="introduction-item clearfix">
+            <div class="introduction-image"><%= image_tag('background-kitchen.jpg',  class: 'introduction-image') %></div>
+             <section class="introduction-text">
+              <span class="category">カリキュラムが修了した後は<br>色んなレシピに挑戦してみよう</span><br>
+              <span class="category2">自分で考えたレシピを公開して評価して貰おう</span>
+            </section>
+          </div>
+      </div>
+    </section>
+
+  </main>
