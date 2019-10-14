@@ -1,2 +1,43 @@
-<h1>Homes#about</h1>
-<p>Find me in app/views/homes/about.html.erb</p>
+<main class="">
+<h1>cook.campについて</h1>
+<div class="about">
+    <section class="about-text">
+      <span class="about1">【何をするサイトなの？】<br>cook.campは料理スキル習得・上達度管理サイトです。 <br>上達するための明確な手順を確認できたり、どの程度上達したかを把握して管理できるサイトです。</span><br>
+      <span class="about2">【こんな方におすすめです】<br>料理ができるようになりたいと思っているけど、なかなか上達しない。<br>料理を始めてみたいけど、何から手を付けていいかわからない。<br>などのお悩みを持つ料理初心者・未経験者の方におすすめです。</span><br>
+      <span class="about3">【どんなことができるの？】<br>栄養バランスの考え方や献立の基本などの知識を学んだり、定番レシピを作ってみて、その出来を自己採点して管理することができるので、料理スキルの習得に役立ちます。詳しくは下記のmenuをご覧ください。</span><br>
+    </section>
+
+</div>
+
+
+    <div class="menu-box">
+    	<div class=" clearfix">
+    	<h3><span class="label label-primary">menu</span></h3>
+       </div>
+        <div class="menu-item clearfix">
+            <div class="menu-image"><%= image_tag('background-kitchen.jpg',  class: 'menu-image') %></div>
+            <span class="menu-text"><u><b>2週間分のカリキュラム</b></u><br>夕食作りを通じて料理を学ぶ</span>
+        </div>
+        <div class="menu-item clearfix">
+            <div class="menu-image"><%= image_tag('background-kitchen.jpg',  class: 'menu-image') %></div>
+            <span class="menu-text"><u><b>スキル管理ノート</b></u><br>上達度を管理する</span>
+        </div>
+        <div class="menu-item clearfix">
+            <div class="menu-image"><%= image_tag('background-kitchen.jpg',  class: 'menu-image') %></div>
+            <span class="menu-text"><u><b>上達度管理グラフ</b></u><br>レーダーチャートでスキルを確認</span>
+        </div>
+        <div class="menu-item clearfix">
+            <div class="menu-image"><%= image_tag('background-kitchen.jpg',  class: 'menu-image') %></div>
+            <span class="menu-text"><u><b>マイレシピ</b></u><br>自分の作れるレシピを保存</span>
+        </div>
+        <div class="menu-item clearfix">
+            <div class="menu-image"><%= image_tag('background-kitchen.jpg',  class: 'menu-image') %></div>
+            <span class="menu-text"><u><b>みんなのレシピ</b></u><br>他のユーザーが考えたレシピを閲覧できる</span>
+        </div>
+        <div class="menu-item clearfix">
+            <div class="menu-image"><%= image_tag('background-kitchen.jpg',  class: 'menu-image') %></div>
+            <span class="menu-text"><u><b>基本のレシピ</b></u><br>定番料理のレシピを閲覧できる</span>
+        </div>
+        <div class=" clearfix"></div>
+    </div>
+</main>

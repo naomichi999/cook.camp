@@ -3,8 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-
-
 .clearfix::after {
   content: "";
   display: block;
@@ -13,9 +11,14 @@
 .main-visual, {
   font-family: Chalkduster, Meiryo, "Bradley Hand", Courier, "Segoe Print", sans-serif;
 }
+main {
+  width: 85%;
+  margin: 0 auto;
+  padding: 70px 0px 0px;
+}
 
 
-
+// トップページ
 /*main-visual*/
 .main-visual {
   width: 100%;
@@ -40,15 +43,6 @@
   margin-top: 30px;
 }
 /*main-visual*/
-
-
-main {
-  width: 85%;
-  margin: 0 auto;
-  padding: 70px 0px 0px;
-}
-
-
 
 .introduction {
   width: 100%;
@@ -83,8 +77,7 @@ main {
 .introduction-text {
   float: left;
 }
-
-.category {
+.category1 {
   display: table-cell;
   padding: 0px 50px;
   width: 500px;
@@ -108,6 +101,82 @@ main {
 }
 
 
+// アバウトページ
+.about {
+  width: 100%;
+  padding: 30px 30px;
+  margin-top: 20px;
+  background-color: white;
+}
 
+.about1 {
+  display: table-cell;
+  padding: 20px 50px;
+  width: 1000px;
+  height: 166px;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  color: black;
+  font-size: 20px;
+  vertical-align: middle;
+}
+.about2 {
+  display: table-cell;
+  padding: 20px 50px;
+  width: 1000px;
+  height: 166px;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  color: black;
+  font-size: 20px;
+  vertical-align: middle;
+}
+.about3 {
+  display: table-cell;
+  padding: 20px 50px;
+  width: 1000px;
+  height: 166px;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  color: black;
+  font-size: 20px;
+  vertical-align: middle;
+}
 
-
+.menu-box {
+  width: 100%;
+  margin: 20px auto;
+  padding: 30px 30px 30px;
+  background-color: white;
+}
+.menu-item {
+  width: 300px;
+  height: 550px;
+  padding: 30px;
+  margin: 20px;
+  border: 1px solid black;
+  display: table-cell;
+  background-color: lightgray;
+  float: left;
+  border-radius: 10px;
+}
+.menu-image {
+  width: 200px;
+  height: 200px;
+  margin: 0px auto;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+}
+.menu-text {
+  display: table-cell;
+  padding: 10px 20px;
+  margin-top: 20px;
+  width: 240px;
+  height: 270px;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  color: black;
+  font-size: 17px;
+  float: left;
+}
