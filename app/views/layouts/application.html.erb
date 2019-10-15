@@ -19,7 +19,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+      <% if admin_user_signed_in? %>
+      <%= link_to "cook.camp", admin_admin_users_path, class: "navbar-brand" %>
+      <% elsif user_signed_in? %>
+      <%= link_to "cook.camp", users_path, class: "navbar-brand" %>
+      <% else %>
       <%= link_to "cook.camp", root_path, class: "navbar-brand" %>
+      <% end %>
     </div>
 
     <div class="collapse navbar-collapse" id="navbarEexample">
@@ -63,6 +69,13 @@
     <div class="navbar-footer">
 
       <ul class="nav navbar-nav">
+      <% if admin_user_signed_in? %>
+      <li class="logo"><%= link_to "cook.camp", admin_admin_users_path, class: "navbar-brand" %></li>
+      <% elsif user_signed_in? %>
+      <li class="logo"><%= link_to "cook.camp", users_path, class: "navbar-brand" %></li>
+      <% else %>
+      <li class="logo"><%= link_to "cook.camp", root_path, class: "navbar-brand" %></li>
+      <% end %>
         <li class="logo"><%= link_to "cook.camp", root_path %></li>
         <li><%= link_to 'cook.campについて', homes_about_path %></li>
 
