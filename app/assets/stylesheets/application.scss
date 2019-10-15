@@ -28,6 +28,11 @@
    padding: 0;
    box-sizing: border-box;
 }
+.main{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
 body {
   font-family: Meiryo, sans-serif;
 }
@@ -49,4 +54,58 @@ body {
 	background-color: wheat;
 }
 
+//新規登録、ログイン画面
 
+#error_explanation {
+  color: red;
+}
+.registration {
+ text-align: center;
+ padding: 20px;
+ background-color: #c7c7c7;
+}
+.botton-position {
+  text-align: right;
+}
+.session {
+ text-align: center;
+ padding: 50px;
+ background-color: gainsboro;
+ width: 100%;
+ margin: 0 auto;
+ margin-top: 50px;
+}
+.login-text {
+  font-size: 17px;
+  text-align: left;
+}
+.alert {
+  color: red;
+  font-size: 24px;
+}
+.st_field input[type="text"] {
+ width: 225px;
+ height: 40px;
+}
+.st_field {
+  width: 455px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+.t_field input[type="text"] {
+ width: 455px;
+ height: 40px;
+}
+.t_field input[type="email"] {
+ width: 100%;
+ height: 40px;
+}
+.t_field input[type="password"] {
+ width: 100%;
+ height: 40px;
+}
+.t_actions input[type="submit"] {
+ width: 100%;
+ height: 40px;
+}

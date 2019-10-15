@@ -1,26 +1,43 @@
-<h2>Log in</h2>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-2 col-md-3"></div>
+    <div class="col-xs-8 col-md-6 main">
+<div class="session">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
+<h2>cook.campを始めよう！</h2></br>
+<p class="login-text" style="text-decoration: underline">ログイン</p><br>
+<!-- エラーメッセージの表示 -->
+<% if alert %>
+  <p class="alert alert-error"><%= alert %></p>
 <% end %>
 
-<%= render "users/shared/links" %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="t_field">
+    <p class="login-text">メールアドレス</p>    <%= f.email_field :email, autofocus: true,  placeholder: "メールアドレスを入力してください", class:"form-control", autocomplete: "email" %>
+  </div><br />
+
+  <div class="t_field">
+    <p class="login-text">パスワード</p>
+    <%= f.password_field :password, autocomplete: "current-password", class:"form-control", placeholder: "パスワードを入力してください" %>
+  </div><br />
+
+   <% if devise_mapping.rememberable? %>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :パスワードを保存する %>
+    </div>
+   <% end %>
+
+  <div class="t_actions">
+    <%= f.submit "ログイン", class:"btn btn-primary" %>
+  </div>
+<% end %><br />
+
+<p class="glyphicon glyphicon-record" aria-hidden="true">アカウントをお持ちでない場合は<a href="/users/sign_up">新規登録</a>へ</p><br />
+
+<p class="glyphicon glyphicon-record" aria-hidden="true">パスワードをお忘れの場合は<a href="/users/password/new">こちら</a>へ</p>
+
+</div>
+
+</div>
+</div>

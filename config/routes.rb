@@ -1,13 +1,21 @@
 Rails.application.routes.draw do
 
-  devise_for :admin_users
-  devise_for :users
   root 'homes#top'
   get 'homes/top'
   get 'homes/about'
 
-  namespace :admin do
+    devise_for :users, :controllers => {
+    :registrations => 'users/registrations',
+    :sessions => 'users/sessions'
+  }
+    devise_for :admin_users, :controllers => {
+    :registrations => 'admin_users/registrations',
+    :sessions => 'admin_users/sessions'
+  }
 
+
+
+  namespace :admin do
     resources :admin_users, only: [:index]
     resources :searches, only: [:index]
     resources :rankings, only: [:index]
