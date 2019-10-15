@@ -23,16 +23,20 @@
    padding: 0;
    box-sizing: border-box;
 }
-.sidebar {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
-}
 .main{
    margin: 0;
    padding: 0;
    box-sizing: border-box;
 }
+.sidebar {
+   margin: 0;
+   padding: 30px 0;
+   box-sizing: border-box;
+   background-color: whitesmoke;
+   height: 100%;
+   border-right: 1px solid black;
+}
+
 body {
   font-family: Meiryo, sans-serif;
 }
@@ -44,6 +48,10 @@ body {
   margin-top: 50px;
   margin-bottom: 200px;
   background-color: aliceblue;
+}
+
+h1 {
+  margin-left: 30px;
 }
 
 // ヘッダー、フッター

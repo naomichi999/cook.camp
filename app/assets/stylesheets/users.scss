@@ -1,3 +1,50 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.user-menu {
+  width: 100%;
+  margin: 0 auto;
+  padding: 50px 0px 0px;
+}
+
+.user-menu-box {
+  width: 100%;
+  margin: 20px auto;
+  padding: 30px 30px 30px;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.user-menu-item {
+  width: 250px;
+  height: 340px;
+  padding: 20px;
+  margin: 20px;
+  border: 1px solid black;
+  display: table-cell;
+  background-color: lightgray;
+  float: left;
+  border-radius: 10px;
+}
+.user-menu-image {
+  width: 150px;
+  height: 150px;
+  margin: 0px auto;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+}
+.user-menu-text {
+  display: table-cell;
+  padding: 10px 10px;
+  margin-top: 20px;
+  width: 210px;
+  height: 120px;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  color: black;
+  font-size: 17px;
+  float: left;
+}

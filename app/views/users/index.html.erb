@@ -1,2 +1,53 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<%= render 'layouts/list' %>
+
+<main class="user-menu">
+<h1>ユーザーメニュー</h1>
+
+
+    <div class="user-menu-box">
+    	<div class=" clearfix">
+    	<h3><span class="label label-primary">menu</span></h3>
+       </div>
+        <div class="user-menu-item clearfix">
+            <div class="user-menu-image"><%= image_tag('background-kitchen.jpg',  class: 'user-menu-image') %></div>
+            <span class="user-menu-text"><u><b><%= link_to 'カリキュラム', curriculums_path %></b></u><br>cook.campのカリキュラムです。</span>
+        </div>
+        <div class="user-menu-item clearfix">
+            <div class="user-menu-image"><%= image_tag('background-kitchen.jpg',  class: 'user-menu-image') %></div>
+            <span class="user-menu-text"><u><b><%= link_to 'スキル管理ノート', skill_notes_path %></b></u><br>料理の上達度を確認しましょう。</span>
+        </div>
+        <div class="user-menu-item clearfix">
+            <div class="user-menu-image"><%= image_tag('background-kitchen.jpg',  class: 'user-menu-image') %></div>
+            <span class="user-menu-text"><u><b><%= link_to 'マイページ', user_path(current_user.id) %></b></u><br>会員情報を確認できます。</span>
+        </div>
+        <div class="user-menu-item clearfix">
+            <div class="user-menu-image"><%= image_tag('background-kitchen.jpg',  class: 'user-menu-image') %></div>
+            <span class="user-menu-text"><u><b><%= link_to 'マイレシピ', my_recipes_path %></b></u><br>自分の作れるレシピを保存できます。</span>
+        </div>
+        <div class="user-menu-item clearfix">
+            <div class="user-menu-image"><%= image_tag('background-kitchen.jpg',  class: 'user-menu-image') %></div>
+            <span class="user-menu-text"><u><b><%= link_to 'みんなのレシピ', everyone_recipes_path %></b></u><br>他のユーザーが考えたレシピを閲覧できます。</span>
+        </div>
+        <div class="user-menu-item clearfix">
+            <div class="user-menu-image"><%= image_tag('background-kitchen.jpg',  class: 'user-menu-image') %></div>
+            <span class="user-menu-text"><u><b><%= link_to 'いいね数ランキング', rankings_path %></b></u><br>みんなのレシピのいいね数ランキングを閲覧できます。</span>
+        </div>
+        <div class="user-menu-item clearfix">
+            <div class="user-menu-image"><%= image_tag('background-kitchen.jpg',  class: 'user-menu-image') %></div>
+            <span class="user-menu-text"><u><b><%= link_to '基本のレシピ', basic_recipes_path %></b></u><br>定番料理のレシピを閲覧できます。</span>
+        </div>
+        <div class="user-menu-item clearfix">
+            <div class="user-menu-image"><%= image_tag('background-kitchen.jpg',  class: 'user-menu-image') %></div>
+            <span class="user-menu-text"><u><b><%= link_to '楽天レシピ', root_path %></b></u><br>楽天レシピのランキングへのリンクです。</span>
+        </div>
+        <div class="user-menu-item clearfix">
+            <div class="user-menu-image"><%= image_tag('background-kitchen.jpg',  class: 'user-menu-image') %></div>
+            <span class="user-menu-text"><u><b><%= link_to '作りたい料理リスト', want_to_cooks_path %></b></u><br>作りたい料理リストに保存したレシピを閲覧できます。</span>
+        </div>
+        <div class=" clearfix"></div>
+    </div>
+</main>
+
+</div>
+</div>
+</div>
