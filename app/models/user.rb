@@ -12,8 +12,7 @@ class User < ApplicationRecord
          has_many :my_recipes, dependent: :destroy
 
          validates :email, :encrypted_password, :sei_kanji, :mei_kanji, :sei_kana,
-			  :mei_kana, :nickname,
-			   presence: true
+			  :mei_kana, presence: true
 
          acts_as_paranoid #論理削除用のgemである'paranoia'を使用するための記述
 end

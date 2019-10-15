@@ -35,11 +35,11 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
 
       t.timestamps null: false
 
-      t.string :sei_kanji, null: false
-      t.string :mei_kanji, null: false
-      t.string :sei_kana, null: false
-      t.string :mei_kana, null: false
-      t.string :nickname, null: false
+      t.string :sei_kanji
+      t.string :mei_kanji
+      t.string :sei_kana
+      t.string :mei_kana
+      t.string :nickname
       t.text :introduction
       t.string :profile_image_id
       t.datetime :deleted_at

@@ -1,29 +1,48 @@
-<h2>Sign up</h2>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-2 col-md-3"></div>
+    <div class="col-xs-8 col-md-6 main">
+<div class="registration">
+
+<h2>cook.campを始めよう！</h2></br>
+
+<p class="login-text" style="text-decoration: underline">新規会員登録</p><br>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
+  <p class="login-text">氏名</p>
+  <div class="small_field">
+    <%= f.text_field :sei_kanji, autofocus: true, placeholder: "姓を入力してください", class:"form-control"  %>
+    <%= f.text_field :mei_kanji, autofocus: true, placeholder: "名を入力してください", class:"form-control" %>
+  </div><br>
+<p class="login-text">カナ</p>
+  <div class="small_field">
+    <%= f.text_field :sei_kana, autofocus: true, placeholder: "セイを入力してください", class:"form-control" %>
+    <%= f.text_field :mei_kana, autofocus: true, placeholder: "メイを入力してください", class:"form-control" %>
+  </div><br>
+   <div class="normal_field">
+    <p class="login-text">ニックネーム</p>
+    <%= f.text_field :nickname, autofocus: true, placeholder: "ニックネームを入力してください", class:"form-control" %>
+  </div><br>
+  <div class="normal_field">
+    <p class="login-text">メールアドレス</p>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder: "メールアドレスを入力してください"%>
+  </div><br>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <div class="normal_field">
+    <p class="login-text">パスワード</p>
+    <%= f.password_field :password, autocomplete: "new-password", class:"form-control", placeholder: "パスワードを入力してください" %>
+  </div><br>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="normal_field">
+    <p class="login-text">パスワード(確認用)</p>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", placeholder: "パスワードを入力してください" %><br>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+    <%= f.submit "新規登録", class:"btn btn-primary" %>
+  </div><br>
 <% end %>
 
-<%= render "users/shared/links" %>
+<p class="glyphicon glyphicon-record" aria-hidden="true">アカウントをお持ちの方は<a href="/users/sign_in">ログイン</a>へ</p>
