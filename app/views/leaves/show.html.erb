@@ -1,2 +1,19 @@
-<h1>Leaves#show</h1>
-<p>Find me in app/views/leaves/show.html.erb</p>
+<!-- 退会ページ -->
+<%= render 'layouts/list' %>
+
+<main class="login-time-box">
+<h1>ユーザー退会手続き</h1>
+    <div class="basic-box">
+	<h3><span class="label label-default">ユーザー退会手続きはこちら</span></h3>
+    	<div class="leave-box">
+    		<h3><span class="">下記「cook.campを退会する」ボタンを押すと退会手続きが完了します。</span></h3><br>
+    		<td><%= link_to "cook.campを退会する", leafe_path,  method: :delete, "data-confirm" => "本当に退会しますか？",class:'btn-lg btn-danger btn-block' %></td><br>
+        </div>
+        <%= link_to "マイページへ戻る", user_path, class: 'btn btn-default' %>
+    </div>
+
+</main>
+
+</div>
+</div>
+</div>
