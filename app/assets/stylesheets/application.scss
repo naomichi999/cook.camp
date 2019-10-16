@@ -36,14 +36,12 @@
    height: 100%;
    border-right: 1px solid black;
 }
-
 body {
   font-family: Meiryo, sans-serif;
 }
 .navbar-brand, .logo {
   font-family: Chalkduster, Meiryo, "Bradley Hand", Courier, "Segoe Print", sans-serif;
 }
-
 body {
   margin-top: 50px;
   margin-bottom: 200px;
@@ -53,6 +51,10 @@ body {
 h1 {
   margin-left: 30px;
 }
+.paginate {
+  text-align: center;
+}
+
 
 //ログイン中に表示する画面全て
 .login-time-box {

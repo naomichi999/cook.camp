@@ -1,2 +1,54 @@
-<h1>Admin::Users#index</h1>
-<p>Find me in app/views/admin/users/index.html.erb</p>
+<!-- ユーザー情報一覧 -->
+<%= render 'layouts/list' %>
+
+<main class="login-time-box">
+<h1>ユーザー情報一覧</h1>
+
+
+    <div class="basic-box">
+    	<div class=" clearfix">
+    	<h3><span class="label label-default">ユーザー情報一覧</span></h3>
+        </div><br>
+        <table class="table ">
+                <thead>
+                    <tr>
+                        <th>氏名<br>(ユーザー情報詳細へのリンク)</th>
+                        <th>ニックネーム<br>(ユーザー情報詳細へのリンク)</th>
+                        <th>マイレシピ<br>(マイレシピへのリンク)</th>
+                        <th>削除日時<br>(退会したユーザーのみ表示</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @pages.each do |u| %>
+                    <tr>
+                        <td>
+                            <%= link_to admin_user_path(u.id) do %>
+                            <%= u.sei_kanji %>
+                            <%= u.mei_kanji %>
+                            <% end %>
+
+                        </td>
+                        <td>
+                            <%= link_to u.nickname, admin_user_path(u.id) %>
+                        </td>
+                        <td>
+                            <%= link_to "マイレシピへのリンク", admin_user_path(u.id) %>
+                        </td>
+                        <td>
+                            <% if u.deleted_at != nil %>
+                                <%= u.deleted_at.strftime('%Y年%m月%d日 %H時%M分') %>
+                            <% end %>
+                        </td>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+            <div class="paginate">
+                <%= paginate @pages, class: "paginate" %>
+            </div>
+    </div>
+</main>
+
+</div>
+</div>
+</div>

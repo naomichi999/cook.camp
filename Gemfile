@@ -75,6 +75,8 @@ gem 'cocoon'
 
 gem 'kaminari'
 
+gem 'kaminari-bootstrap', '~> 3.0.1'
+
 gem 'slick'
 
 gem 'bootstrap-sass', '~> 3.3.6'
