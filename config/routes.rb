@@ -30,7 +30,8 @@ Rails.application.routes.draw do
     resources :curriculums, only: [:index, :new, :show, :edit, :update, :create, :destroy]
     resources :my_recipes, only: [:index, :show, :edit, :update, :destroy]
     resources :users, only: [:index, :show, :edit, :update, :destroy]
-    # 論理削除と復元のルーティングはまだです。
+    delete 'admin/users/:id' => 'users#restore', as:'restore'
+    delete 'admin/user/:id' => 'users#really_destroy', as:'really_destroy'
   end
 
   resources :searches, only: [:index]

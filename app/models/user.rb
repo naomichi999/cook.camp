@@ -15,5 +15,5 @@ class User < ApplicationRecord
          validates :email, :encrypted_password, :sei_kanji, :mei_kanji, :sei_kana,
 			  :mei_kana, presence: true
 
-         acts_as_paranoid #論理削除用のgemである'paranoia'を使用するための記述
+         acts_as_paranoid #論理削除用のgemである'paranoia'を使用するための記述。dependent: :destroyで関連モデルのレコードも同時に削除されるようになっている場合、関連モデルにも記述するとそちらも論理削除になる。
 end
