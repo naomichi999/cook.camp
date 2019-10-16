@@ -2,7 +2,7 @@
 <!-- カレントユーザーと他ユーザーで掲載情報を分ける -->
 <%= render 'layouts/list' %>
 
-<main class="login-time">
+<main class="login-time-box">
 <h1><%= @user.nickname %>さんのページ</h1>
 
 
@@ -10,7 +10,7 @@
 	<h3><span class="label label-default"><%= @user.sei_kanji %> <%= @user.mei_kanji %>さんの会員情報</span></h3>
     	<div class="profile-box">
     		<div class="profile-box-left">
-	    		<div class="user-menu-image"><%= image_tag('background-kitchen.jpg',  class: 'user-menu-image') %></div>
+	    		<div class="user-page-image"><%= attachment_image_tag @user, :profile_image, fallback: "no_image.png", class: "user-page-image" %></div>
 	    		<p><%= @user.nickname %></p>
 	    		<p><%= @user.sei_kanji %><%= @user.mei_kanji %></p>
 	    		<p><%= @user.email %></p>

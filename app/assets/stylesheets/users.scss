@@ -15,7 +15,7 @@
   border-radius: 10px;
 }
 .user-menu-image {
-  width: 150px;
+  width: 180px;
   height: 150px;
   margin: 0px auto;
   background-position: center;
@@ -48,6 +48,7 @@
   height: 350px;
   padding: 20px;
   margin-bottom: 30px;
+  text-align: center;
   background-color: whitesmoke;
   float: left;
 }
@@ -67,4 +68,12 @@
   background-color: whitesmoke;
   float: left;
   text-align: center;
+}
+.user-page-image {
+  width: 150px;
+  height: 150px;
+  margin: 0px auto 20px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
 }
