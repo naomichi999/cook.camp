@@ -13,8 +13,6 @@ Rails.application.routes.draw do
     :sessions => 'admin_users/sessions'
   }
 
-
-
   namespace :admin do
     resources :admin_users, only: [:index]
     resources :searches, only: [:index]

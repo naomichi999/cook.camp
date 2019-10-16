@@ -2,6 +2,9 @@
 <%= render 'layouts/list' %>
 
 <main class="login-time-box">
+<h1>ユーザー情報編集</h1>
+    <div class="basic-box">
+  <h3><span class="label label-default">会員情報を編集する</span></h3><br>
 
 
 <%= form_for(@user) do |f| %>
@@ -28,16 +31,17 @@
     <p class="login-text">メールアドレス</p>
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder: "メールアドレスを入力してください"%>
   </div><br>
-  <p class="login-text">ユーザー画像</p>
-  <%= f.attachment_field :profile_image %>
-
-
+  <div class="">
+    <p class="login-text">ユーザー画像</p>
+    <%= f.attachment_field :profile_image %>
+  </div><br>
 
   <div class="actions">
     <%= f.submit "更新する", class:"btn btn-primary" %>
   </div><br>
 <% end %>
 
-
+</div>
 
 <%= link_to "マイページへ戻る", user_path, class: 'btn btn-default' %>
+</main>
