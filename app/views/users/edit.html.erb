@@ -1,2 +1,43 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<!-- ユーザー情報編集 -->
+<%= render 'layouts/list' %>
+
+<main class="login-time-box">
+
+
+<%= form_for(@user) do |f| %>
+
+  <p class="login-text">氏名</p>
+  <div class="small_field">
+    <%= f.text_field :sei_kanji, autofocus: true, placeholder: "姓を入力してください", class:"form-control"  %>
+    <%= f.text_field :mei_kanji, autofocus: true, placeholder: "名を入力してください", class:"form-control" %>
+  </div><br>
+<p class="login-text">カナ</p>
+  <div class="small_field">
+    <%= f.text_field :sei_kana, autofocus: true, placeholder: "セイを入力してください", class:"form-control" %>
+    <%= f.text_field :mei_kana, autofocus: true, placeholder: "メイを入力してください", class:"form-control" %>
+  </div><br>
+   <div class="normal_field">
+    <p class="login-text">ニックネーム</p>
+    <%= f.text_field :nickname, autofocus: true, placeholder: "ニックネームを入力してください", class:"form-control" %>
+  </div><br>
+   <div class="normal_field">
+    <p class="login-text">自己紹介</p>
+    <%= f.text_area :introduction, autofocus: true, placeholder: "自己紹介を入力してください", class:"form-control" %>
+  </div><br>
+  <div class="normal_field">
+    <p class="login-text">メールアドレス</p>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder: "メールアドレスを入力してください"%>
+  </div><br>
+  <p class="login-text">ユーザー画像</p>
+  <%= f.attachment_field :profile_image %>
+
+
+
+  <div class="actions">
+    <%= f.submit "更新する", class:"btn btn-primary" %>
+  </div><br>
+<% end %>
+
+
+
+<%= link_to "マイページへ戻る", user_path, class: 'btn btn-default' %>

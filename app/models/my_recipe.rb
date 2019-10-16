@@ -1,4 +1,5 @@
 class MyRecipe < ApplicationRecord
+	attachment :cooking_image
 	has_many :comments, dependent: :destroy
 	has_many :favorites, dependent: :destroy
 	belongs_to :genre
