@@ -21,6 +21,10 @@
     <%= f.attachment_field :cooking_image %>
   </div><br>
   <div class="">
+    <p class="form-text">料理の動画</p>
+    <%= f.file_field :cooking_video %>
+  </div><br>
+  <div class="">
     <p class="form-text">料理のジャンル</p>
     <%= f.collection_select(:genre_id, Genre.all, :id, :genre_name, prompt: "ジャンルを選択して下さい") %>
   </div><br>

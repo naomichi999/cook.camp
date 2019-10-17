@@ -1,2 +1,8 @@
 <h1>MyRecipes#show</h1>
 <p>Find me in app/views/my_recipes/show.html.erb</p>
+
+
+
+ <%= video_tag @my_recipe.cooking_video.url.to_s,loop: true, controls: true, width: 550, id: "mv" %>
+
+#loop: true loop処理
