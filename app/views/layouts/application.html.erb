@@ -96,6 +96,21 @@
 </nav>
 <!-- フッター部分 -->
 
+<!-- フラッシュメッセージ -->
+    <div class="flash flash-success">
+      <%= flash[:success] %>
+    </div>
+    <div class="flash flash-danger">
+      <%= flash[:danger] %>
+    </div>
+    <div class="flash flash-warning">
+      <%= flash[:warning] %>
+    </div>
+    <div class="flash flash-notice">
+      <%= flash[:notice] %>
+    </div>
+<!-- フラッシュメッセージ -->
+
     <%= yield %>
   </body>
 </html>

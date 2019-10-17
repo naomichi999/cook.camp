@@ -102,7 +102,7 @@ h1 {
  margin: 0 auto;
  margin-top: 50px;
 }
-.login-text {
+.form-text {
   font-size: 17px;
   text-align: left;
 }
@@ -129,4 +129,21 @@ h1 {
 .actions input[type="submit"] {
  width: 100%;
  height: 34px;
+}
+
+//フラッシュメッセージ
+.flash {
+  font-size: 24px;
+}
+.flash-success {
+  color: green;
+}
+.flash-danger {
+  color: red;
+}
+.flash-warning {
+  color: orange;
+}
+.flash-notice {
+  color: blue;
 }

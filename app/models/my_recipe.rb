@@ -6,5 +6,5 @@ class MyRecipe < ApplicationRecord
 	belongs_to :want_to_cook
 	belongs_to :user
 	belongs_to :everyone_recipe
-	validates :user_id, :genre_id, :cooking_name, :cooking_explanation, :ingredient, :publishment, presence: true
+	validates  :cooking_name, :cooking_explanation, :ingredient, presence: true
 end

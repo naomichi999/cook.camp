@@ -4,6 +4,7 @@ class MyRecipesController < ApplicationController
   end
 
   def new
+    @my_recipe = MyRecipe.new
   end
 
   def show
@@ -13,6 +14,14 @@ class MyRecipesController < ApplicationController
   end
 
   def create
+    @my_recipe = MyRecipe.new(my_recipe_params)
+    if @my_recipe.save
+      flash[:success] = 'マイレシピを追加しました'
+      redirect_to my_recipe_path
+    else
+      flash[:danger] = 'マイレシピの追加に失敗しました'
+      redirect_to new_my_recipe_path
+    end
   end
 
   def update
@@ -20,5 +29,10 @@ class MyRecipesController < ApplicationController
   end
 
   def destroy
+  end
+
+  protected
+  def my_recipe_params
+    params.require(:my_recipe).permit(:user_id, :genre_id, :cooking_name, :cooking_explanation, :genre_name, :ingredient, :how_to_cook, :cooking_image, :cooking_video, :publishment)
   end
 end
