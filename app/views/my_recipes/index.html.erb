@@ -1,0 +1,45 @@
+<!-- マイレシピ -->
+<%= render 'layouts/list' %>
+
+<main class="login-time-box">
+<h1>マイレシピ</h1>
+
+
+    <div class="basic-box">
+	<h3><span class="label label-default">さんのマイレシピ</span></h3>
+
+
+                <% @pages.each do |m| %>
+                <div class="my_recipe-box clearfix">
+    	    		<div class="my_recipe-box-left">
+			    		<div class="my_recipe-image">
+			    			<%= link_to(my_recipe_path(m.id)) do %>
+			    			<p><%= attachment_image_tag m, :cooking_image, fallback: "no_image.png", class: "my_recipe-image" %></p>
+			    			<% end %>
+				    		<p><%= link_to 'このレシピの詳細を見る', my_recipe_path(m.id), class: 'btn btn-primary' %></p>
+			    		</div><br>
+			    	</div>
+			    	<div class="my_recipe-box-right">
+			    		<p><%= m.cooking_name %></p>
+			    		<p><%= m.genre_name %></p>
+			    		<p><%= m.cooking_explanation %></p>
+			    	</div>
+			    </div>
+                <% end %>
+
+            <div class="paginate">
+                <%= paginate @pages, class: "paginate" %>
+            </div>
+
+	<div class="">
+        <%= link_to 'マイレシピを追加する', new_my_recipe_path, class: 'btn btn-default btn-lg' %>
+    </div><br>
+    <div class="">
+        <%= link_to '作りたい料理リスト', want_to_cooks_path, class: 'btn btn-default btn-lg' %>
+    </div><br>
+    </div>
+</main>
+
+</div>
+</div>
+</div>

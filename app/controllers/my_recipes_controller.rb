@@ -1,6 +1,9 @@
 class MyRecipesController < ApplicationController
   before_action :authenticate_user!
   def index
+    @my_recipe = MyRecipe.all
+    @pages = @my_recipe.page(params[:page]).per(7)
+
   end
 
   def new
@@ -8,6 +11,7 @@ class MyRecipesController < ApplicationController
   end
 
   def show
+    @my_recipe = MyRecipe.all
   end
 
   def edit
@@ -26,7 +30,6 @@ class MyRecipesController < ApplicationController
   end
 
   def update
-  	# 公開フラグ更新とマイレシピ更新
   end
 
   def destroy

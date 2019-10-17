@@ -2,21 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-.clearfix::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-.main-visual, {
-  font-family: Chalkduster, Meiryo, "Bradley Hand", Courier, "Segoe Print", sans-serif;
-}
+//トップ・アバウトページ共通
 main {
   width: 85%;
   margin: 0 auto;
   padding: 50px 0px 0px;
 }
-
 
 // トップページ
 /*main-visual*/
@@ -26,6 +17,7 @@ main {
   background-image: url(background-kitchen.jpg);
   background-size: cover;
   background-position: center;
+  font-family: Chalkduster, Meiryo, "Bradley Hand", Courier, "Segoe Print", sans-serif;
 }
 .main-visual-content {
   width: 40%;
