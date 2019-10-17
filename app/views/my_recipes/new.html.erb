@@ -20,7 +20,10 @@
     <p class="form-text">料理の画像</p>
     <%= f.attachment_field :cooking_image %>
   </div><br>
-
+  <div class="">
+    <p class="form-text">料理のジャンル</p>
+    <%= f.collection_select(:genre_id, Genre.all, :id, :genre_name, prompt: "ジャンルを選択して下さい") %>
+  </div><br>
 
   <div class="normal_field">
     <p class="form-text">材料</p>

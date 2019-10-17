@@ -15,9 +15,10 @@ class MyRecipesController < ApplicationController
 
   def create
     @my_recipe = MyRecipe.new(my_recipe_params)
+    @my_recipe.user_id = current_user.id
     if @my_recipe.save
       flash[:success] = 'マイレシピを追加しました'
-      redirect_to my_recipe_path
+      redirect_to my_recipe_path(current_user.id)
     else
       flash[:danger] = 'マイレシピの追加に失敗しました'
       redirect_to new_my_recipe_path
