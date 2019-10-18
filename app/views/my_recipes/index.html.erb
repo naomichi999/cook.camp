@@ -8,7 +8,7 @@
     <div class="basic-box">
 	<h3><span class="label label-default"><%= current_user.nickname %>さんのマイレシピ</span></h3>
 
-                <% @pages.each do |m| %>
+                <% @my_recipe.each do |m| %>
                 <div class="my_recipe-box clearfix">
     	    		<div class="my_recipe-box-left">
 			    		<div class="my_recipe-image">
@@ -22,6 +22,7 @@
 			    		<p><%= m.cooking_name %></p>
 			    		<p><%= m.genre_name %></p>
 			    		<p><%= m.cooking_explanation %></p>
+			    		<p><%= m.user.nickname %></p>
 			    		<% if m.publishment == true %>
 			    	      <p class="flash-notice">※このレシピは公開されています</p>
 			    	    <% else %>

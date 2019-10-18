@@ -1,7 +1,7 @@
 class MyRecipesController < ApplicationController
   before_action :authenticate_user!
   def index
-    @my_recipe = MyRecipe.all
+    @my_recipe = current_user.my_recipes
     @pages = @my_recipe.page(params[:page]).per(7)
   end
 

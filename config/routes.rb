@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     resources :want_to_cooks, only: [:index, :create, :destroy]
     resources :curriculums, only: [:index, :new, :show, :edit, :update, :create, :destroy]
     resources :my_recipes, only: [:index, :show, :edit, :update, :destroy]
+    get 'recipe_list/:id' => 'my_recipes#recipe_list', as:'recipe_list'
     resources :users, only: [:index, :show, :edit, :update, :destroy]
     delete 'admin/users/:id' => 'users#restore', as:'restore'
     delete 'admin/user/:id' => 'users#really_destroy', as:'really_destroy'
