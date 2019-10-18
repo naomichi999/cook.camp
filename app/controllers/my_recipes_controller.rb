@@ -15,6 +15,7 @@ class MyRecipesController < ApplicationController
   end
 
   def edit
+    @my_recipe = MyRecipe.find(params[:id])
   end
 
   def create
@@ -30,18 +31,29 @@ class MyRecipesController < ApplicationController
   end
 
   def update
+    # 公開フラグの更新とマイレシピ更新
+    # 前ページのURLによって処理を変更している
     @my_recipe = MyRecipe.find(params[:id])
-    if @my_recipe.publishment == false
-      @my_recipe.update(publishment: true)
-    flash[:success] = 'マイレシピを公開しました。'
-    redirect_to root_path
-  else
-      @my_recipe.update(publishment: false)
-      flash[:success] = 'マイレシピを非公開にしました。'
-      redirect_to root_path
+    # refererは前ページのURLを取得するメソッド
+    if request.referer&.include?("/localhost:3000/my_recipes/new")
+      if @my_recipe.publishment == false
+        @my_recipe.update(publishment: true)
+        flash[:success] = 'マイレシピを公開しました。'
+        redirect_to root_path
+      else
+        @my_recipe.update(publishment: false)
+        flash[:success] = 'マイレシピを非公開にしました。'
+        redirect_to root_path
+      end
+    else
+      if @my_recipe.update(my_recipe_params)
+        flash[:success] = 'マイレシピを更新しました。'
+        redirect_to my_recipe_path
+      else
+        flash[:danger] = "マイレシピの更新ができませんでした。"
+        redirect_to edit_my_recipe_path
+      end
     end
-
-  	# 公開フラグ更新とマイレシピ更新
   end
 
   def destroy
