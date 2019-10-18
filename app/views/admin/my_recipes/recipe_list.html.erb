@@ -1,4 +1,4 @@
-<!-- マイレシピ -->
+<!-- マイレシピ(管理者側) -->
 <%= render 'layouts/list' %>
 
 <main class="login-time-box">
@@ -6,7 +6,7 @@
 
 
     <div class="basic-box">
-	<h3><span class="label label-default"><%=  %>さんのマイレシピ</span></h3>
+	<h3><span class="label label-default"><%= @user.nickname %>さんのマイレシピ</span></h3>
 
                 <% @pages.each do |m| %>
                 <div class="my_recipe-box clearfix">

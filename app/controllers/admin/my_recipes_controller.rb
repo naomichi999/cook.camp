@@ -12,6 +12,7 @@ class Admin::MyRecipesController < ApplicationController
   end
 
   def show
+    @my_recipe = MyRecipe.find(params[:id])
   end
 
   def edit
@@ -22,5 +23,13 @@ class Admin::MyRecipesController < ApplicationController
   end
 
   def destroy
+    my_recipe = MyRecipe.find(params[:id])
+    if my_recipe.destroy
+      flash[:success] = 'マイレシピの削除が完了しました。'
+      redirect_to admin_recipe_list_path
+    else
+      flash[:danger] = "マイレシピの削除に失敗しました。"
+      redirect_to admin_my_recipe_path
+    end
   end
 end

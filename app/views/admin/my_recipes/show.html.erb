@@ -1,2 +1,45 @@
-<h1>Admin::MyRecipes#show</h1>
-<p>Find me in app/views/admin/my_recipes/show.html.erb</p>
+<!-- マイレシピ詳細(管理者側) -->
+<%= render 'layouts/list' %>
+
+<main class="login-time-box">
+<h1>マイレシピ詳細</h1>
+
+
+    <div class="basic-box">
+	<h3><span class="label label-default"><%= @my_recipe.user.nickname %>さんのマイレシピ詳細</span></h3>
+
+                <div class="my_recipe-box clearfix">
+    	    		<div class="my_recipe-box-left">
+			    		<div class="my_recipe-image">
+			    			<p><%= attachment_image_tag @my_recipe, :cooking_image, fallback: "no_image.png", class: "my_recipe-image" %></p>
+			    		</div><br>
+			    	</div>
+			    	<div class="my_recipe-box-right">
+			    		<p><%= @my_recipe.cooking_name %></p>
+			    		<p><%= @my_recipe.genre_name %></p>
+			    		<p><%= @my_recipe.cooking_explanation %></p>
+			    		<% if @my_recipe.publishment == true %>
+			    	      <p class="flash-notice">※このレシピは公開されています</p>
+			    	    <% else %>
+			    	      <p class="flash-warning">※このレシピは非公開です</p>
+			    	    <% end %>
+			    	</div>
+			    </div>
+
+
+	<div class="">
+        <%= link_to 'このレシピを編集する', edit_admin_my_recipe_path, class: 'btn btn-default btn-lg' %>
+    </div><br>
+    <div class="">
+    	<%= link_to "このレシピを削除する", admin_my_recipe_path, method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+    </div><br>
+
+
+    </div>
+</div>
+    <%= link_to "ユーザーのマイレシピへ戻る", :back , class: 'btn btn-default' %>
+</main>
+
+</div>
+</div>
+</div>
