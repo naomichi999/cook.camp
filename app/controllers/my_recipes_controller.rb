@@ -35,11 +35,11 @@ class MyRecipesController < ApplicationController
     # 前ページのURLによって処理を変更している
     @my_recipe = MyRecipe.find(params[:id])
     # refererは前ページのURLを取得するメソッド
-    if request.referer&.include?("/localhost:3000/my_recipes/new")
+    if request.referer&.include?("/localhost:3000/admin_my_recipe/new")
       if @my_recipe.publishment == false
         @my_recipe.update(publishment: true)
         flash[:success] = 'マイレシピを公開しました。'
-        redirect_to root_path
+
       else
         @my_recipe.update(publishment: false)
         flash[:success] = 'マイレシピを非公開にしました。'

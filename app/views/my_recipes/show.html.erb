@@ -50,7 +50,7 @@
 			<% if @my_recipe.publishment == false %>
 	        	<p><%= f.submit 'このレシピを公開する', class: "publishment_submit", :class=>"btn btn-primary" %></p></br>
         	<% else %>
-    			<p><%= f.submit 'このレシピを非公開にする', class: "publishment_submit", :class=>"btn btn-primary" %></p></br>
+    			<p><%= f.submit 'このレシピを非公開にする', class: "publishment_submit", :class=>"btn btn-danger" %></p></br>
 			<% end %>
 	    <% end %>
 

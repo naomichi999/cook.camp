@@ -1,2 +1,52 @@
-<h1>Admin::MyRecipes#edit</h1>
-<p>Find me in app/views/admin/my_recipes/edit.html.erb</p>
+<!-- マイレシピ編集(管理者側) -->
+<%= render 'layouts/list' %>
+
+<main class="login-time-box">
+<h1>マイレシピの編集</h1>
+    <div class="basic-box">
+  <h3><span class="label label-default">マイレシピを編集する</span></h3><br>
+
+
+<%= form_for @my_recipe, url: admin_my_recipe_path do |f| %>
+  <div class="normal_field">
+    <p class="form-text">料理名</p>
+    <%= f.text_field :cooking_name, autofocus: true, placeholder: "料理名を入力してください", class:"form-control" %>
+  </div><br>
+  <div class="normal_field">
+    <p class="form-text">料理コメント</p>
+    <%= f.text_area :cooking_explanation, autofocus: true, placeholder: "料理コメントを入力してください", class:"form-control" %>
+  </div><br>
+    <div class="">
+    <p class="form-text">料理の画像</p>
+    <%= f.attachment_field :cooking_image %>
+  </div><br>
+  <div class="">
+    <p class="form-text">料理の動画</p>
+    <%= f.file_field :cooking_video %>
+  </div><br>
+  <div class="">
+    <p class="form-text">料理のジャンル</p>
+    <%= f.collection_select(:genre_id, Genre.all, :id, :genre_name, prompt: "ジャンルを選択して下さい") %>
+  </div><br>
+
+  <div class="normal_field">
+    <p class="form-text">材料</p>
+    <%= f.text_area :ingredient, autofocus: true, placeholder: "材料を入力してください", class:"form-control" %>
+  </div><br>
+  <div class="normal_field">
+    <p class="form-text">作り方</p>
+    <%= f.text_area :how_to_cook, autofocus: true, placeholder: "作り方を入力してください", class:"form-control" %>
+  </div><br>
+  <div class="actions">
+    <%= f.submit "追加する", class:"btn btn-primary" %>
+  </div><br>
+<% end %>
+
+</div>
+
+<%= link_to "マイレシピ詳細へ戻る", admin_my_recipe_path, class: 'btn btn-default' %>
+</main>
+
+</div>
+</div>
+</div>
