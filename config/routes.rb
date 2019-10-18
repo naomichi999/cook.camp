@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     get 'basic_recipes/genre_choice'
     resources :everyone_recipes, only: [:index]
     get 'everyone_recipes/genre_choice'
-    resources :want_to_cooks, only: [:index, :destroy]
+    resources :want_to_cooks, only: [:index, :create, :destroy]
     resources :curriculums, only: [:index, :new, :show, :edit, :update, :create, :destroy]
     resources :my_recipes, only: [:index, :show, :edit, :update, :destroy]
     resources :users, only: [:index, :show, :edit, :update, :destroy]
@@ -42,7 +42,7 @@ Rails.application.routes.draw do
   get 'basic_recipes/genre_choice'
   resources :everyone_recipes, only: [:index]
   get 'everyone_recipes/genre_choice'
-  resources :want_to_cooks, only: [:index, :destroy]
+  resources :want_to_cooks, only: [:index, :create, :destroy]
   resources :curriculums, only: [:index, :show]
   resources :skill_notes, only: [:index, :edit, :update]
   resources :my_recipes, only: [:index, :new, :show, :edit, :create, :update, :destroy]

@@ -1,2 +1,67 @@
-<h1>MyRecipes#show</h1>
-<p>Find me in app/views/my_recipes/show.html.erb</p>
+<!-- マイレシピ詳細 -->
+<%= render 'layouts/list' %>
+
+<main class="login-time-box">
+<h1>マイレシピ詳細</h1>
+
+
+    <div class="basic-box">
+	<h3><span class="label label-default"><%= @my_recipe.user.nickname %>さんのマイレシピ詳細</span></h3>
+
+                <div class="my_recipe-box clearfix">
+    	    		<div class="my_recipe-box-left">
+			    		<div class="my_recipe-image">
+			    			<p><%= attachment_image_tag @my_recipe, :cooking_image, fallback: "no_image.png", class: "my_recipe-image" %></p>
+			    		</div><br>
+			    	</div>
+			    	<div class="my_recipe-box-right">
+			    		<p><%= @my_recipe.cooking_name %></p>
+			    		<p><%= @my_recipe.genre_name %></p>
+			    		<p><%= @my_recipe.cooking_explanation %></p>
+			    		<% if @my_recipe.publishment == true %>
+			    	      <p class="flash-notice">※このレシピは公開されています</p>
+			    	    <% else %>
+			    	      <p class="flash-warning">※このレシピは非公開です</p>
+			    	    <% end %>
+			    	</div>
+			    </div>
+
+
+	<div class="">
+        <%= link_to 'このレシピを編集する', edit_my_recipe_path, class: 'btn btn-default btn-lg' %>
+    </div><br>
+    <div class="">
+    	<%= link_to "このレシピを削除する", my_recipe_path, method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+    </div><br>
+    <div class="">
+
+<!-- 作りたい料理リストに追加 -->
+	  <%= form_for @want_to_cook, url: want_to_cooks_path, method: :post do |f| %>
+      <%= f.hidden_field :my_recipe_id, value: @my_recipe.id %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.submit '作りたい料理リストに追加する', :basic_recipe_id => nil, class: "btn btn-primary" %>
+      <% end %>
+    </div><br>
+
+
+
+    <!-- 公開フラグの切り替え -->
+		<%= form_for(@my_recipe, url: {controller: "my_recipes", action: "update"}) do |f| %>
+			<% if @my_recipe.publishment == false %>
+	        	<p><%= f.submit 'このレシピを公開する', class: "publishment_submit", :class=>"btn btn-primary" %></p></br>
+        	<% else %>
+    			<p><%= f.submit 'このレシピを非公開にする', class: "publishment_submit", :class=>"btn btn-primary" %></p></br>
+			<% end %>
+	    <% end %>
+
+
+
+
+    </div>
+</div>
+    <%= link_to "マイレシピへ戻る", my_recipes_path, class: 'btn btn-default' %>
+</main>
+
+</div>
+</div>
+</div>
