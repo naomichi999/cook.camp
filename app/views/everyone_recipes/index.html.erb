@@ -1,2 +1,42 @@
-<h1>EveryoneRecipes#index</h1>
-<p>Find me in app/views/everyone_recipes/index.html.erb</p>
+<!-- みんなのレシピ -->
+<%= render 'layouts/list' %>
+
+<main class="login-time-box">
+<h1>みんなのレシピ</h1>
+
+
+    <div class="basic-box">
+    	<div class=" clearfix">
+    	<h3><span class="label label-default">料理のジャンルを選択してください</span></h3>
+       </div>
+        <div class="user-menu-item clearfix">
+            <div class="user-menu-image"><%= image_tag('background-kitchen.jpg',  class: 'user-menu-image') %></div>
+            <span class="user-menu-text"><u><b><%= link_to '～お肉系のおかず～', meat_path %></b></u></span>
+        </div>
+        <div class="user-menu-item clearfix">
+            <div class="user-menu-image"><%= image_tag('background-kitchen.jpg',  class: 'user-menu-image') %></div>
+            <span class="user-menu-text"><u><b><%= link_to '～魚介系のおかず～', fish_path %></b></u></span>
+        </div>
+        <div class="user-menu-item clearfix">
+            <div class="user-menu-image"><%= image_tag('background-kitchen.jpg',  class: 'user-menu-image') %></div>
+            <span class="user-menu-text"><u><b><%= link_to '～野菜系のおかず～', vegetable_path %></b></u></span>
+        </div>
+        <div class="user-menu-item clearfix">
+            <div class="user-menu-image"><%= image_tag('background-kitchen.jpg',  class: 'user-menu-image') %></div>
+            <span class="user-menu-text"><u><b><%= link_to '～麺類～', noodle_path %></b></u></span>
+        </div>
+        <div class="user-menu-item clearfix">
+            <div class="user-menu-image"><%= image_tag('background-kitchen.jpg',  class: 'user-menu-image') %></div>
+            <span class="user-menu-text"><u><b><%= link_to '～ご飯もの～', rice_path %></b></u></span>
+        </div>
+                <div class="user-menu-item clearfix">
+            <div class="user-menu-image"><%= image_tag('background-kitchen.jpg',  class: 'user-menu-image') %></div>
+            <span class="user-menu-text"><u><b><%= link_to '～汁物～', soup_path %></b></u></span>
+        </div>
+        <div class=" clearfix"></div>
+    </div>
+</main>
+
+</div>
+</div>
+</div>

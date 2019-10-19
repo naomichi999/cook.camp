@@ -23,7 +23,12 @@ Rails.application.routes.draw do
     resources :basic_recipes, only: [:index, :show]
     get 'basic_recipes/genre_choice'
     resources :everyone_recipes, only: [:index]
-    get 'everyone_recipes/genre_choice'
+    get 'everyone_recipes/meat', as: 'meat'
+    get 'everyone_recipes/fish', as: 'fish'
+    get 'everyone_recipes/vegetable', as: 'vegetable'
+    get 'everyone_recipes/noodle', as: 'noodle'
+    get 'everyone_recipes/rice', as: 'rice'
+    get 'everyone_recipes/soup', as: 'soup'
     resources :want_to_cooks, only: [:index, :create, :destroy]
     resources :curriculums, only: [:index, :new, :show, :edit, :update, :create, :destroy]
     resources :my_recipes, only: [:index, :show, :edit, :update, :destroy]
@@ -42,7 +47,12 @@ Rails.application.routes.draw do
   resources :basic_recipes, only: [:index, :show, :create]
   get 'basic_recipes/genre_choice'
   resources :everyone_recipes, only: [:index]
-  get 'everyone_recipes/genre_choice'
+  get 'everyone_recipes/meat', as: 'meat'
+  get 'everyone_recipes/fish', as: 'fish'
+  get 'everyone_recipes/vegetable', as: 'vegetable'
+  get 'everyone_recipes/noodle', as: 'noodle'
+  get 'everyone_recipes/rice', as: 'rice'
+  get 'everyone_recipes/soup', as: 'soup'
   resources :want_to_cooks, only: [:index, :create, :destroy]
   resources :curriculums, only: [:index, :show]
   resources :skill_notes, only: [:index, :edit, :update]

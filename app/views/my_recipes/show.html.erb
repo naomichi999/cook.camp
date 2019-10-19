@@ -6,12 +6,13 @@
 
 
     <div class="basic-box">
-	<h3><span class="label label-default"><%= @my_recipe.user.nickname %>さんのマイレシピ詳細</span></h3>
+	<h3><span class="label label-default"><%= @my_recipe.cooking_name %>の作り方</span></h3>
 
                 <div class="my_recipe-box clearfix">
     	    		<div class="my_recipe-box-left">
 			    		<div class="my_recipe-image">
 			    			<p><%= attachment_image_tag @my_recipe, :cooking_image, fallback: "no_image.png", class: "my_recipe-image" %></p>
+			    			<p><u><b><%= link_to @my_recipe.user.nickname, user_path(@my_recipe.user_id) %></b></u></p>
 			    		</div><br>
 			    	</div>
 			    	<div class="my_recipe-box-right">
@@ -59,7 +60,7 @@
 
     </div>
 </div>
-    <%= link_to "マイレシピへ戻る", my_recipes_path, class: 'btn btn-default' %>
+    <%= link_to "戻る", :back, class: 'btn btn-default' %>
 </main>
 
 </div>

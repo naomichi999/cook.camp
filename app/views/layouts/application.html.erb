@@ -37,7 +37,7 @@
         <li><%= link_to 'ユーザーメニュー', users_path %></li>
         <li><%= link_to 'マイページ', user_path(current_user.id) %></li>
         <li><%= link_to 'マイレシピ', my_recipes_path %></li>
-        <li><%= link_to 'みんなのレシピ', everyone_recipes_genre_choice_path %></li>
+        <li><%= link_to 'みんなのレシピ', everyone_recipes_path %></li>
         <li><%= link_to '基本のレシピ', basic_recipes_genre_choice_path %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
       </ul>
@@ -46,7 +46,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to '管理者メニュー', admin_admin_users_path %></li>
         <li><%= link_to 'ユーザー情報一覧', admin_users_path %></li>
-        <li><%= link_to 'みんなのレシピ', admin_everyone_recipes_genre_choice_path %></li>
+        <li><%= link_to 'みんなのレシピ', admin_everyone_recipes_path %></li>
         <li><%= link_to '基本のレシピ', admin_basic_recipes_genre_choice_path %></li>
         <li><%= link_to 'ログアウト', destroy_admin_user_session_path, method: :delete %></li>
       </ul>
