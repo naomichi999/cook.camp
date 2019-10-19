@@ -20,8 +20,8 @@ Rails.application.routes.draw do
     resources :comments, only: [:update, :destroy]
     resources :replies, only: [:new, :create]
     resources :inquiries, only: [:index]
-    resources :basic_recipes, only: [:index, :show]
-    get 'basic_recipes/genre_choice'
+    resources :basic_recipes, only: [:index, :new, :show, :edit, :update, :create, :destroy]
+    get 'basic_recipes/genre_list', as:'genre_list'
     resources :everyone_recipes, only: [:index]
     get 'everyone_recipes/meat', as: 'meat'
     get 'everyone_recipes/fish', as: 'fish'
@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   resources :favorites, only: [:create, :destroy]
   resources :inquiries, only: [:new, :create]
   resources :basic_recipes, only: [:index, :show, :create]
-  get 'basic_recipes/genre_choice'
+  get 'basic_recipes/genre_list', as: 'genre_list'
   resources :everyone_recipes, only: [:index]
   get 'everyone_recipes/meat', as: 'meat'
   get 'everyone_recipes/fish', as: 'fish'
