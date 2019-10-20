@@ -42,6 +42,7 @@ class Admin::BasicRecipesController < ApplicationController
   end
 
   def edit
+  	@basic_recipe = BasicRecipe.find(params[:id])
   end
 
   def create
@@ -57,6 +58,14 @@ class Admin::BasicRecipesController < ApplicationController
   end
 
   def update
+    @basic_recipe = BasicRecipe.find(params[:id])
+	if @basic_recipe.update(basic_recipe_params)
+	flash[:success] = '基本のレシピを更新しました。'
+	render :show
+	else
+	flash[:danger] = "基本のレシピの更新ができませんでした。"
+	render :show
+end
   end
 
   def destroy

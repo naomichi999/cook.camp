@@ -1,0 +1,48 @@
+<!-- 基本のレシピ編集 -->
+<%= render 'layouts/list' %>
+
+<main class="login-time-box">
+<h1>基本のレシピの編集</h1>
+    <div class="basic-box">
+  <h3><span class="label label-default">基本のレシピを編集する</span></h3><br>
+
+
+<%= form_for @basic_recipe, :url => { :controller => :basic_recipes, :action => :update} do |f| %>
+  <div class="normal_field">
+    <p class="form-text">料理名</p>
+    <%= f.text_field :cooking_name, autofocus: true, placeholder: "料理名を入力してください", class:"form-control" %>
+  </div><br>
+  <div class="normal_field">
+    <p class="form-text">料理コメント</p>
+    <%= f.text_area :cooking_explanation, autofocus: true, placeholder: "料理コメントを入力してください", class:"form-control" %>
+  </div><br>
+    <div class="">
+    <p class="form-text">料理の画像</p>
+    <%= f.attachment_field :cooking_image %>
+  </div><br>
+  <div class="">
+    <p class="form-text">料理のジャンル</p>
+    <%= f.collection_select(:genre_id, Genre.all, :id, :genre_name, prompt: "ジャンルを選択して下さい") %>
+  </div><br>
+
+  <div class="normal_field">
+    <p class="form-text">材料</p>
+    <%= f.text_area :ingredient, autofocus: true, placeholder: "材料を入力してください", class:"form-control" %>
+  </div><br>
+  <div class="normal_field">
+    <p class="form-text">作り方</p>
+    <%= f.text_area :how_to_cook, autofocus: true, placeholder: "作り方を入力してください", class:"form-control" %>
+  </div><br>
+  <div class="actions">
+    <%= f.submit "更新する", class:"btn btn-primary" %>
+  </div><br>
+<% end %>
+
+</div>
+
+<%= link_to "基本のレシピ詳細へ戻る", basic_recipe_path, class: 'btn btn-default' %>
+</main>
+
+</div>
+</div>
+</div>
