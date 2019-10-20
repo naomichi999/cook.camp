@@ -34,9 +34,7 @@ class BasicRecipesController < ApplicationController
   end
 
   def show
-  end
-
-  def create
-  	# 作りたい料理リスト用
+    @basic_recipe = BasicRecipe.find(params[:id])
+    @want_to_cook = WantToCook.new
   end
 end

@@ -55,7 +55,7 @@ Rails.application.routes.draw do
   get 'basic_recipes/noodle', as: 'basic_noodle'
   get 'basic_recipes/rice', as: 'basic_rice'
   get 'basic_recipes/soup', as: 'basic_soup'
-  resources :basic_recipes, only: [:index, :show, :create]
+  resources :basic_recipes, only: [:index, :show]
   get 'everyone_recipes/meat', as: 'everyone_meat'
   get 'everyone_recipes/fish', as: 'everyone_fish'
   get 'everyone_recipes/vegetable', as: 'everyone_vegetable'
