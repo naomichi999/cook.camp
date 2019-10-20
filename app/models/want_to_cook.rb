@@ -1,6 +1,6 @@
 class WantToCook < ApplicationRecord
-	has_many :my_recipes
-	has_many :basic_recipes
+	belongs_to :my_recipe, optional: true
+	belongs_to :basic_recipe, optional: true
 	belongs_to :user
 	validates :user_id, presence: true
 end

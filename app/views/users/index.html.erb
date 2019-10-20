@@ -42,8 +42,8 @@
             <span class="user-menu-text"><u><b><%= link_to '楽天レシピ', root_path %></b></u><br>楽天レシピのランキングへのリンクです。</span>
         </div>
         <div class="user-menu-item clearfix">
-            <div class="user-menu-image"><%= link_to image_tag('background-kitchen.jpg',  class: 'user-menu-image'), want_to_cooks_path %></div>
-            <span class="user-menu-text"><u><b><%= link_to '作りたい料理リスト', want_to_cooks_path %></b></u><br>作りたい料理リストに保存したレシピを閲覧できます。</span>
+            <div class="user-menu-image"><%= link_to image_tag('background-kitchen.jpg',  class: 'user-menu-image'), want_to_cook_path(current_user.id) %></div>
+            <span class="user-menu-text"><u><b><%= link_to '作りたい料理リスト', want_to_cook_path(current_user.id) %></b></u><br>作りたい料理リストに保存したレシピを閲覧できます。</span>
         </div>
         <div class=" clearfix"></div>
     </div>

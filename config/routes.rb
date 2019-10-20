@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     get 'everyone_recipes/rice', as: 'everyone_rice'
     get 'everyone_recipes/soup', as: 'everyone_soup'
     resources :everyone_recipes, only: [:index]
-    resources :want_to_cooks, only: [:index, :create, :destroy]
+    resources :want_to_cooks, only: [:index, :show, :create, :destroy]
     resources :curriculums, only: [:index, :new, :show, :edit, :update, :create, :destroy]
     resources :my_recipes, only: [:index, :show, :edit, :update, :destroy]
     get 'recipe_list/:id' => 'my_recipes#recipe_list', as:'recipe_list'
@@ -63,7 +63,7 @@ Rails.application.routes.draw do
   get 'everyone_recipes/rice', as: 'everyone_rice'
   get 'everyone_recipes/soup', as: 'everyone_soup'
   resources :everyone_recipes, only: [:index]
-  resources :want_to_cooks, only: [:index, :create, :destroy]
+  resources :want_to_cooks, only: [:index, :show, :create, :destroy]
   resources :curriculums, only: [:index, :show]
   resources :skill_notes, only: [:index, :edit, :update]
   resources :my_recipes, only: [:index, :new, :show, :edit, :create, :update, :destroy]

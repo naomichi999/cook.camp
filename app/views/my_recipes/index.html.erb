@@ -40,7 +40,7 @@
         <%= link_to 'マイレシピを追加する', new_my_recipe_path, class: 'btn btn-default btn-lg' %>
     </div><br>
     <div class="">
-        <%= link_to '作りたい料理リスト', want_to_cooks_path, class: 'btn btn-default btn-lg' %>
+        <%= link_to '作りたい料理リスト', want_to_cook_path(current_user.id), class: 'btn btn-default btn-lg' %>
     </div><br>
     </div>
 </main>

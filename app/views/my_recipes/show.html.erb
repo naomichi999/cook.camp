@@ -41,12 +41,14 @@
     <div class="">
 
 <!-- 作りたい料理リストに追加 -->
+<% if @my_recipe.user_id != current_user.id%>
 	  <%= form_for @want_to_cook, url: want_to_cooks_path, method: :post do |f| %>
       <%= f.hidden_field :my_recipe_id, value: @my_recipe.id %>
       <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.submit '作りたい料理リストに追加する', :basic_recipe_id => nil, class: "btn btn-primary" %>
       <% end %>
     </div><br>
+<% end %>
 
 
 

@@ -4,8 +4,8 @@ class MyRecipe < ApplicationRecord
 	# 動画投稿用gemであるcarrierwave用の記述
 	has_many :comments, dependent: :destroy
 	has_many :favorites, dependent: :destroy
+	has_many :want_to_cooks, dependent: :destroy
 	belongs_to :genre
-	belongs_to :want_to_cook, optional: true
 	belongs_to :user
 	belongs_to :everyone_recipe, optional: true
 	# nilを許可するためにはoptional: trueと記述する
