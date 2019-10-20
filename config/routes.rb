@@ -20,15 +20,20 @@ Rails.application.routes.draw do
     resources :comments, only: [:update, :destroy]
     resources :replies, only: [:new, :create]
     resources :inquiries, only: [:index]
+    get 'basic_recipes/meat', as: 'basic_meat'
+    get 'basic_recipes/fish', as: 'basic_fish'
+    get 'basic_recipes/vegetable', as: 'basic_vegetable'
+    get 'basic_recipes/noodle', as: 'basic_noodle'
+    get 'basic_recipes/rice', as: 'basic_rice'
+    get 'basic_recipes/soup', as: 'basic_soup'
     resources :basic_recipes, only: [:index, :new, :show, :edit, :update, :create, :destroy]
-    get 'basic_recipes/genre_list', as:'genre_list'
+    get 'everyone_recipes/meat', as: 'everyone_meat'
+    get 'everyone_recipes/fish', as: 'everyone_fish'
+    get 'everyone_recipes/vegetable', as: 'everyone_vegetable'
+    get 'everyone_recipes/noodle', as: 'everyone_noodle'
+    get 'everyone_recipes/rice', as: 'everyone_rice'
+    get 'everyone_recipes/soup', as: 'everyone_soup'
     resources :everyone_recipes, only: [:index]
-    get 'everyone_recipes/meat', as: 'meat'
-    get 'everyone_recipes/fish', as: 'fish'
-    get 'everyone_recipes/vegetable', as: 'vegetable'
-    get 'everyone_recipes/noodle', as: 'noodle'
-    get 'everyone_recipes/rice', as: 'rice'
-    get 'everyone_recipes/soup', as: 'soup'
     resources :want_to_cooks, only: [:index, :create, :destroy]
     resources :curriculums, only: [:index, :new, :show, :edit, :update, :create, :destroy]
     resources :my_recipes, only: [:index, :show, :edit, :update, :destroy]
@@ -44,15 +49,20 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]
   resources :inquiries, only: [:new, :create]
+  get 'basic_recipes/meat', as: 'basic_meat'
+  get 'basic_recipes/fish', as: 'basic_fish'
+  get 'basic_recipes/vegetable', as: 'basic_vegetable'
+  get 'basic_recipes/noodle', as: 'basic_noodle'
+  get 'basic_recipes/rice', as: 'basic_rice'
+  get 'basic_recipes/soup', as: 'basic_soup'
   resources :basic_recipes, only: [:index, :show, :create]
-  get 'basic_recipes/genre_list', as: 'genre_list'
+  get 'everyone_recipes/meat', as: 'everyone_meat'
+  get 'everyone_recipes/fish', as: 'everyone_fish'
+  get 'everyone_recipes/vegetable', as: 'everyone_vegetable'
+  get 'everyone_recipes/noodle', as: 'everyone_noodle'
+  get 'everyone_recipes/rice', as: 'everyone_rice'
+  get 'everyone_recipes/soup', as: 'everyone_soup'
   resources :everyone_recipes, only: [:index]
-  get 'everyone_recipes/meat', as: 'meat'
-  get 'everyone_recipes/fish', as: 'fish'
-  get 'everyone_recipes/vegetable', as: 'vegetable'
-  get 'everyone_recipes/noodle', as: 'noodle'
-  get 'everyone_recipes/rice', as: 'rice'
-  get 'everyone_recipes/soup', as: 'soup'
   resources :want_to_cooks, only: [:index, :create, :destroy]
   resources :curriculums, only: [:index, :show]
   resources :skill_notes, only: [:index, :edit, :update]

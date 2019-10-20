@@ -1,33 +1,29 @@
-<!-- みんなのレシピ(ジャンル別） -->
+
+
+<!-- 基本のレシピ(ジャンル別） -->
 <%= render 'layouts/list' %>
 
 <main class="login-time-box">
-<h1>みんなのレシピ(ジャンル別)</h1>
+<h1>基本のレシピ(ジャンル別)</h1>
 
 
     <div class="basic-box">
-	<h3><span class="label label-default">～お肉系のおかず～</span></h3>
+	<h3><span class="label label-default">～汁物～</span></h3>
 
-                <% @everyone.each do |m| %>
+                <% @basic.each do |m| %>
                 <div class="my_recipe-box clearfix">
     	    		<div class="my_recipe-box-left">
 			    		<div class="my_recipe-image">
-			    			<%= link_to(my_recipe_path(m.id)) do %>
+			    			<%= link_to(admin_basic_recipe_path(m.id)) do %>
 			    			<p><%= attachment_image_tag m, :cooking_image, fallback: "no_image.png", class: "my_recipe-image" %></p>
 			    			<% end %>
-			    			<p><u><b><%= link_to m.user.nickname, user_path(m.user_id) %></b></u></p>
-				    		<p><%= link_to 'このレシピの作り方を見る', my_recipe_path(m.id), class: 'btn btn-primary' %></p>
+				    		<p><%= link_to 'このレシピの作り方を見る', admin_basic_recipe_path(m.id), class: 'btn btn-primary' %></p>
 			    		</div><br>
 			    	</div>
 			    	<div class="my_recipe-box-right">
-			    		<p><span><u><b><%= link_to m.cooking_name, my_recipe_path(m.id) %></b></u></span>
+			    		<p><span><u><b><%= link_to m.cooking_name, admin_basic_recipe_path(m.id) %></b></u></span>
 			    		<span><%= m.genre.genre_name %></span></p>
 			    		<p><%= m.cooking_explanation %></p><br>
-			    		<% if m.publishment == true %>
-			    	      <p class="flash-notice">※このレシピは公開されています</p>
-			    	    <% else %>
-			    	      <p class="flash-warning">※このレシピは非公開です</p>
-			    	    <% end %>
 			    	</div>
 			    </div>
                 <% end %>

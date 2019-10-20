@@ -1,0 +1,54 @@
+<!-- 基本のレシピ(管理者側) -->
+<%= render 'layouts/list' %>
+
+<main class="login-time-box">
+<h1>基本のレシピ</h1>
+
+
+    <div class="basic-box">
+    	<div class=" clearfix">
+    	<h3><span class="label label-default">料理のジャンルを選択してください</span></h3>
+       </div>
+        <div class="user-menu-item clearfix">
+            <div class="user-menu-image">
+                <%= link_to image_tag('background-kitchen.jpg', class: 'user-menu-image'), admin_basic_meat_path %>
+            </div>
+            <span class="user-menu-text"><u><b><%= link_to '～お肉系のおかず～', admin_basic_meat_path %></b></u></span>
+        </div>
+        <div class="user-menu-item clearfix">
+            <div class="user-menu-image">
+                <%= link_to image_tag('background-kitchen.jpg',  class: 'user-menu-image'), admin_basic_fish_path %>
+            </div>
+            <span class="user-menu-text"><u><b><%= link_to '～魚介系のおかず～', admin_basic_fish_path %></b></u></span>
+        </div>
+        <div class="user-menu-item clearfix">
+            <div class="user-menu-image">
+                <%= link_to image_tag('background-kitchen.jpg',  class: 'user-menu-image'), admin_basic_vegetable_path %>
+            </div>
+            <span class="user-menu-text"><u><b><%= link_to '～野菜系のおかず～', admin_basic_vegetable_path %></b></u></span>
+        </div>
+        <div class="user-menu-item clearfix">
+            <div class="user-menu-image">
+                <%= link_to image_tag('background-kitchen.jpg',  class: 'user-menu-image'), admin_basic_noodle_path %>
+            </div>
+            <span class="user-menu-text"><u><b><%= link_to '～麺類～', admin_basic_noodle_path %></b></u></span>
+        </div>
+        <div class="user-menu-item clearfix">
+            <div class="user-menu-image">
+                <%= link_to image_tag('background-kitchen.jpg',  class: 'user-menu-image'), admin_basic_rice_path %>
+            </div>
+            <span class="user-menu-text"><u><b><%= link_to '～ご飯もの～', admin_basic_rice_path %></b></u></span>
+        </div>
+                <div class="user-menu-item clearfix">
+            <div class="user-menu-image">
+                <%= link_to image_tag('background-kitchen.jpg',  class: 'user-menu-image'), admin_basic_soup_path %>
+            </div>
+            <span class="user-menu-text"><u><b><%= link_to '～汁物～', admin_basic_soup_path %></b></u></span>
+        </div>
+        <div class=" clearfix"></div>
+    </div>
+</main>
+
+</div>
+</div>
+</div>
