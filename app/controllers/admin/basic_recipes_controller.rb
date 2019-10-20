@@ -38,6 +38,7 @@ class Admin::BasicRecipesController < ApplicationController
   end
 
   def show
+  	@basic_recipe = BasicRecipe.find(params[:id])
   end
 
   def edit
@@ -47,10 +48,10 @@ class Admin::BasicRecipesController < ApplicationController
     @basic_recipe = BasicRecipe.new(basic_recipe_params)
     if @basic_recipe.save
       flash[:success] = '基本のレシピを追加しました'
-      redirect_to root_path
+      redirect_to admin_basic_recipe_path(@basic_recipe.id)
     else
       flash[:danger] = '基本のレシピの追加に失敗しました'
-      redirect_to root_path
+      redirect_to new_admin_basic_recipe_path
       # render :show
     end
   end
@@ -59,6 +60,14 @@ class Admin::BasicRecipesController < ApplicationController
   end
 
   def destroy
+    @basic_recipe = BasicRecipe.find(params[:id])
+    if @basic_recipe.destroy
+      flash[:success] = 'マイレシピの削除が完了しました。'
+      redirect_to admin_basic_recipes_path
+    else
+      flash[:danger] = "マイレシピの削除に失敗しました。"
+      redirect_to admin_basic_recipe_path
+    end
   end
 
   protected

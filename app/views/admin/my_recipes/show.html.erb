@@ -17,12 +17,16 @@
 			    	<div class="my_recipe-box-right">
 			    		<p><%= @my_recipe.cooking_name %></p>
 			    		<p><%= @my_recipe.genre_name %></p>
-			    		<p><%= @my_recipe.cooking_explanation %></p>
+			    		<p>:<%= @my_recipe.cooking_explanation %></p>
 			    		<% if @my_recipe.publishment == true %>
 			    	      <p class="flash-notice">※このレシピは公開されています</p>
 			    	    <% else %>
 			    	      <p class="flash-warning">※このレシピは非公開です</p>
 			    	    <% end %>
+			    	    <p><材料></p>
+			    		<p><%= @my_recipe.ingredient %></p>
+			    		<p><作り方></p>
+			    		<p><%= @my_recipe.how_to_cook %></p>
 			    	</div>
 			    </div>
 

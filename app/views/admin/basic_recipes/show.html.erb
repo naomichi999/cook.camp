@@ -1,0 +1,43 @@
+<!-- 基本のレシピ詳細(管理者側) -->
+<%= render 'layouts/list' %>
+
+<main class="login-time-box">
+<h1>基本のレシピ詳細</h1>
+
+
+    <div class="basic-box">
+	<h3><span class="label label-default">基本のレシピ詳細</span></h3>
+
+                <div class="my_recipe-box clearfix">
+    	    		<div class="my_recipe-box-left">
+			    		<div class="my_recipe-image">
+			    			<p><%= attachment_image_tag @basic_recipe, :cooking_image, fallback: "no_image.png", class: "my_recipe-image" %></p>
+			    		</div><br>
+			    	</div>
+			    	<div class="my_recipe-box-right">
+			    		<p><b><%= @basic_recipe.cooking_name %></b></p>
+			    		<p><%= @basic_recipe.genre_name %></p>
+			    		<p>:<%= @basic_recipe.cooking_explanation %></p>
+			    		<p><材料></p>
+			    		<p><%= @basic_recipe.ingredient %></p>
+			    		<p><作り方></p>
+			    		<p><%= @basic_recipe.how_to_cook %></p>
+			    	</div>
+			    </div>
+
+
+	<div class="">
+        <%= link_to 'このレシピを編集する', edit_admin_basic_recipe_path, class: 'btn btn-default btn-lg' %>
+    </div><br>
+    <div class="">
+    	<%= link_to "このレシピを削除する", admin_basic_recipe_path, method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+    </div><br>
+
+    </div>
+</div>
+    <%= link_to "戻る", :back , class: 'btn btn-default' %>
+</main>
+
+</div>
+</div>
+</div>
