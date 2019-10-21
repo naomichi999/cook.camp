@@ -1,2 +1,65 @@
-<h1>Admin::Replies#new</h1>
-<p>Find me in app/views/admin/replies/new.html.erb</p>
+<!-- お問い合わせ返信フォーム -->
+<%= render 'layouts/list' %>
+
+<main class="login-time-box">
+<h1>お問い合わせ返信フォーム</h1>
+    <div class="basic-box">
+	<h3><span class="label label-default">お問い合わせに返信してください</span></h3>
+    	<div class="inquiry-box">
+			<div class="">
+				<h3 class="inquiry">※お問い合わせ詳細</h3>
+			</div><br>
+				<div class="my_recipe-box clearfix">
+    	    		<div class="inquiry-box-left">
+    	    			<p><氏名></p>
+			    		<p><%= m.inquirer_name %></p>
+			    		<p><メールアドレス></p>
+			    		<p><%= m.email %></p>
+			    		<p><%= m.created_at.strftime('%Y年%m月%d日 %H時%M分') %></p>
+			    		<!-- 返信済みフラグ(※返信テーブルのレコードがあれば返信済み) -->
+			    		<% if m.reply.present? %>
+			    	      <p class="flash-notice">※返信済みです</p><br>
+			    	    <% else %>
+			    	      <p class="flash-warning">※未返信です</p><br>
+			    	    <% end %>
+			    	</div>
+			    	<div class="inquiry-box-right">
+			    		<p><タイトル></p>
+			    		<div class="inquiry-text-box">
+				    		<p><%= m.inquiry_title %></p>
+				    	</div>
+			    		<p><お問い合わせ内容></p>
+			    		<div class="inquiry-content-box">
+			    			<p><%= m.inquiry_content %></p>
+			    		</div>
+			    	</div>
+			    	<div class="inquiry-box-bottom">
+			    		<p><%= link_to '返信フォームへ', new_admin_reply_path, class: 'btn btn-primary btn-lg btn-block' %></p>
+			    	</div>
+			    </div>
+
+			<%= form_for(@inquiry) do |i| %>
+				<!-- 問い合わせ返信タイトル・返信内容記入欄 -->
+				<div class="">
+					<h3>※お問い合わせ返信内容を入力をしてください</h3>
+				</div><br>
+				<div class="">
+					<p>(タイトル)</p>
+					<%= i.text_field :inquiry_title, class:"form-control" %>
+				</div><br>
+				<p>(お問い合わせ返信内容)</p>
+				<div class="">
+					<%= i.text_area :inquiry_content, class:"form-control" %>
+				</div><br>
+				  <div class="actions">
+				    <%= i.submit "返信する", class:"btn btn-default" %>
+				  </div><br>
+			<% end %>
+	    </div><br>
+	    <%= link_to '戻る', :back, class: 'btn btn-primary btn-lg' %><br>
+    </div>
+</main>
+
+</div>
+</div>
+</div>

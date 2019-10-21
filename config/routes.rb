@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources :searches, only: [:index]
     resources :rankings, only: [:index]
     resources :comments, only: [:update, :destroy]
-    resources :replies, only: [:new, :create]
+    resources :replies, only: [:show, :create]
     resources :inquiries, only: [:index]
     get 'basic_recipes/meat', as: 'basic_meat'
     get 'basic_recipes/fish', as: 'basic_fish'

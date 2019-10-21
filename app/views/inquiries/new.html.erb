@@ -3,7 +3,7 @@
 <%= render 'layouts/list' %>
 
 <main class="login-time-box">
-<h1>お問い合わせページ</h1>
+<h1>お問い合わせフォーム</h1>
     <div class="basic-box">
 	<h3><span class="label label-default">管理者へのお問い合わせ</span></h3>
     	<div class="inquiry-box">
@@ -43,7 +43,7 @@
 				</div><br>
 				<p>(お問い合わせ内容)</p>
 				<div class="">
-					<%= i.text_area :inquiry_content, class:"form-control" %>
+					<%= i.text_area :inquiry_content, class:"form-control", :size => "30x5" %>
 				</div><br>
 				  <div class="actions">
 				    <%= i.submit "問い合わせる", class:"btn btn-default" %>

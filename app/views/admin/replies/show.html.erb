@@ -1,0 +1,63 @@
+<!-- お問い合わせ返信フォーム -->
+<%= render 'layouts/list' %>
+
+<main class="login-time-box">
+<h1>お問い合わせ返信フォーム</h1>
+    <div class="basic-box">
+	<h3><span class="label label-default">お問い合わせに返信してください</span></h3>
+			<div class="">
+			</div><br>
+				<div class="reply-box clearfix">
+				<h3 class="inquiry">※お問い合わせ詳細</h3>
+    	    		<div class="reply-box-left">
+    	    			<p><お問い合わせ者名></p>
+			    		<p><%= @inquiry.inquirer_name %></p>
+			    		<p><メールアドレス></p>
+			    		<p><%= @inquiry.email %></p>
+			    		<p><お問い合わせ日時></p>
+			    		<p><%= @inquiry.created_at.strftime('%Y年%m月%d日 %H時%M分') %></p>
+			    		<!-- 返信済みフラグ(※返信テーブルのレコードがあれば返信済み) -->
+			    		<% if @inquiry.reply.present? %>
+			    	      <p class="flash-notice">※返信済みです</p><br>
+			    	    <% else %>
+			    	      <p class="flash-warning">※未返信です</p><br>
+			    	    <% end %>
+			    	</div>
+			    	<div class="reply-box-right">
+			    		<p><タイトル></p>
+			    		<div class="inquiry-text-box">
+				    		<p><%= @inquiry.inquiry_title %></p>
+				    	</div>
+			    		<p><お問い合わせ内容></p>
+			    		<div class="inquiry-content-box">
+			    			<p><%= @inquiry.inquiry_content %></p>
+			    		</div>
+			    	</div>
+			    </div>
+			    <div class="inquiry-box">
+					<%= form_for @reply, :url => { :controller => :replies, :action => :create} do |i| %>
+						<!-- 問い合わせ返信タイトル・返信内容記入欄 -->
+						<div class="">
+							<h3>※お問い合わせ返信内容を入力をしてください</h3>
+						</div><br>
+						<div class="">
+							<%= i.hidden_field :inquiry_id, value: @inquiry.id %>
+							<p>(タイトル)</p>
+							<%= i.text_field :reply_title, class:"form-control" %>
+						</div><br>
+						<p>(お問い合わせ返信内容)</p>
+						<div class="">
+							<%= i.text_area :reply_content, class:"form-control", :size => "10x5" %>
+						</div><br>
+						  <div class="actions">
+						    <%= i.submit "返信する", class:"btn btn-primary" %>
+						  </div><br>
+					<% end %>
+				</div><br>
+	    <%= link_to '戻る', :back, class: 'btn btn-primary btn-lg' %><br>
+    </div>
+</main>
+
+</div>
+</div>
+</div>

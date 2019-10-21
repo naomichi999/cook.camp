@@ -5,10 +5,10 @@
 //お問い合わせフォーム(ユーザー側)
 .inquiry-box {
    width: 100%;
-   padding: 50px;
+   padding: 10px 30px;
    margin-top: 30px;
    background-color: whitesmoke;
-   borde: 1px solid black;
+   border: 1px solid black;
  }
 
 //お問い合わせ一覧(管理者側)
@@ -24,7 +24,6 @@
   padding: 20px;
   margin: 0px;
   text-align: left;
-
   background-color: whitesmoke;
   float: left;
 }
@@ -32,6 +31,30 @@
   width: 100%;
   padding: 20px;
   margin: 0px;
+  background-color: whitesmoke;
+  float: left;
+}
+
+//お問い合わせ返信フォーム
+.reply-box {
+  width: 100%;
+  padding: 10px 30px;
+  mergin: 0;
+  background-color: whitesmoke;
+  border: 1px solid black;
+}
+.reply-box-left {
+  width: 30%;
+  padding: 20px 0 0 20px;
+  text-align: left;
+  background-color: whitesmoke;
+  float: left;
+}
+.reply-box-right {
+  width: 70%;
+  padding: 20px;
+  margin: 0px;
+  text-align: left;
   background-color: whitesmoke;
   float: left;
 }

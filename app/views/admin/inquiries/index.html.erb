@@ -15,6 +15,7 @@
 			    		<p><%= m.inquirer_name %></p>
 			    		<p><メールアドレス></p>
 			    		<p><%= m.email %></p>
+			    		<p><お問い合わせ日時></p>
 			    		<p><%= m.created_at.strftime('%Y年%m月%d日 %H時%M分') %></p>
 			    		<!-- 返信済みフラグ(※返信テーブルのレコードがあれば返信済み) -->
 			    		<% if m.reply.present? %>
@@ -34,7 +35,7 @@
 			    		</div>
 			    	</div>
 			    	<div class="inquiry-box-bottom">
-			    		<p><%= link_to '返信フォームへ', new_admin_reply_path, class: 'btn btn-primary btn-lg btn-block' %></p>
+			    		<p><%= link_to '返信フォームへ', admin_reply_path(m.id), class: 'btn btn-primary btn-lg btn-block' %></p>
 			    	</div>
 			    </div>
                 <% end %>
