@@ -1,2 +1,50 @@
-<h1>Admin::Inquiries#index</h1>
-<p>Find me in app/views/admin/inquiries/index.html.erb</p>
+<!-- お問い合わせ一覧(管理者側) -->
+<%= render 'layouts/list' %>
+
+<main class="login-time-box">
+<h1>お問い合わせ一覧</h1>
+
+
+    <div class="basic-box">
+	<h3><span class="label label-default">お問い合わせ一覧</span></h3>
+
+                <% @inquiry.each do |m| %>
+                <div class="my_recipe-box clearfix">
+    	    		<div class="inquiry-box-left">
+    	    			<p><氏名></p>
+			    		<p><%= m.inquirer_name %></p>
+			    		<p><メールアドレス></p>
+			    		<p><%= m.email %></p>
+			    		<p><%= m.created_at.strftime('%Y年%m月%d日 %H時%M分') %></p>
+			    		<!-- 返信済みフラグ(※返信テーブルのレコードがあれば返信済み) -->
+			    		<% if m.reply.present? %>
+			    	      <p class="flash-notice">※返信済みです</p><br>
+			    	    <% else %>
+			    	      <p class="flash-warning">※未返信です</p><br>
+			    	    <% end %>
+			    	</div>
+			    	<div class="inquiry-box-right">
+			    		<p><タイトル></p>
+			    		<div class="inquiry-text-box">
+				    		<p><%= m.inquiry_title %></p>
+				    	</div>
+			    		<p><お問い合わせ内容></p>
+			    		<div class="inquiry-content-box">
+			    			<p><%= m.inquiry_content %></p>
+			    		</div>
+			    	</div>
+			    	<div class="inquiry-box-bottom">
+			    		<p><%= link_to '返信フォームへ', new_admin_reply_path, class: 'btn btn-primary btn-lg btn-block' %></p>
+			    	</div>
+			    </div>
+                <% end %>
+
+            <div class="paginate">
+                <%= paginate @pages, class: "paginate" %>
+            </div>
+    </div>
+</main>
+
+</div>
+</div>
+</div>
