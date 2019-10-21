@@ -47,6 +47,11 @@
 			<% end %>
 	    <% end %>
 
+<!-- 料理の動画 -->
+<p><料理の動画></p>
+<%= video_tag @my_recipe.cooking_video_url.to_s,loop: true, controls: true, width: 550, id: "mv" %>
+<!-- loop: true loop処理 -->
+
 
     </div>
 </div>
