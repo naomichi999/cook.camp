@@ -1,2 +1,59 @@
-<h1>Inquiries#new</h1>
-<p>Find me in app/views/inquiries/new.html.erb</p>
+<!-- お問い合わせ -->
+<!-- ログイン中のユーザーとゲストユーザーで条件分岐して表示する -->
+<%= render 'layouts/list' %>
+
+<main class="login-time-box">
+<h1>お問い合わせページ</h1>
+    <div class="basic-box">
+	<h3><span class="label label-default">管理者へのお問い合わせ</span></h3>
+    	<div class="inquiry-box">
+			<div class="">
+				<h3 class="inquiry">※お名前とメールアドレスを入力してください</h3>
+			</div><br>
+
+			<%= form_for(@inquiry) do |i| %>
+					<!-- 名前記入欄（ログイン時ユーザー情報取得) -->
+					<div class="">
+						<p>(氏名)</p>
+						<% if user_signed_in? %>
+							<%= i.text_field :inquirer_name, :placeholder => '氏名を入力してください', class:"form-control", value: @user.sei_kanji + @user.mei_kanji %>
+							<%= i.hidden_field :user_id, value: current_user.id %>
+						<% else %>
+						<%= i.text_field :inquirer_name, :placeholder => '氏名を入力してください', class:"form-control" %>
+						<% end %>
+					</div><br>
+
+					<!-- メールアドレス記入欄（ログイン時ユーザー情報取得) -->
+					<div class="form_mail_box">
+						<p>(メールアドレス)</p>
+						<% if user_signed_in? %>
+							<%= i.email_field :email, :placeholder => 'メールアドレスを入力してください', class:"form-control", value: @user.email %>
+						<% else %>
+							<%= i.email_field :email, :placeholder => 'メールアドレスを入力してください', class:"form-control" %>
+						<% end %>
+					</div><br>
+
+				<!-- 問い合わせタイトル・内容記入欄 -->
+				<div class="">
+					<h3>※お問い合わせ内容を入力をしてください</h3>
+				</div><br>
+				<div class="">
+					<p>(タイトル)</p>
+					<%= i.text_field :inquiry_title, class:"form-control" %>
+				</div><br>
+				<p>(お問い合わせ内容)</p>
+				<div class="">
+					<%= i.text_area :inquiry_content, class:"form-control" %>
+				</div><br>
+				  <div class="actions">
+				    <%= i.submit "問い合わせる", class:"btn btn-default" %>
+				  </div><br>
+			<% end %>
+	    </div><br>
+	    <%= link_to '戻る', :back, class: 'btn btn-default btn-lg' %><br>
+    </div>
+</main>
+
+</div>
+</div>
+</div>
