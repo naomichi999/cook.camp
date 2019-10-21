@@ -1,0 +1,66 @@
+
+
+<!-- 作りたい料理リスト(管理者側) -->
+<%= render 'layouts/list' %>
+
+<main class="login-time-box">
+<h1>作りたい料理リスト</h1>
+
+
+    <div class="basic-box">
+	<h3><span class="label label-default">さんの作りたい料理リスト</span></h3>
+                <!-- 基本のレシピの中で作りたい料理リストに追加したものを表示する -->
+                <% @pages.each do |m| %>
+                <% if m.basic_recipe_id != nil %>
+                <div class="my_recipe-box clearfix">
+    	    		<div class="my_recipe-box-left">
+			    		<div class="my_recipe-image">
+			    			<%= link_to(admin_basic_recipe_path(m.basic_recipe.id)) do %>
+			    			<p><%= attachment_image_tag m.basic_recipe, :cooking_image, fallback: "no_image.png", class: "my_recipe-image" %></p>
+			    			<% end %>
+				    		<p><%= link_to 'このレシピの作り方を見る', admin_basic_recipe_path(m.basic_recipe.id), class: 'btn btn-primary' %></p>
+				    		<p><%= link_to "作りたい料理リストから削除する", admin_want_to_cook_path(m.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></p>
+			    		</div><br>
+			    	</div>
+			    	<div class="my_recipe-box-right">
+			    		<p><span><u><b><%= link_to m.basic_recipe.cooking_name, admin_basic_recipe_path(m.basic_recipe.id) %></b></u></span>
+			    		<span><%= m.basic_recipe.genre.genre_name %></span></p>
+			    		<p><%= m.basic_recipe.cooking_explanation %></p><br>
+			    	</div>
+			    </div>
+                <% end %>
+                <% end %>
+				<!-- みんなのレシピの中で作りたい料理リストに追加したものを表示する -->
+                <% @pages.each do |m| %>
+                <% if m.my_recipe_id != nil %>
+                <div class="my_recipe-box clearfix">
+    	    		<div class="my_recipe-box-left">
+			    		<div class="my_recipe-image">
+			    			<%= link_to(admin_my_recipe_path(m.my_recipe_id)) do %>
+			    			<p><%= attachment_image_tag m.my_recipe, :cooking_image, fallback: "no_image.png", class: "my_recipe-image" %></p>
+			    			<% end %>
+				    		<p><%= link_to 'このレシピの作り方を見る', admin_my_recipe_path(m.my_recipe_id), class: 'btn btn-primary' %></p>
+				    		<p><%= link_to "作りたい料理リストから削除する", admin_want_to_cook_path(m.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></p>
+			    		</div><br>
+			    	</div>
+			    	<div class="my_recipe-box-right">
+			    		<p><span><u><b><%= link_to m.my_recipe.cooking_name, admin_my_recipe_path(m.my_recipe.id) %></b></u></span>
+			    		<span><%= m.my_recipe.genre.genre_name %></span></p>
+			    		<p><%= m.my_recipe.cooking_explanation %></p><br>
+			    	</div>
+			    </div>
+                <% end %>
+                <% end %>
+
+            <div class="paginate">
+                <%= paginate @pages, class: "paginate" %>
+            </div>
+	<div class="">
+        <%= link_to '戻る', :back, class: 'btn btn-default btn-lg' %>
+    </div><br>
+    </div>
+</main>
+
+</div>
+</div>
+</div>

@@ -1,8 +1,5 @@
 class WantToCooksController < ApplicationController
 	before_action :authenticate_user!
-  def index
-  end
-
   def show
     @want_to_cook = current_user.want_to_cooks
     @pages = @want_to_cook.page(params[:page]).per(7)
