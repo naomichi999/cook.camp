@@ -1,2 +1,41 @@
-<h1>Admin::Curriculums#index</h1>
-<p>Find me in app/views/admin/curriculums/index.html.erb</p>
+<!-- カリキュラムの目次(管理者側) -->
+<%= render 'layouts/list' %>
+
+<main class="login-time-box">
+<h1>カリキュラムの目次</h1>
+
+
+    <div class="basic-box">
+    	<div class=" clearfix">
+    	<h3><span class="label label-default">カリキュラムの目次</span></h3>
+        </div><br>
+	        <table class="table ">
+        		<% @pages.each do |u| %>
+                <thead>
+                    <tr>
+                        <th>第<%= u.chapter_number %>章 <%= u.chapter_title %></th>
+                    </tr>
+					<!-- 節の表示に使う -->
+     				<!--<tbody>
+	                    <tr>
+	                        <td>
+	                        </td>
+	                        <td>
+	                        </td>
+	                        <td>
+	                            <%= link_to "マイレシピへのリンク", admin_recipe_list_path(u.id) %>
+	                        </td>
+	                    </tr>
+	                </tbody> -->
+                <% end %>
+                </thead>
+            </table>
+            <div class="paginate">
+                <%= paginate @pages, class: "paginate" %>
+            </div>
+    </div>
+</main>
+
+</div>
+</div>
+</div>
