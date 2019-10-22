@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2019_10_22_060356) do
     t.string "chapter_title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["chapter_number"], name: "index_curriculums_on_chapter_number", unique: true
   end
 
   create_table "everyone_recipes", force: :cascade do |t|
@@ -130,6 +131,7 @@ ActiveRecord::Schema.define(version: 2019_10_22_060356) do
     t.string "section_title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["section_number"], name: "index_sections_on_section_number", unique: true
   end
 
   create_table "skill_notes", force: :cascade do |t|
@@ -162,6 +164,7 @@ ActiveRecord::Schema.define(version: 2019_10_22_060356) do
     t.string "task_title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["task_number"], name: "index_tasks_on_task_number", unique: true
   end
 
   create_table "users", force: :cascade do |t|

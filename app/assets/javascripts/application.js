@@ -18,3 +18,5 @@
 // Bootstrapのファイルを呼び出す記述
   //= require jquery
   //= require bootstrap-sprockets
+
+//= require cocoon

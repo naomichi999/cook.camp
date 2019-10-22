@@ -10,7 +10,7 @@
 <%= form_for @curriculum, url: admin_curriculums_path , method: :post do |f| %>
   <div class="normal_field">
     <p class="form-text">章の番号</p>
-    <%= f.number_field :chapter_number, min: 0, max: 999, class:"form-control-sm" %>
+    <%= f.number_field :chapter_number, min: 0, max: 999, autofocus: true, class:"form-control-sm" %>
   </div><br>
   <div class="normal_field">
     <p class="form-text">章のタイトル</p>

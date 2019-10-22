@@ -6,6 +6,8 @@ class CreateTasks < ActiveRecord::Migration[5.2]
       t.string :task_title
 
       t.timestamps
+
+      t.index [:task_number], unique: true
     end
   end
 end

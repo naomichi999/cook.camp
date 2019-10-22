@@ -4,8 +4,9 @@ class CreateCurriculums < ActiveRecord::Migration[5.2]
       t.integer :chapter_number
       t.string :chapter_title
 
-
       t.timestamps
+
+      t.index [:chapter_number], unique: true
     end
   end
 end

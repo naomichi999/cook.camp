@@ -1,0 +1,32 @@
+<!-- 新しい節のフォーム -->
+<%= form_for @section, url: admin_sections_path , method: :post do |s| %>
+
+  <div class="">
+    <p class="form-text">【章の選択】</p>
+    <%= s.collection_select(:curriculum_id, Curriculum.all, :id, :chapter_title,  prompt: "章を選択して下さい") %>
+  </div><br>
+
+  <div class="normal_field">
+    <p class="form-text">【節の番号】</p>
+    <%= s.number_field :section_number, min: 0, max: 10, autofocus: true, class:"form-control-sm" %>
+  </div><br>
+  <div class="normal_field">
+    <p class="form-text">【節のタイトル】</p>
+    <%= s.text_field :section_title, autofocus: true, placeholder: "章のタイトルを入力してください", class:"form-control" %>
+  </div><br>
+
+<!-- 節のテキスト用のフォーム -->
+<div class="section_contents">
+  <%= s.fields_for :section_contents do |f| %>
+    <p class="form-text">【画像・テキスト】</p>
+    <%= render "section_content_fields", f: f %>
+  <% end %>
+  <div class="links">
+    <%= link_to_add_association "さらに画像・テキストを追加する", s, :section_contents%>
+  </div><br>
+</div><br>
+
+  <div class="actions">
+    <%= s.submit "新しい節を追加する", class:"btn btn-primary" %>
+  </div><br>
+<% end %>
