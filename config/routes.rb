@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root 'homes#top'
   get 'homes/top'
   get 'homes/about'
@@ -35,7 +34,12 @@ Rails.application.routes.draw do
     get 'everyone_recipes/soup', as: 'everyone_soup'
     resources :everyone_recipes, only: [:index]
     resources :want_to_cooks, only: [:index, :show, :create, :destroy]
-    resources :curriculums, only: [:index, :new, :show, :edit, :update, :create, :destroy]
+    resources :curriculums, only: [:index, :new, :edit, :update, :create, :destroy]
+    resources :sections, only: [:new, :show, :edit, :update, :create, :destroy]
+    resources :section_content, only: [:update, :create]
+    resources :skill_notes, only: [:show, :edit, :update]
+    resources :tasks, only: [:new, :show, :edit, :update, :create, :destroy]
+    resources :task_content, only: [:update, :create]
     resources :my_recipes, only: [:index, :show, :edit, :update, :destroy]
     get 'recipe_list/:id' => 'my_recipes#recipe_list', as:'recipe_list'
     resources :users, only: [:index, :show, :edit, :update, :destroy]
@@ -64,8 +68,11 @@ Rails.application.routes.draw do
   get 'everyone_recipes/soup', as: 'everyone_soup'
   resources :everyone_recipes, only: [:index]
   resources :want_to_cooks, only: [:index, :show, :create, :destroy]
-  resources :curriculums, only: [:index, :show]
-  resources :skill_notes, only: [:index, :edit, :update]
+  resources :curriculums, only: [:index]
+  resources :tasks, only: [:show]
+  resources :sections, only: [:show]
+  resources :section_understanding, only: [:update, :create]
+  resources :skill_notes, only: [:new, :show, :edit, :create, :update]
   resources :my_recipes, only: [:index, :new, :show, :edit, :create, :update, :destroy]
   resources :users, only: [:index, :show, :edit, :update]
 

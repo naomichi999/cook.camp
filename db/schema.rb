@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_21_085219) do
+ActiveRecord::Schema.define(version: 2019_10_22_060356) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -49,13 +49,8 @@ ActiveRecord::Schema.define(version: 2019_10_21_085219) do
   end
 
   create_table "curriculums", force: :cascade do |t|
-    t.integer "skill_note_id"
+    t.integer "chapter_number"
     t.string "chapter_title"
-    t.string "section_title"
-    t.string "task_title"
-    t.text "curriculum_content"
-    t.string "curriculum_image_id"
-    t.float "understanding"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -108,20 +103,38 @@ ActiveRecord::Schema.define(version: 2019_10_21_085219) do
   create_table "replies", force: :cascade do |t|
     t.integer "inquiry_id"
     t.text "reply_content"
+    t.string "reply_title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "reply_title"
+  end
+
+  create_table "section_contents", force: :cascade do |t|
+    t.integer "section_id"
+    t.string "section_image_id"
+    t.text "section_text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "section_understandings", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "section_id"
+    t.float "understanding"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sections", force: :cascade do |t|
+    t.integer "curriculum_id"
+    t.integer "section_number"
+    t.string "section_title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "skill_notes", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "tasks_evaluation_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "tasks_evaluations", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "task_id"
     t.string "task_name"
     t.float "total_evaluation"
     t.float "taste_evaluation"
@@ -131,6 +144,22 @@ ActiveRecord::Schema.define(version: 2019_10_21_085219) do
     t.text "improve_point"
     t.text "feeling"
     t.string "cooking_image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "task_contents", force: :cascade do |t|
+    t.integer "task_id"
+    t.string "task_image_id"
+    t.text "task_text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.integer "section_id"
+    t.integer "task_number"
+    t.string "task_title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

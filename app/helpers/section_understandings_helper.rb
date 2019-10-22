@@ -1,0 +1,2 @@
+module SectionUnderstandingsHelper
+end

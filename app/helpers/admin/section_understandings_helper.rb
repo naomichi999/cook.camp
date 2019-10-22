@@ -1,0 +1,2 @@
+module Admin::SectionUnderstandingsHelper
+end

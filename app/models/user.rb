@@ -5,12 +5,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
          attachment :profile_image
-         has_many :skill_notes, dependent: :destroy
          has_many :want_to_cooks, dependent: :destroy
          has_many :favorites, dependent: :destroy
          has_many :comments, dependent: :destroy
          has_many :inquiries, dependent: :destroy
          has_many :my_recipes, dependent: :destroy
+         has_one :skill_notes, dependent: :destroy
+         has_one :section_understanding, dependent: :destroy
 
          validates :email, :encrypted_password, :sei_kanji, :mei_kanji, :sei_kana,
 			  :mei_kana, presence: true
