@@ -1,2 +1,31 @@
-<h1>Admin::Curriculums#edit</h1>
-<p>Find me in app/views/admin/curriculums/edit.html.erb</p>
+<!-- カリキュラムの章の編集 -->
+<%= render 'layouts/list' %>
+
+<main class="login-time-box">
+<h1>カリキュラムの章の編集</h1>
+    <div class="basic-box">
+  <h3><span class="label label-default">カリキュラムの章を編集する</span></h3><br>
+
+
+<%= form_for @curriculum, url: admin_curriculum_path, method: :patch do |f| %>
+  <div class="normal_field">
+    <p class="form-text">章の番号</p>
+    <%= f.number_field :chapter_number, min: 0, max: 999, class:"form-control-sm" %>
+  </div><br>
+  <div class="normal_field">
+    <p class="form-text">章のタイトル</p>
+    <%= f.text_field :chapter_title, autofocus: true, placeholder: "章のタイトルを入力してください", class:"form-control" %>
+  </div><br>
+  <div class="actions">
+    <%= f.submit "更新する", class:"btn btn-primary" %>
+  </div><br>
+<% end %>
+
+</div>
+
+<%= link_to "カリキュラムの目次へ戻る", admin_curriculums_path, class: 'btn btn-default' %>
+</main>
+
+</div>
+</div>
+</div>

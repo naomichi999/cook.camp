@@ -13,7 +13,12 @@
         		<% @pages.each do |u| %>
                 <thead>
                     <tr>
-                        <th>第<%= u.chapter_number %>章 <%= u.chapter_title %></th>
+                        <th>第<%= u.chapter_number %>章 <%= u.chapter_title %>
+                        	<span class="chapter_botton">
+                            <%= link_to edit_admin_curriculum_path(u.id), class: 'btn btn-primary' do %>
+                            第<%= u.chapter_number %>章を編集する
+                            <% end %></span>
+                        </th>
                     </tr>
 					<!-- 節の表示に使う -->
      				<!--<tbody>
