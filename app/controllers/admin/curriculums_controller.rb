@@ -37,6 +37,14 @@ class Admin::CurriculumsController < ApplicationController
   end
 
   def destroy
+    @curriculum = Curriculum.find(params[:id])
+    if @curriculum.destroy
+      flash[:success] = '章を削除しました。'
+      redirect_to admin_curriculums_path
+    else
+      flash[:danger] = "章の削除に失敗しました。"
+      redirect_to admin_curriculums_path
+    end
   end
   protected
   def curriculum_params

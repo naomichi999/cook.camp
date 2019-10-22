@@ -7,6 +7,10 @@
 
     <div class="basic-box">
     	<div class=" clearfix">
+    		<div class="">
+		    	<h3><span class="label label-default">管理者アクション</span></h3><br>
+				<%= link_to "章を追加する", new_admin_curriculum_path, class: 'btn btn-primary' %>
+			</div>
     	<h3><span class="label label-default">カリキュラムの目次</span></h3>
         </div><br>
 	        <table class="table ">
@@ -14,6 +18,10 @@
                 <thead>
                     <tr>
                         <th>第<%= u.chapter_number %>章 <%= u.chapter_title %>
+                        	<span class="chapter_botton">
+                            <%= link_to admin_curriculum_path(u.id), method: :delete, "data-confirm" => "”OK”を選択すると章の情報が完全に削除されます。本当によろしいですか？", class: 'btn btn-danger' do %>
+                            第<%= u.chapter_number %>章を削除する
+                            <% end %></span>
                         	<span class="chapter_botton">
                             <%= link_to edit_admin_curriculum_path(u.id), class: 'btn btn-primary' do %>
                             第<%= u.chapter_number %>章を編集する
