@@ -1,2 +1,27 @@
-<h1>Admin::Curriculums#new</h1>
-<p>Find me in app/views/admin/curriculums/new.html.erb</p>
+<!--章の追加(管理者側) -->
+<%= render 'layouts/list' %>
+
+<main class="login-time-box">
+<h1>章の追加</h1>
+    <div class="basic-box">
+  <h3><span class="label label-default">新しい章を追加する</span></h3><br>
+
+
+<%= form_for @curriculum, url: admin_curriculums_path , method: :post do |f| %>
+  <div class="normal_field">
+    <p class="form-text">章の番号</p>
+    <%= f.number_field :chapter_number, min: 0, max: 999, class:"form-control-sm" %>
+  </div><br>
+  <div class="normal_field">
+    <p class="form-text">章のタイトル</p>
+    <%= f.text_field :chapter_title, autofocus: true, placeholder: "章のタイトルを入力してください", class:"form-control" %>
+  </div><br>
+  <div class="actions">
+    <%= f.submit "章を追加する", class:"btn btn-primary" %>
+  </div><br>
+<% end %>
+
+</div>
+
+<%= link_to "戻る", :back, class: 'btn btn-default' %>
+</main>
