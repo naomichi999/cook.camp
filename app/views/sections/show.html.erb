@@ -1,2 +1,36 @@
-<h1>Sections#show</h1>
-<p>Find me in app/views/sections/show.html.erb</p>
+<!-- カリキュラムの節の詳細 -->
+<%= render 'layouts/list' %>
+
+<main class="login-time-box">
+<h1>第<%= @section.curriculum.chapter_number %>章 <%= @section.curriculum.chapter_title %></h1>
+
+    <div class="basic-box">
+	<h3><span class="label label-default">第<%= @section.section_number %>節 <%= @section.section_title %></span></h3>
+
+        <div class="my_recipe-box clearfix">
+        	<!-- 節の画像とテキストの表示 -->
+        	<% @section.section_contents.each do |c| %>
+        	<p><%= attachment_image_tag c, :section_image, class: "my_recipe-image" %></p>
+        	<%= c.section_text %>
+        	<% end %>
+        </div>
+    </div><br>
+</div>
+    <%= link_to "戻る", :back , class: 'btn btn-default' %>
+    <!-- 進むボタンの表示（次のレコードが無ければ進むボタンを表示しない） -->
+    <div class="next_botton">
+    	<!-- 次の節番号を変数に代入する -->
+	    <% next_section = @section.section_number + 1 %>
+	    <% same_curriculum = @section.curriculum_id %>
+	    <!-- 次の節番号のレコードを取得する -->
+	    <% next_page = Section.find_by(section_number: next_section, curriculum_id: same_curriculum) %>
+	    <!-- 次の節番号のレコードがあれば進むボタンを表示する -->
+	    <% if next_page %>
+	    <%= link_to "進む", section_path(next_page.id) , class: 'btn btn-default' %>
+	    <% end %>
+	</div>
+</main>
+
+</div>
+</div>
+</div>

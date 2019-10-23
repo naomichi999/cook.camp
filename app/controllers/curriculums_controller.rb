@@ -4,7 +4,4 @@ class CurriculumsController < ApplicationController
     @curriculum = Curriculum.all
     @pages = @curriculum.page(params[:page]).per(10)
   end
-
-  def show
-  end
 end
