@@ -1,2 +1,13 @@
-<h1>Admin::Tasks#new</h1>
-<p>Find me in app/views/admin/tasks/new.html.erb</p>
+<!--課題の追加(管理者側) -->
+<%= render 'layouts/list' %>
+
+<main class="login-time-box">
+	<h1>課題の追加</h1>
+	    <div class="basic-box">
+	 		<h3><span class="label label-default">新しい課題の情報を入力してください</span></h3><br>
+
+			<%= render 'form', post: @task %>
+
+		</div>
+		<%= link_to "戻る", :back, class: 'btn btn-default' %>
+</main>

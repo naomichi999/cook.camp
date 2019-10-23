@@ -1,0 +1,39 @@
+<!-- 課題の追加フォーム -->
+<%= form_for @task, url: admin_tasks_path , method: :post do |s| %>
+
+  <div class="">
+    <p class="form-text">【章の選択】</p>
+    <%= s.collection_select(:curriculum_id, Curriculum.all, :id, :chapter_title,  prompt: "章を選択して下さい") %>
+  </div><br>
+
+  <div class="">
+    <p class="form-text">【節の選択】</p>
+    <%= s.collection_select(:section_id, Section.all, :id, :section_title,  prompt: "節を選択して下さい") %>
+  </div><br>
+
+  <div class="normal_field">
+    <p class="form-text">【課題の番号】</p>
+    <%= s.number_field :task_number, min: 0, max: 10, autofocus: true, class:"form-control-sm" %>
+  </div><br>
+  <div class="normal_field">
+    <p class="form-text">【課題のタイトル】</p>
+    <%= s.text_field :task_title, autofocus: true, placeholder: "課題のタイトルを入力してください", class:"form-control" %>
+  </div><br>
+
+    <!-- 課題の内容のフォーム -->
+    <div class="task_contents">
+      <%= s.fields_for :task_contents do |i| %>
+        <p class="form-text">【画像・テキスト】</p>
+        <!-- render先のブロック変数fはこのページではiとして扱う -->
+        <%= render "task_content_fields", f: i %>
+
+      <% end %>
+      <div class="links">
+        <%= link_to_add_association "さらに画像・テキストを追加する", s, :task_contents %>
+      </div><br>
+    </div><br>
+
+  <div class="actions">
+    <%= s.submit "新しい課題を追加する", class:"btn btn-primary" %>
+  </div><br>
+<% end %>

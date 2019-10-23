@@ -1,5 +1,5 @@
 class TaskContent < ApplicationRecord
 	attachment :task_image
-	belongs_to :task
-	validates :task_id,:task_text, presence: true
+	belongs_to :task, optional: true
+	validates :task_text, presence: true
 end

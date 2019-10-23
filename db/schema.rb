@@ -159,6 +159,7 @@ ActiveRecord::Schema.define(version: 2019_10_22_060356) do
   end
 
   create_table "tasks", force: :cascade do |t|
+    t.integer "curriculum_id"
     t.integer "section_id"
     t.integer "task_number"
     t.string "task_title"
