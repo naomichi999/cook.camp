@@ -3,8 +3,6 @@ class Admin::CurriculumsController < ApplicationController
   def index
     @curriculum = Curriculum.all
     @pages = @curriculum.page(params[:page]).per(10)
-     # @section = Section.all
-    # .where('section_number = ? and publishment = ?', 1, true)
   end
 
   def new
