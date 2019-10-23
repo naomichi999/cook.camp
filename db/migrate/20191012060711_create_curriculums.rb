@@ -6,7 +6,7 @@ class CreateCurriculums < ActiveRecord::Migration[5.2]
 
       t.timestamps
 
-      t.index [:chapter_number], unique: true
+      t.index [:chapter_number, :chapter_title], unique: true
     end
   end
 end

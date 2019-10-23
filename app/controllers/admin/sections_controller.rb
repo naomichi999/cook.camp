@@ -9,6 +9,7 @@ class Admin::SectionsController < ApplicationController
   end
 
   def edit
+    @section = Section.find(params[:id])
   end
 
   def create
@@ -25,9 +26,25 @@ class Admin::SectionsController < ApplicationController
   end
 
   def update
+    @section = Section.find(params[:id])
+    if @section.update(section_params)
+    flash[:success] = '節の情報を編集しました。'
+    redirect_to admin_curriculums_path
+    else
+    flash[:danger] = "節の情報は編集できませんでした。"
+    redirect_to edit_admin_section_path(@section.id)
+    end
   end
 
   def destroy
+    @section = Section.find(params[:id])
+    if @section.destroy
+      flash[:success] = '節を削除しました。'
+      redirect_to admin_curriculums_path
+    else
+      flash[:danger] = "節の削除に失敗しました。"
+      redirect_to admin_curriculums_path
+    end
   end
     protected
   def section_params

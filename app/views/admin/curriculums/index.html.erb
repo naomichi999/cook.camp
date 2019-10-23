@@ -30,20 +30,24 @@
                             <% end %></span>
                         </th>
                     </tr>
-					<!-- 節の表示に使う -->
-     				<!--<tbody>
-	                    <tr>
-	                        <td>
-	                        </td>
-	                        <td>
-	                        </td>
-	                        <td>
-	                            <%= link_to "マイレシピへのリンク", admin_recipe_list_path(u.id) %>
-	                        </td>
-	                    </tr>
-	                </tbody> -->
-                <% end %>
                 </thead>
+					<!-- 節の表示に使う -->
+					<% u.sections.each do |s| %>
+     				<tbody>
+                        <td>
+                        	第<%= s.section_number %>節 <%= s.section_title %>
+                        	<span class="chapter_botton">
+                            <%= link_to admin_section_path(s.id), method: :delete, "data-confirm" => "”OK”を選択すると節の情報が完全に削除されます。本当によろしいですか？", class: 'btn btn-danger btn-sm' do %>
+                            第<%= s.section_number %>節を削除する
+                            <% end %></span>
+                        	<span class="chapter_botton">
+                            <%= link_to edit_admin_section_path(s.id), class: 'btn btn-primary btn-sm' do %>
+                            第<%= s.section_number %>節を編集する
+                            <% end %></span>
+                        </td>
+	                </tbody>
+	                <% end %>
+                <% end %>
             </table>
             <div class="paginate">
                 <%= paginate @pages, class: "paginate" %>

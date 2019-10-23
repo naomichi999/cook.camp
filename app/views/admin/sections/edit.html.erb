@@ -1,2 +1,42 @@
-<h1>Admin::Sections#edit</h1>
-<p>Find me in app/views/admin/sections/edit.html.erb</p>
+<!-- カリキュラムの節の編集 -->
+<%= render 'layouts/list' %>
+
+<main class="login-time-box">
+<h1>カリキュラムの節の編集</h1>
+    <div class="basic-box">
+  <h3><span class="label label-default">カリキュラムの節を編集する</span></h3><br>
+
+
+<%= form_for @section, url: admin_section_path, method: :patch do |s| %>
+  <div class="normal_field">
+    <p class="form-text">節の番号</p>
+    <%= s.number_field :section_number, min: 0, max: 999, class:"form-control-sm" %>
+  </div><br>
+  <div class="normal_field">
+    <p class="form-text">節のタイトル</p>
+    <%= s.text_field :section_title, autofocus: true, placeholder: "節のタイトルを入力してください", class:"form-control" %>
+  </div><br>
+
+      <div class="section_contents">
+      <%= s.fields_for :section_contents do |f| %>
+        <p class="form-text">【画像・テキスト】</p>
+        <%= render "section_content_fields", f: f %>
+      <% end %>
+      <div class="links">
+        <%= link_to_add_association "さらに画像・テキストを追加する", s, :section_contents%>
+      </div><br>
+    </div><br>
+
+  <div class="actions">
+    <%= s.submit "更新する", class:"btn btn-primary" %>
+  </div><br>
+<% end %>
+
+</div>
+
+<%= link_to "カリキュラムの目次へ戻る", admin_curriculums_path, class: 'btn btn-default' %>
+</main>
+
+</div>
+</div>
+</div>
