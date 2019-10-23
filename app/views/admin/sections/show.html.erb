@@ -6,29 +6,49 @@
 
     <div class="basic-box">
 	<h3><span class="label label-default">第<%= @section.section_number %>節 <%= @section.section_title %></span></h3>
-
+		<!-- 節の画像とテキストの表示 -->
         <div class="my_recipe-box clearfix">
-        	<!-- 節の画像とテキストの表示 -->
         	<% @section.section_contents.each do |c| %>
         	<p><%= attachment_image_tag c, :section_image, class: "my_recipe-image" %></p>
         	<%= c.section_text %>
         	<% end %>
         </div>
-			<div class="">
-		        <%= link_to 'この節を編集する', edit_admin_section_path, class: 'btn btn-primary' %>
-		    </div><br>
-		    <div class="">
-		    	<%= link_to "この節を削除する", admin_section_path, method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
-		    </div>
+        <!-- 節に課題がある場合の表示 -->
+        <% task_page = Task.find_by(section_id: @section.id) %>
+        <% if task_page %>
+        <div class="my_recipe-box clearfix">
+        	<% @section.tasks.each do |t| %>
+        		<table class="table">
+        			<tbody>
+        				<td>
+            				<%= link_to admin_task_path(t.id) do %>課題<%= t.task_number %>.<%= t.task_title %>
+            			</td>
+            		</tbody>
+            	</table>
+            	<% end %>
+        	<% end %>
+    	<% end %>
+        </div>
+        <!-- 節の編集と削除ボタンの表示 -->
+		<div class="">
+	        <%= link_to 'この節を編集する', edit_admin_section_path, class: 'btn btn-primary' %>
+	    </div><br>
+	    <div class="">
+	    	<%= link_to "この節を削除する", admin_section_path, method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+	    </div>
     </div><br>
 </div>
+
+
+
     <%= link_to "戻る", :back , class: 'btn btn-default' %>
     <!-- 進むボタンの表示（次のレコードが無ければ進むボタンを表示しない） -->
     <div class="next_botton">
     	<!-- 次の節番号を変数に代入する -->
 	    <% next_section = @section.section_number + 1 %>
+	    <% same_curriculum = @section.curriculum_id %>
 	    <!-- 次の節番号のレコードを取得する -->
-	    <% next_page = Section.find_by(section_number: next_section) %>
+	    <% next_page = Section.find_by(section_number: next_section, curriculum_id: same_curriculum) %>
 	    <!-- 次の節番号のレコードがあれば進むボタンを表示する -->
 	    <% if next_page %>
 	    <%= link_to "進む", admin_section_path(next_page.id) , class: 'btn btn-default' %>

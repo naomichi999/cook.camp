@@ -1,2 +1,47 @@
-<h1>Admin::Tasks#show</h1>
-<p>Find me in app/views/admin/tasks/show.html.erb</p>
+<!-- カリキュラムの課題の詳細(管理者側) -->
+<%= render 'layouts/list' %>
+
+<main class="login-time-box">
+<h1>第<%= @task.section.curriculum.chapter_number %>章 <%= @task.section.curriculum.chapter_title %></h1>
+
+    <div class="basic-box">
+	<h2><span class="label label-default">第<%= @task.section.section_number %>節 <%= @task.section.section_title %></span></h2>
+	<h3><span class="label label-info">課題<%= @task.task_number %>.<%= @task.task_title %></span></h3>
+		<!-- 課題の画像とテキストの表示 -->
+        <div class="my_recipe-box clearfix">
+        	<% @task.task_contents.each do |c| %>
+        	<p><%= attachment_image_tag c, :task_image, class: "my_recipe-image" %></p>
+        	<%= c.task_text %>
+        	<% end %>
+        </div>
+
+        <!-- 課題の編集と削除ボタンの表示 -->
+		<div class="">
+	        <%= link_to 'この課題を編集する', edit_admin_task_path, class: 'btn btn-primary' %>
+	    </div><br>
+	    <div class="">
+	    	<%= link_to "この課題を削除する", admin_task_path, method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+	    </div>
+    </div><br>
+</div>
+
+
+
+    <%= link_to "戻る", :back , class: 'btn btn-default' %>
+    <!-- 進むボタンの表示（次のレコードが無ければ進むボタンを表示しない） -->
+    <div class="next_botton">
+    	<!-- 次の課題番号を変数に代入する -->
+	    <% next_task = @task.task_number + 1 %>
+	    <% same_section = @task.section_id %>
+	    <!-- 次の課題番号のレコードを取得する -->
+	    <% next_page = Task.find_by(task_number: next_task, section_id: same_section) %>
+	    <!-- 次の課題番号のレコードがあれば進むボタンを表示する -->
+	    <% if next_page %>
+	    <%= link_to "進む", admin_task_path(next_page.id) , class: 'btn btn-default' %>
+	    <% end %>
+	</div>
+</main>
+
+</div>
+</div>
+</div>
