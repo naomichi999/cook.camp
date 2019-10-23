@@ -16,14 +16,19 @@
     	<h3><span class="label label-default">カリキュラムの目次</span></h3>
         </div><br>
 	        <table class="table ">
+				<!-- カリキュラムの章の表示 -->
         		<% @pages.each do |u| %>
                 <thead>
                     <tr>
-                        <th>第<%= u.chapter_number %>章 <%= u.chapter_title %>
+                        <th>
+                        	<!-- 章の名前を表示 -->
+                        	第<%= u.chapter_number %>章 <%= u.chapter_title %>
+                        	<!-- 章の削除ボタン -->
                         	<span class="chapter_botton">
                             <%= link_to admin_curriculum_path(u.id), method: :delete, "data-confirm" => "”OK”を選択すると章の情報が完全に削除されます。本当によろしいですか？", class: 'btn btn-danger' do %>
                             第<%= u.chapter_number %>章を削除する
                             <% end %></span>
+                            <!-- 章の編集ボタン -->
                         	<span class="chapter_botton">
                             <%= link_to edit_admin_curriculum_path(u.id), class: 'btn btn-primary' do %>
                             第<%= u.chapter_number %>章を編集する
@@ -31,15 +36,20 @@
                         </th>
                     </tr>
                 </thead>
-					<!-- 節の表示に使う -->
+					<!-- カリキュラムの節の表示 -->
 					<% u.sections.each do |s| %>
      				<tbody>
                         <td>
+                        	<!-- 節の名前を表示 -->
+                        	<%= link_to admin_section_path(s.id) do %>
                         	第<%= s.section_number %>節 <%= s.section_title %>
+                        	<% end %>
                         	<span class="chapter_botton">
+                        	<!-- 節の削除ボタン -->
                             <%= link_to admin_section_path(s.id), method: :delete, "data-confirm" => "”OK”を選択すると節の情報が完全に削除されます。本当によろしいですか？", class: 'btn btn-danger btn-sm' do %>
                             第<%= s.section_number %>節を削除する
                             <% end %></span>
+                            <!-- 節の編集ボタン -->
                         	<span class="chapter_botton">
                             <%= link_to edit_admin_section_path(s.id), class: 'btn btn-primary btn-sm' do %>
                             第<%= s.section_number %>節を編集する

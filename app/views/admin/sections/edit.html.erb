@@ -17,6 +17,7 @@
     <%= s.text_field :section_title, autofocus: true, placeholder: "節のタイトルを入力してください", class:"form-control" %>
   </div><br>
 
+  	<!-- 画像・テキストはcocoonでネストしたページから持ってくる -->
       <div class="section_contents">
       <%= s.fields_for :section_contents do |f| %>
         <p class="form-text">【画像・テキスト】</p>

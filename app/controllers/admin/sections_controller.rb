@@ -6,6 +6,7 @@ class Admin::SectionsController < ApplicationController
   end
 
   def show
+    @section = Section.find(params[:id])
   end
 
   def edit
@@ -14,7 +15,6 @@ class Admin::SectionsController < ApplicationController
 
   def create
     @section = Section.new(section_params)
-
     if @section.save
       flash[:success] = '新しい節を追加しました。'
       redirect_to admin_curriculums_path
