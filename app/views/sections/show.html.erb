@@ -14,8 +14,25 @@
         	<%= c.section_text %>
         	<% end %>
         </div>
+    <!-- 節に課題がある場合の表示 -->
+    <% task_page = Task.find_by(section_id: @section.id) %>
+    <% if task_page %>
+    <div class="my_recipe-box clearfix">
+    	<% @section.tasks.each do |t| %>
+    		<table class="table">
+    			<tbody>
+    				<td>
+        				<%= link_to task_path(t.id) do %>課題<%= t.task_number %>.<%= t.task_title %>
+        			</td>
+        		</tbody>
+        	</table>
+        	<% end %>
+    	<% end %>
+	<% end %>
     </div><br>
-</div>
+
+    </div>
+
     <%= link_to "戻る", :back , class: 'btn btn-default' %>
     <!-- 進むボタンの表示（次のレコードが無ければ進むボタンを表示しない） -->
     <div class="next_botton">

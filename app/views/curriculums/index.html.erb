@@ -32,7 +32,7 @@
                             <td>
                                 <!-- 課題の名前を表示 -->
                                 <%= link_to task_path(t.id) do %>
-                                課題<%= t.task_number %>.<%= t.task_title %>
+                                <span>　課題<%= t.task_number %>.<%= t.task_title %></span>
                                 <% end %>
                             </td>
                         </tbody>

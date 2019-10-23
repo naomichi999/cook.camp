@@ -1,2 +1,37 @@
-<h1>Tasks#show</h1>
-<p>Find me in app/views/tasks/show.html.erb</p>
+<!-- カリキュラムの課題の詳細 -->
+<%= render 'layouts/list' %>
+
+<main class="login-time-box">
+<h1>第<%= @task.section.curriculum.chapter_number %>章 <%= @task.section.curriculum.chapter_title %></h1>
+
+    <div class="basic-box">
+	<h3><span class="label label-default">第<%= @task.section.section_number %>節 <%= @task.section.section_title %></span></h3><br>
+	<h4><span class="label label-info">課題<%= @task.task_number %>.<%= @task.task_title %></span></h4>
+		<!-- 課題の画像とテキストの表示 -->
+        <div class="my_recipe-box clearfix">
+        	<% @task.task_contents.each do |c| %>
+        	<p><%= attachment_image_tag c, :task_image, class: "my_recipe-image" %></p>
+        	<%= c.task_text %>
+        	<% end %>
+        </div>
+    </div><br>
+</div>
+
+    <%= link_to "戻る", :back , class: 'btn btn-default' %>
+    <!-- 進むボタンの表示（次のレコードが無ければ進むボタンを表示しない） -->
+    <div class="next_botton">
+    	<!-- 次の課題番号を変数に代入する -->
+	    <% next_task = @task.task_number + 1 %>
+	    <% same_section = @task.section_id %>
+	    <!-- 次の課題番号のレコードを取得する -->
+	    <% next_page = Task.find_by(task_number: next_task, section_id: same_section) %>
+	    <!-- 次の課題番号のレコードがあれば進むボタンを表示する -->
+	    <% if next_page %>
+	    <%= link_to "進む", task_path(next_page.id) , class: 'btn btn-default' %>
+	    <% end %>
+	</div>
+</main>
+
+</div>
+</div>
+</div>

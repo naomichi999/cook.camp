@@ -5,8 +5,8 @@
 <h1>第<%= @task.section.curriculum.chapter_number %>章 <%= @task.section.curriculum.chapter_title %></h1>
 
     <div class="basic-box">
-	<h2><span class="label label-default">第<%= @task.section.section_number %>節 <%= @task.section.section_title %></span></h2>
-	<h3><span class="label label-info">課題<%= @task.task_number %>.<%= @task.task_title %></span></h3>
+	<h3><span class="label label-default">第<%= @task.section.section_number %>節 <%= @task.section.section_title %></span></h3><br>
+	<h4><span class="label label-info">課題<%= @task.task_number %>.<%= @task.task_title %></span></h4>
 		<!-- 課題の画像とテキストの表示 -->
         <div class="my_recipe-box clearfix">
         	<% @task.task_contents.each do |c| %>
@@ -24,8 +24,6 @@
 	    </div>
     </div><br>
 </div>
-
-
 
     <%= link_to "戻る", :back , class: 'btn btn-default' %>
     <!-- 進むボタンの表示（次のレコードが無ければ進むボタンを表示しない） -->
