@@ -1,2 +1,43 @@
-<h1>Admin::Tasks#edit</h1>
-<p>Find me in app/views/admin/tasks/edit.html.erb</p>
+<!-- カリキュラムの課題の編集 -->
+<%= render 'layouts/list' %>
+
+<main class="login-time-box">
+<h1>カリキュラムの課題の編集</h1>
+    <div class="basic-box">
+  <h3><span class="label label-default">カリキュラムの課題を編集する</span></h3><br>
+
+
+<%= form_for @task, url: admin_task_path, method: :patch do |s| %>
+  <div class="normal_field">
+    <p class="form-text">課題の番号</p>
+    <%= s.number_field :task_number, min: 0, max: 999, class:"form-control-sm" %>
+  </div><br>
+  <div class="normal_field">
+    <p class="form-text">課題のタイトル</p>
+    <%= s.text_field :task_title, autofocus: true, placeholder: "課題のタイトルを入力してください", class:"form-control" %>
+  </div><br>
+
+  	<!-- 画像・テキストはcocoonでネストしたページから持ってくる -->
+      <div class="task_contents">
+      <%= s.fields_for :task_contents do |f| %>
+        <p class="form-text">【画像・テキスト】</p>
+        <%= render "task_content_fields", f: f %>
+      <% end %>
+      <div class="links">
+        <%= link_to_add_association "さらに画像・テキストを追加する", s, :task_contents%>
+      </div><br>
+    </div><br>
+
+  <div class="actions">
+    <%= s.submit "更新する", class:"btn btn-primary" %>
+  </div><br>
+<% end %>
+
+</div>
+
+<%= link_to "カリキュラムの目次へ戻る", admin_curriculums_path, class: 'btn btn-default' %>
+</main>
+
+</div>
+</div>
+</div>
