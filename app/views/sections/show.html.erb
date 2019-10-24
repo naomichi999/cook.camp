@@ -5,7 +5,7 @@
 <h1>第<%= @section.curriculum.chapter_number %>章 <%= @section.curriculum.chapter_title %></h1>
 
     <div class="basic-box">
-	<h3><span class="label label-default">第<%= @section.section_number %>節 <%= @section.section_title %></span></h3>
+		<h3><span class="label label-default">第<%= @section.section_number %>節 <%= @section.section_title %></span></h3>
 
         <div class="my_recipe-box clearfix">
         	<!-- 節の画像とテキストの表示 -->
@@ -14,40 +14,505 @@
         	<%= c.section_text %>
         	<% end %>
         </div>
-    <!-- 節に課題がある場合の表示 -->
-    <% task_page = Task.find_by(section_id: @section.id) %>
-    <% if task_page %>
-    <div class="my_recipe-box clearfix">
-    	<% @section.tasks.each do |t| %>
-    		<table class="table">
-    			<tbody>
-    				<td>
-        				<%= link_to task_path(t.id) do %>課題<%= t.task_number %>.<%= t.task_title %>
-        			</td>
-        		</tbody>
-        	</table>
-        	<% end %>
-    	<% end %>
-	<% end %>
-    </div><br>
+	    <!-- 節に課題がある場合の表示 -->
+	    <% task_page = Task.find_by(section_id: @section.id) %>
+	    <% if task_page %>
+	    <div class="my_recipe-box clearfix">
+	    	<% @section.tasks.each do |t| %>
+	    		<table class="table">
+	    			<tbody>
+	    				<td>
+	        				<%= link_to task_path(t.id) do %>課題<%= t.task_number %>.<%= t.task_title %>
+	        			</td>
+	        		</tbody>
+	        	</table>
+	        	<% end %>
+	    	<% end %>
+		<% end %>
+		<h3><理解度></h3>
 
-    </div>
+		<!-- ユーザーが評価をしてい無い時の評価フォーム -->
+		<% rate = SectionUnderstanding.find_by(user_id: current_user.id, section_id: @section.id) %>
+		<% if rate.nil? %>
+		<h3><u>理解度</u></h3>
+	    <div class="star-box">
+			<!-- 評価1フォーム -->
+			<div class="star">
+			<%= form_for @rate, url: section_understandings_path, method: :post do |f| %>
+				<!--ユーザーidの送信-->
+				<%= f.hidden_field :user_id, { value: current_user.id} %>
+				<!--節idの送信-->
+				<%= f.hidden_field :section_id, { value: @section.id} %>
+				<%= f.hidden_field :understanding, { value: 1} %>
+			    <!-- 星型の送信ボタン -->
+			    <%= button_tag( class: "btn btn-default ") do %>
+			    <%= content_tag :span, "", class: "far fa-star color-gold" %>
+			    <% end %>
+			<% end %>
+			</div>
+			<!-- 評価2フォーム -->
+			<div class="star">
+			<%= form_for @rate, url: section_understandings_path, method: :post do |f| %>
+				<!--ユーザーidの送信-->
+				<%= f.hidden_field :user_id, { value: current_user.id} %>
+				<!--節idの送信-->
+				<%= f.hidden_field :section_id, { value: @section.id} %>
+				<%= f.hidden_field :understanding, { value: 2} %>
+			    <!-- 星型の送信ボタン -->
+			    <%= button_tag( class: "btn btn-default ") do %>
+			    <%= content_tag :span, "", class: "far fa-star color-gold" %>
+			    <% end %>
+			<% end %>
+			</div>
+			<!-- 評価3フォーム -->
+			<div class="star">
+			<%= form_for @rate, url: section_understandings_path, method: :post do |f| %>
+				<!--ユーザーidの送信-->
+				<%= f.hidden_field :user_id, { value: current_user.id} %>
+				<!--節idの送信-->
+				<%= f.hidden_field :section_id, { value: @section.id} %>
+				<%= f.hidden_field :understanding, { value: 3} %>
+			    <!-- 星型の送信ボタン -->
+			    <%= button_tag( class: "btn btn-default ") do %>
+			    <%= content_tag :span, "", class: "far fa-star color-gold" %>
+			    <% end %>
+			<% end %>
+			</div>
+			<!-- 評価4フォーム -->
+			<div class="star">
+			<%= form_for @rate, url: section_understandings_path, method: :post do |f| %>
+				<!--ユーザーidの送信-->
+				<%= f.hidden_field :user_id, { value: current_user.id} %>
+				<!--節idの送信-->
+				<%= f.hidden_field :section_id, { value: @section.id} %>
+				<%= f.hidden_field :understanding, { value: 4} %>
+			    <!-- 星型の送信ボタン -->
+			    <%= button_tag( class: "btn btn-default ") do %>
+			    <%= content_tag :span, "", class: "far fa-star color-gold" %>
+			    <% end %>
+			<% end %>
+			</div>
+			<!-- 評価5フォーム -->
+			<div class="star">
+			<%= form_for @rate, url: section_understandings_path, method: :post do |f| %>
+				<!--ユーザーidの送信-->
+				<%= f.hidden_field :user_id, { value: current_user.id} %>
+				<!--節idの送信-->
+				<%= f.hidden_field :section_id, { value: @section.id} %>
+				<%= f.hidden_field :understanding, { value: 5} %>
+			    <!-- 星型の送信ボタン -->
+			    <%= button_tag( class: "btn btn-default ") do %>
+			    <%= content_tag :span, "", class: "far fa-star color-gold" %>
+			    <% end %>
+			<% end %>
+			</div>
+		</div>
+		<% end %>
+		<!-- 評価1の時の評価フォーム -->
+		<% rate1 = SectionUnderstanding.find_by(user_id: current_user.id, section_id: @section.id, understanding: 1) %>
+		<% if rate1 %>
+	    <div class="star-box">
+			<!-- 評価1フォーム -->
+			<div class="star">
+			<%= form_for @rate, url: section_understanding_path, method: :patch do |f| %>
+				<!--ユーザーidの送信-->
+				<%= f.hidden_field :user_id, { value: current_user.id} %>
+				<!--節idの送信-->
+				<%= f.hidden_field :section_id, { value: @section.id} %>
+				<%= f.hidden_field :understanding, { value: 1} %>
+			    <!-- 星型の送信ボタン -->
+			    <%= button_tag( class: "btn btn-default ") do %>
+			    <%= content_tag :span, "", class: "fas fa-star color-gold" %>
+			    <% end %>
+			<% end %>
+			</div>
+			<!-- 評価2フォーム -->
+			<div class="star">
+			<%= form_for @rate, url: section_understanding_path, method: :patch do |f| %>
+				<!--ユーザーidの送信-->
+				<%= f.hidden_field :user_id, { value: current_user.id} %>
+				<!--節idの送信-->
+				<%= f.hidden_field :section_id, { value: @section.id} %>
+				<%= f.hidden_field :understanding, { value: 2} %>
+			    <!-- 星型の送信ボタン -->
+			    <%= button_tag( class: "btn btn-default ") do %>
+			    <%= content_tag :span, "", class: "far fa-star color-gold" %>
+			    <% end %>
+			<% end %>
+			</div>
+			<!-- 評価3フォーム -->
+			<div class="star">
+			<%= form_for @rate, url: section_understanding_path, method: :patch do |f| %>
+				<!--ユーザーidの送信-->
+				<%= f.hidden_field :user_id, { value: current_user.id} %>
+				<!--節idの送信-->
+				<%= f.hidden_field :section_id, { value: @section.id} %>
+				<%= f.hidden_field :understanding, { value: 3} %>
+			    <!-- 星型の送信ボタン -->
+			    <%= button_tag( class: "btn btn-default ") do %>
+			    <%= content_tag :span, "", class: "far fa-star color-gold" %>
+			    <% end %>
+			<% end %>
+			</div>
+			<!-- 評価4フォーム -->
+			<div class="star">
+			<%= form_for @rate, url: section_understanding_path, method: :patch do |f| %>
+				<!--ユーザーidの送信-->
+				<%= f.hidden_field :user_id, { value: current_user.id} %>
+				<!--節idの送信-->
+				<%= f.hidden_field :section_id, { value: @section.id} %>
+				<%= f.hidden_field :understanding, { value: 4} %>
+			    <!-- 星型の送信ボタン -->
+			    <%= button_tag( class: "btn btn-default ") do %>
+			    <%= content_tag :span, "", class: "far fa-star color-gold" %>
+			    <% end %>
+			<% end %>
+			</div>
+			<!-- 評価5フォーム -->
+			<div class="star">
+			<%= form_for @rate, url: section_understanding_path, method: :patch do |f| %>
+				<!--ユーザーidの送信-->
+				<%= f.hidden_field :user_id, { value: current_user.id} %>
+				<!--節idの送信-->
+				<%= f.hidden_field :section_id, { value: @section.id} %>
+				<%= f.hidden_field :understanding, { value: 5} %>
+			    <!-- 星型の送信ボタン -->
+			    <%= button_tag( class: "btn btn-default ") do %>
+			    <%= content_tag :span, "", class: "far fa-star color-gold" %>
+			    <% end %>
+			<% end %>
+			</div>
+		</div>
+		<% end %>
+		<!-- 評価2の時の評価フォーム -->
+		<% rate2 = SectionUnderstanding.find_by(user_id: current_user.id, section_id: @section.id, understanding: 2) %>
+		<% if rate2 %>
+	    <div class="star-box">
+			<!-- 評価1フォーム -->
+			<div class="star">
+			<%= form_for @rate, url: section_understanding_path, method: :patch do |f| %>
+				<!--ユーザーidの送信-->
+				<%= f.hidden_field :user_id, { value: current_user.id} %>
+				<!--節idの送信-->
+				<%= f.hidden_field :section_id, { value: @section.id} %>
+				<%= f.hidden_field :understanding, { value: 1} %>
+			    <!-- 星型の送信ボタン -->
+			    <%= button_tag( class: "btn btn-default ") do %>
+			    <%= content_tag :span, "", class: "fas fa-star color-gold" %>
+			    <% end %>
+			<% end %>
+			</div>
+			<!-- 評価2フォーム -->
+			<div class="star">
+			<%= form_for @rate, url: section_understanding_path, method: :patch do |f| %>
+				<!--ユーザーidの送信-->
+				<%= f.hidden_field :user_id, { value: current_user.id} %>
+				<!--節idの送信-->
+				<%= f.hidden_field :section_id, { value: @section.id} %>
+				<%= f.hidden_field :understanding, { value: 2} %>
+			    <!-- 星型の送信ボタン -->
+			    <%= button_tag( class: "btn btn-default ") do %>
+			    <%= content_tag :span, "", class: "fas fa-star color-gold" %>
+			    <% end %>
+			<% end %>
+			</div>
+			<!-- 評価3フォーム -->
+			<div class="star">
+			<%= form_for @rate, url: section_understanding_path, method: :patch do |f| %>
+				<!--ユーザーidの送信-->
+				<%= f.hidden_field :user_id, { value: current_user.id} %>
+				<!--節idの送信-->
+				<%= f.hidden_field :section_id, { value: @section.id} %>
+				<%= f.hidden_field :understanding, { value: 3} %>
+			    <!-- 星型の送信ボタン -->
+			    <%= button_tag( class: "btn btn-default ") do %>
+			    <%= content_tag :span, "", class: "far fa-star color-gold" %>
+			    <% end %>
+			<% end %>
+			</div>
+			<!-- 評価4フォーム -->
+			<div class="star">
+			<%= form_for @rate, url: section_understanding_path, method: :patch do |f| %>
+				<!--ユーザーidの送信-->
+				<%= f.hidden_field :user_id, { value: current_user.id} %>
+				<!--節idの送信-->
+				<%= f.hidden_field :section_id, { value: @section.id} %>
+				<%= f.hidden_field :understanding, { value: 4} %>
+			    <!-- 星型の送信ボタン -->
+			    <%= button_tag( class: "btn btn-default ") do %>
+			    <%= content_tag :span, "", class: "far fa-star color-gold" %>
+			    <% end %>
+			<% end %>
+			</div>
+			<!-- 評価5フォーム -->
+			<div class="star">
+			<%= form_for @rate, url: section_understanding_path, method: :patch do |f| %>
+				<!--ユーザーidの送信-->
+				<%= f.hidden_field :user_id, { value: current_user.id} %>
+				<!--節idの送信-->
+				<%= f.hidden_field :section_id, { value: @section.id} %>
+				<%= f.hidden_field :understanding, { value: 5} %>
+			    <!-- 星型の送信ボタン -->
+			    <%= button_tag( class: "btn btn-default ") do %>
+			    <%= content_tag :span, "", class: "far fa-star color-gold" %>
+			    <% end %>
+			<% end %>
+			</div>
+		</div>
+		<% end %>
+		<!-- 評価3の時の評価フォーム -->
+		<% rate3 = SectionUnderstanding.find_by(user_id: current_user.id, section_id: @section.id, understanding: 3) %>
+		<% if rate3 %>
+	    <div class="star-box">
+			<!-- 評価1フォーム -->
+			<div class="star">
+			<%= form_for @rate, url: section_understanding_path, method: :patch do |f| %>
+				<!--ユーザーidの送信-->
+				<%= f.hidden_field :user_id, { value: current_user.id} %>
+				<!--節idの送信-->
+				<%= f.hidden_field :section_id, { value: @section.id} %>
+				<%= f.hidden_field :understanding, { value: 1} %>
+			    <!-- 星型の送信ボタン -->
+			    <%= button_tag( class: "btn btn-default ") do %>
+			    <%= content_tag :span, "", class: "fas fa-star color-gold" %>
+			    <% end %>
+			<% end %>
+			</div>
+			<!-- 評価2フォーム -->
+			<div class="star">
+			<%= form_for @rate, url: section_understanding_path, method: :patch do |f| %>
+				<!--ユーザーidの送信-->
+				<%= f.hidden_field :user_id, { value: current_user.id} %>
+				<!--節idの送信-->
+				<%= f.hidden_field :section_id, { value: @section.id} %>
+				<%= f.hidden_field :understanding, { value: 2} %>
+			    <!-- 星型の送信ボタン -->
+			    <%= button_tag( class: "btn btn-default ") do %>
+			    <%= content_tag :span, "", class: "fas fa-star color-gold" %>
+			    <% end %>
+			<% end %>
+			</div>
+			<!-- 評価3フォーム -->
+			<div class="star">
+			<%= form_for @rate, url: section_understanding_path, method: :patch do |f| %>
+				<!--ユーザーidの送信-->
+				<%= f.hidden_field :user_id, { value: current_user.id} %>
+				<!--節idの送信-->
+				<%= f.hidden_field :section_id, { value: @section.id} %>
+				<%= f.hidden_field :understanding, { value: 3} %>
+			    <!-- 星型の送信ボタン -->
+			    <%= button_tag( class: "btn btn-default ") do %>
+			    <%= content_tag :span, "", class: "fas fa-star color-gold" %>
+			    <% end %>
+			<% end %>
+			</div>
+			<!-- 評価4フォーム -->
+			<div class="star">
+			<%= form_for @rate, url: section_understanding_path, method: :patch do |f| %>
+				<!--ユーザーidの送信-->
+				<%= f.hidden_field :user_id, { value: current_user.id} %>
+				<!--節idの送信-->
+				<%= f.hidden_field :section_id, { value: @section.id} %>
+				<%= f.hidden_field :understanding, { value: 4} %>
+			    <!-- 星型の送信ボタン -->
+			    <%= button_tag( class: "btn btn-default ") do %>
+			    <%= content_tag :span, "", class: "far fa-star color-gold" %>
+			    <% end %>
+			<% end %>
+			</div>
+			<!-- 評価5フォーム -->
+			<div class="star">
+			<%= form_for @rate, url: section_understanding_path, method: :patch do |f| %>
+				<!--ユーザーidの送信-->
+				<%= f.hidden_field :user_id, { value: current_user.id} %>
+				<!--節idの送信-->
+				<%= f.hidden_field :section_id, { value: @section.id} %>
+				<%= f.hidden_field :understanding, { value: 5} %>
+			    <!-- 星型の送信ボタン -->
+			    <%= button_tag( class: "btn btn-default ") do %>
+			    <%= content_tag :span, "", class: "far fa-star color-gold" %>
+			    <% end %>
+			<% end %>
+			</div>
+		</div>
+		<% end %>
+		<!-- 評価4の時の評価フォーム -->
+		<% rate4 = SectionUnderstanding.find_by(user_id: current_user.id, section_id: @section.id, understanding: 4) %>
+		<% if rate4 %>
+	    <div class="star-box">
+			<!-- 評価1フォーム -->
+			<div class="star">
+			<%= form_for @rate, url: section_understanding_path, method: :patch do |f| %>
+				<!--ユーザーidの送信-->
+				<%= f.hidden_field :user_id, { value: current_user.id} %>
+				<!--節idの送信-->
+				<%= f.hidden_field :section_id, { value: @section.id} %>
+				<%= f.hidden_field :understanding, { value: 1} %>
+			    <!-- 星型の送信ボタン -->
+			    <%= button_tag( class: "btn btn-default ") do %>
+			    <%= content_tag :span, "", class: "fas fa-star color-gold" %>
+			    <% end %>
+			<% end %>
+			</div>
+			<!-- 評価2フォーム -->
+			<div class="star">
+			<%= form_for @rate, url: section_understanding_path, method: :patch do |f| %>
+				<!--ユーザーidの送信-->
+				<%= f.hidden_field :user_id, { value: current_user.id} %>
+				<!--節idの送信-->
+				<%= f.hidden_field :section_id, { value: @section.id} %>
+				<%= f.hidden_field :understanding, { value: 2} %>
+			    <!-- 星型の送信ボタン -->
+			    <%= button_tag( class: "btn btn-default ") do %>
+			    <%= content_tag :span, "", class: "fas fa-star color-gold" %>
+			    <% end %>
+			<% end %>
+			</div>
+			<!-- 評価3フォーム -->
+			<div class="star">
+			<%= form_for @rate, url: section_understanding_path, method: :patch do |f| %>
+				<!--ユーザーidの送信-->
+				<%= f.hidden_field :user_id, { value: current_user.id} %>
+				<!--節idの送信-->
+				<%= f.hidden_field :section_id, { value: @section.id} %>
+				<%= f.hidden_field :understanding, { value: 3} %>
+			    <!-- 星型の送信ボタン -->
+			    <%= button_tag( class: "btn btn-default ") do %>
+			    <%= content_tag :span, "", class: "fas fa-star color-gold" %>
+			    <% end %>
+			<% end %>
+			</div>
+			<!-- 評価4フォーム -->
+			<div class="star">
+			<%= form_for @rate, url: section_understanding_path, method: :patch do |f| %>
+				<!--ユーザーidの送信-->
+				<%= f.hidden_field :user_id, { value: current_user.id} %>
+				<!--節idの送信-->
+				<%= f.hidden_field :section_id, { value: @section.id} %>
+				<%= f.hidden_field :understanding, { value: 4} %>
+			    <!-- 星型の送信ボタン -->
+			    <%= button_tag( class: "btn btn-default ") do %>
+			    <%= content_tag :span, "", class: "fas fa-star color-gold" %>
+			    <% end %>
+			<% end %>
+			</div>
+			<!-- 評価5フォーム -->
+			<div class="star">
+			<%= form_for @rate, url: section_understanding_path, method: :patch do |f| %>
+				<!--ユーザーidの送信-->
+				<%= f.hidden_field :user_id, { value: current_user.id} %>
+				<!--節idの送信-->
+				<%= f.hidden_field :section_id, { value: @section.id} %>
+				<%= f.hidden_field :understanding, { value: 5} %>
+			    <!-- 星型の送信ボタン -->
+			    <%= button_tag( class: "btn btn-default ") do %>
+			    <%= content_tag :span, "", class: "far fa-star color-gold" %>
+			    <% end %>
+			<% end %>
+			</div>
+		</div>
+		<% end %>
+		<!-- 評価5の時の評価フォーム -->
+		<% rate5 = SectionUnderstanding.find_by(user_id: current_user.id, section_id: @section.id, understanding: 5) %>
+		<% if rate5 %>
+	    <div class="star-box">
+			<!-- 評価1フォーム -->
+			<div class="star">
+			<%= form_for @rate, url: section_understanding_path, method: :patch do |f| %>
+				<!--ユーザーidの送信-->
+				<%= f.hidden_field :user_id, { value: current_user.id} %>
+				<!--節idの送信-->
+				<%= f.hidden_field :section_id, { value: @section.id} %>
+				<%= f.hidden_field :understanding, { value: 1} %>
+			    <!-- 星型の送信ボタン -->
+			    <%= button_tag( class: "btn btn-default ") do %>
+			    <%= content_tag :span, "", class: "fas fa-star color-gold" %>
+			    <% end %>
+			<% end %>
+			</div>
+			<!-- 評価2フォーム -->
+			<div class="star">
+			<%= form_for @rate, url: section_understanding_path, method: :patch do |f| %>
+				<!--ユーザーidの送信-->
+				<%= f.hidden_field :user_id, { value: current_user.id} %>
+				<!--節idの送信-->
+				<%= f.hidden_field :section_id, { value: @section.id} %>
+				<%= f.hidden_field :understanding, { value: 2} %>
+			    <!-- 星型の送信ボタン -->
+			    <%= button_tag( class: "btn btn-default ") do %>
+			    <%= content_tag :span, "", class: "fas fa-star color-gold" %>
+			    <% end %>
+			<% end %>
+			</div>
+			<!-- 評価3フォーム -->
+			<div class="star">
+			<%= form_for @rate, url: section_understanding_path, method: :patch do |f| %>
+				<!--ユーザーidの送信-->
+				<%= f.hidden_field :user_id, { value: current_user.id} %>
+				<!--節idの送信-->
+				<%= f.hidden_field :section_id, { value: @section.id} %>
+				<%= f.hidden_field :understanding, { value: 3} %>
+			    <!-- 星型の送信ボタン -->
+			    <%= button_tag( class: "btn btn-default ") do %>
+			    <%= content_tag :span, "", class: "fas fa-star color-gold" %>
+			    <% end %>
+			<% end %>
+			</div>
+			<!-- 評価4フォーム -->
+			<div class="star">
+			<%= form_for @rate, url: section_understanding_path, method: :patch do |f| %>
+				<!--ユーザーidの送信-->
+				<%= f.hidden_field :user_id, { value: current_user.id} %>
+				<!--節idの送信-->
+				<%= f.hidden_field :section_id, { value: @section.id} %>
+				<%= f.hidden_field :understanding, { value: 4} %>
+			    <!-- 星型の送信ボタン -->
+			    <%= button_tag( class: "btn btn-default ") do %>
+			    <%= content_tag :span, "", class: "fas fa-star color-gold" %>
+			    <% end %>
+			<% end %>
+			</div>
+			<!-- 評価5フォーム -->
+			<div class="star">
+			<%= form_for @rate, url: section_understanding_path, method: :patch do |f| %>
+				<!--ユーザーidの送信-->
+				<%= f.hidden_field :user_id, { value: current_user.id} %>
+				<!--節idの送信-->
+				<%= f.hidden_field :section_id, { value: @section.id} %>
+				<%= f.hidden_field :understanding, { value: 5} %>
+			    <!-- 星型の送信ボタン -->
+			    <%= button_tag( class: "btn btn-default ") do %>
+			    <%= content_tag :span, "", class: "fas fa-star color-gold" %>
+			    <% end %>
+			<% end %>
+			</div>
+		</div>
+		<% end %>
+		<!-- /評価フォーム -->
 
-    <%= link_to "戻る", :back , class: 'btn btn-default' %>
-    <!-- 進むボタンの表示（次のレコードが無ければ進むボタンを表示しない） -->
-    <div class="next_botton">
-    	<!-- 次の節番号を変数に代入する -->
-	    <% next_section = @section.section_number + 1 %>
-	    <% same_curriculum = @section.curriculum_id %>
-	    <!-- 次の節番号のレコードを取得する -->
-	    <% next_page = Section.find_by(section_number: next_section, curriculum_id: same_curriculum) %>
-	    <!-- 次の節番号のレコードがあれば進むボタンを表示する -->
-	    <% if next_page %>
-	    <%= link_to "進む", section_path(next_page.id) , class: 'btn btn-default' %>
-	    <% end %>
+
+
+
+
+		</div>
+		</div>
+	    <div class=""><%= link_to "戻る", :back , class: 'btn btn-default' %></div>
+	    <!-- 進むボタンの表示（次のレコードが無ければ進むボタンを表示しない） -->
+	    <div class="next_botton">
+	    	<!-- 次の節番号を変数に代入する -->
+		    <% next_section = @section.section_number + 1 %>
+		    <% same_curriculum = @section.curriculum_id %>
+		    <!-- 次の節番号のレコードを取得する -->
+		    <% next_page = Section.find_by(section_number: next_section, curriculum_id: same_curriculum) %>
+		    <!-- 次の節番号のレコードがあれば進むボタンを表示する -->
+		    <% if next_page %>
+		    <%= link_to "進む", section_path(next_page.id) , class: 'btn btn-default' %>
+		    <% end %>
+		</div>
 	</div>
 </main>
 
 </div>
 </div>
 </div>
+
