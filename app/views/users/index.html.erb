@@ -14,8 +14,8 @@
             <span class="user-menu-text"><u><b><%= link_to 'カリキュラム', curriculums_path %></b></u><br>cook.campのカリキュラムです。</span>
         </div>
         <div class="user-menu-item clearfix">
-            <div class="user-menu-image"><%= link_to image_tag('background-kitchen.jpg',  class: 'user-menu-image'), skill_notes_path %></div>
-            <span class="user-menu-text"><u><b><%= link_to 'スキル管理ノート', skill_notes_path %></b></u><br>料理の上達度を確認しましょう。</span>
+            <div class="user-menu-image"><%= link_to image_tag('background-kitchen.jpg',  class: 'user-menu-image'), skill_note_path(current_user.id) %></div>
+            <span class="user-menu-text"><u><b><%= link_to 'スキル管理ノート', skill_note_path(current_user.id) %></b></u><br>料理の上達度を確認しましょう。</span>
         </div>
         <div class="user-menu-item clearfix">
             <div class="user-menu-image"><%= link_to image_tag('background-kitchen.jpg',  class: 'user-menu-image'), user_path(current_user.id) %></div>

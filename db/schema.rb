@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_24_172016) do
+ActiveRecord::Schema.define(version: 2019_10_25_131926) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -136,9 +136,6 @@ ActiveRecord::Schema.define(version: 2019_10_24_172016) do
 
   create_table "skill_notes", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "task_id"
-    t.string "task_name"
-    t.float "total_evaluation"
     t.float "taste_evaluation"
     t.float "look_evaluation"
     t.float "finesse_evaluation"
@@ -148,6 +145,8 @@ ActiveRecord::Schema.define(version: 2019_10_24_172016) do
     t.string "cooking_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "task_id"
+    t.integer "made_times"
   end
 
   create_table "task_contents", force: :cascade do |t|
