@@ -25,7 +25,20 @@
     </div><br>
 </div>
 
-    <%= link_to "戻る", :back , class: 'btn btn-default' %>
+    <!-- 戻るボタンの表示（前のページ、もしくはカリキュラムの目次に戻るボタン） -->
+    <div class="back_botton">
+    	<!-- 一つ前の課題番号を変数に代入する -->
+	    <% back_task = @task.task_number - 1 %>
+	    <% same_section = @task.section_id %>
+	    <!-- 同じ章で一つ前の課題番号のレコードを取得する -->
+	    <% back_page = Task.find_by(task_number: back_task, section_id: same_section) %>
+	    <!-- 同じ章で一つ前の課題番号のレコードがあれば戻るボタンを表示する -->
+	    <% if back_page %>
+	    <%= link_to "戻る", admin_task_path(back_page.id) , class: 'btn btn-default btn-lg' %>
+	    <% else %>
+	    <%= link_to "戻る", admin_section_path(@task.section_id) , class: 'btn btn-default btn-lg' %>
+	    <% end %>
+	</div>
     <!-- 進むボタンの表示（次のレコードが無ければ進むボタンを表示しない） -->
     <div class="next_botton">
     	<!-- 次の課題番号を変数に代入する -->
@@ -35,7 +48,7 @@
 	    <% next_page = Task.find_by(task_number: next_task, section_id: same_section) %>
 	    <!-- 次の課題番号のレコードがあれば進むボタンを表示する -->
 	    <% if next_page %>
-	    <%= link_to "進む", admin_task_path(next_page.id) , class: 'btn btn-default' %>
+	    <%= link_to "進む", admin_task_path(next_page.id) , class: 'btn btn-default btn-lg' %>
 	    <% end %>
 	</div>
 </main>

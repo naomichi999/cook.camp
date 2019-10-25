@@ -24,7 +24,7 @@
     <div class="task_contents">
       <%= s.fields_for :task_contents do |i| %>
         <p class="form-text">【画像・テキスト】</p>
-        <!-- render先のブロック変数fはこのページではiとして扱う -->
+        <!-- render元のブロック変数fはこのページではiとして扱う -->
         <%= render "task_content_fields", f: i %>
 
       <% end %>

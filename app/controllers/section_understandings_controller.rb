@@ -3,10 +3,10 @@ class SectionUnderstandingsController < ApplicationController
   def create
     @rate = SectionUnderstanding.new(section_understanding_params)
     if @rate.save
-      flash[:success] = '星型評価を追加しました。'
+      flash[:success] = '理解度を評価しました。'
       redirect_to section_path(@rate.section_id)
     else
-      flash[:danger] = '星型評価は追加できませんでした。'
+      flash[:danger] = '理解度の評価はできませんでした。'
       redirect_to section_path(@rate.section_id)
     end
   end
@@ -15,10 +15,10 @@ class SectionUnderstandingsController < ApplicationController
     @page = Section.find(params[:id])
     @rate = SectionUnderstanding.find_by(user_id: current_user.id, section_id: @page.id)
     if @rate.update(section_understanding_params)
-    flash[:success] = '星型評価を編集しました。'
+    flash[:success] = '理解度を評価しました。'
     redirect_to section_path(@rate.section_id)
     else
-    flash[:danger] = "星型評価は編集できませんでした。"
+    flash[:danger] = "理解度の評価はできませんでした。"
     redirect_to section_path(@rate.section_id)
     end
   end

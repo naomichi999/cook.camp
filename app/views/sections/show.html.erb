@@ -17,6 +17,7 @@
 	    <!-- 節に課題がある場合の表示 -->
 	    <% task_page = Task.find_by(section_id: @section.id) %>
 	    <% if task_page %>
+	    <h3><span class="label label-info">課題リスト</span></h3>
 	    <div class="my_recipe-box clearfix">
 	    	<% @section.tasks.each do |t| %>
 	    		<table class="table">
@@ -28,13 +29,13 @@
 	        	</table>
 	        	<% end %>
 	    	<% end %>
+		</div>
 		<% end %>
 		<h3><理解度></h3>
 
 		<!-- ユーザーが評価をしてい無い時の評価フォーム -->
 		<% rate = SectionUnderstanding.find_by(user_id: current_user.id, section_id: @section.id) %>
 		<% if rate.nil? %>
-		<h3><u>理解度</u></h3>
 	    <div class="star-box">
 			<!-- 評価1フォーム -->
 			<div class="star">
@@ -489,24 +490,32 @@
 		</div>
 		<% end %>
 		<!-- /評価フォーム -->
+	</div>
 
-
-
-
-
+	    <!-- 戻るボタンの表示（前のページ、もしくはカリキュラムの目次に戻るボタン） -->
+	    <div class="back_botton">
+	    	<!-- 一つ前の節番号を変数に代入する -->
+		    <% back_section = @section.section_number - 1 %>
+		    <% same_curriculum = @section.curriculum_id %>
+		    <!-- 同じ章で一つ前の節番号のレコードを取得する -->
+		    <% back_page = Section.find_by(section_number: back_section, curriculum_id: same_curriculum) %>
+		    <!-- 同じ章で一つ前の節番号のレコードがあれば戻るボタンを表示する -->
+		    <% if back_page %>
+		    <%= link_to "戻る", section_path(back_page.id) , class: 'btn btn-default btn-lg' %>
+		    <% else %>
+		    <%= link_to "戻る", curriculums_path , class: 'btn btn-default btn-lg' %>
+		    <% end %>
 		</div>
-		</div>
-	    <div class=""><%= link_to "戻る", :back , class: 'btn btn-default' %></div>
-	    <!-- 進むボタンの表示（次のレコードが無ければ進むボタンを表示しない） -->
+	    <!-- 進むボタンの表示（次のページがあれば進むボタンを表示する） -->
 	    <div class="next_botton">
 	    	<!-- 次の節番号を変数に代入する -->
 		    <% next_section = @section.section_number + 1 %>
 		    <% same_curriculum = @section.curriculum_id %>
-		    <!-- 次の節番号のレコードを取得する -->
+		    <!-- 同じ章で次の節番号のレコードを取得する -->
 		    <% next_page = Section.find_by(section_number: next_section, curriculum_id: same_curriculum) %>
-		    <!-- 次の節番号のレコードがあれば進むボタンを表示する -->
+		    <!-- 同じ章で次の節番号のレコードがあれば進むボタンを表示する -->
 		    <% if next_page %>
-		    <%= link_to "進む", section_path(next_page.id) , class: 'btn btn-default' %>
+		    <%= link_to "進む", section_path(next_page.id) , class: 'btn btn-default btn-lg' %>
 		    <% end %>
 		</div>
 	</div>

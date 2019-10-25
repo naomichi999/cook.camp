@@ -6,105 +6,74 @@
     <div class="row">
     <div class="col-sm-3 sidebar">
         <ul class="nav nav-sidebar">
-            <li><%= link_to '　～カリキュラムの目次～', curriculums_path %></li>
-            <li>
-            	<div class="dropdown">
-					<button class="btn btn-default btn-link dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-						第0章 cook.campを始める前に
-						<span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu" role="menu">
-						<li role="presentation"><%= link_to '第１節．料理のスキルを身に付けるメリット', curriculums_path %> </li>
-						<li role="presentation"><%= link_to '第２節．料理をすることのデメリット', curriculums_path %> </li>
-						<li role="presentation"><%= link_to '第３節．自炊と外食の比較', curriculums_path %> </li>
-						<li role="presentation"><%= link_to '第４節．心構え', curriculums_path %> </li>
-						<li role="presentation"><%= link_to '第５節．準備が必要なもの', curriculums_path %> </li>
-					</ul>
-				</div>
-            </li>
-			<li>
-            	<div class="dropdown">
-					<button class="btn btn-default btn-link dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-						第1章 栄養バランスの考え方
-						<span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu" role="menu">
-						<li role="presentation"><%= link_to '第１節．栄養バランスの考え方', curriculums_path %> </li>
-						<li role="presentation"><%= link_to '第２節．栄養素の種類と役割', curriculums_path %> </li>
-						<li role="presentation"><%= link_to '第３節．献立の基本', curriculums_path %> </li>
-					</ul>
-				</div>
-            </li>
-            <li>
-            	<div class="dropdown">
-					<button class="btn btn-default btn-link dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-						第2章 料理の基本
-						<span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu" role="menu">
-						<li role="presentation"><%= link_to '第１節．料理の基本を学ぶ理由', curriculums_path %> </li>
-						<li role="presentation"><%= link_to '第２節．調味料の量り方', curriculums_path %> </li>
-						<li role="presentation"><%= link_to '第３節．包丁の使い方', curriculums_path %> </li>
-						<li role="presentation"><%= link_to '第４節．食材の切り方(肉・野菜)', curriculums_path %> </li>
-						<li role="presentation"><%= link_to '第５節．調理器具の種類', curriculums_path %> </li>
-						<li role="presentation"><%= link_to '第６節．火加減の調節', curriculums_path %> </li>
-						<li role="presentation"><%= link_to '第７節．油の温度の確かめ方', curriculums_path %> </li>
-						<li role="presentation"><%= link_to '第８節．だしの取り方', curriculums_path %> </li>
-						<li role="presentation"><%= link_to '第９節．ご飯の炊き方', curriculums_path %> </li>
-					</ul>
-				</div>
-            </li>
-			<li>
-				<div class="dropdown">
-					<button class="btn btn-default btn-link dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-						第3章 実習(基本編)
-						<span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu" role="menu">
-						<li role="presentation"><%= link_to '第１節．上達度管理のやり方', curriculums_path %></li>
-						<li role="presentation" class="divider"></li>
-						<li role="presentation"><%= link_to '第２節．実習(基本編)', curriculums_path %></li>
-						<li role="presentation" class="divider"></li>
-						<li role="presentation"><%= link_to '課題１．生姜焼き', curriculums_path %></li>
-						<li role="presentation"><%= link_to '課題２．ハンバーグ', curriculums_path %></li>
-						<li role="presentation"><%= link_to '課題３．鶏の唐揚げ', curriculums_path %></li>
-						<li role="presentation"><%= link_to '課題４．鮭の塩焼き', curriculums_path %></li>
-						<li role="presentation"><%= link_to '課題５．肉野菜炒め', curriculums_path %></li>
-						<li role="presentation"><%= link_to '課題６．肉じゃが', curriculums_path %></li>
-						<li role="presentation"><%= link_to '課題７．カルボナーラ', curriculums_path %></li>
-						<li role="presentation"><%= link_to '課題８．とんかつ', curriculums_path %></li>
-						<li role="presentation"><%= link_to '課題９．ナポリタンスパゲティー', curriculums_path %></li>
-						<li role="presentation"><%= link_to '課題１０．チキン南蛮', curriculums_path %></li>
-						<li role="presentation"><%= link_to '課題１１．サバの味噌煮', curriculums_path %></li>
-						<li role="presentation"><%= link_to '課題１２．豚バラ大根', curriculums_path %></li>
-					</ul>
-				</div>
-
-            </li>
-			<li>
-            	<div class="dropdown">
-					<button class="btn btn-default btn-link dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-						第4章 実習(応用編)
-						<span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu" role="menu">
-						<li role="presentation"><%= link_to '第１節．少し難しめの料理を作ってみよう', curriculums_path %> </li>
-					</ul>
-				</div>
-            </li>
+            <% if user_signed_in? %>
+        	<h3><span class="label label-default">カリキュラムの目次</span></h3><br>
+	        <table class="table ">
+        	    <% chapter_list = Curriculum.all %>
+				<!-- カリキュラムの章の表示 -->
+        		<% chapter_list.each do |u| %>
+                <thead>
+                    <th>
+                       	第<%= u.chapter_number %>章 <%= u.chapter_title %>
+                    </th>
+                </thead>
+					<!-- カリキュラムの節の表示 -->
+					<% u.sections.each do |s| %>
+     				<tbody>
+                        <td>
+                        	<%= link_to section_path(s.id) do %>
+                        	第<%= s.section_number %>節 <%= s.section_title %>
+                        	<% end %>
+                        </td>
+	                </tbody>
+                        <!-- カリキュラムの課題の表示 -->
+                        <% s.tasks.each do |t| %>
+                        <tbody>
+                            <td>
+                                <%= link_to task_path(t.id) do %>
+                                <span>　課題<%= t.task_number %>.<%= t.task_title %></span>
+                                <% end %>
+                            </td>
+                        </tbody>
+                        <% end %>
+	                <% end %>
+                <% end %>
+            </table>
+            <% end %>
+            <% if admin_user_signed_in? %>
+            <h3><span class="label label-default">カリキュラムの目次</span></h3><br>
+            <table class="table ">
+                <% chapter_list = Curriculum.all %>
+                <!-- カリキュラムの章の表示 -->
+                <% chapter_list.each do |u| %>
+                <thead>
+                    <th>
+                        第<%= u.chapter_number %>章 <%= u.chapter_title %>
+                    </th>
+                </thead>
+                    <!-- カリキュラムの節の表示 -->
+                    <% u.sections.each do |s| %>
+                    <tbody>
+                        <td>
+                            <%= link_to admin_section_path(s.id) do %>
+                            第<%= s.section_number %>節 <%= s.section_title %>
+                            <% end %>
+                        </td>
+                    </tbody>
+                        <!-- カリキュラムの課題の表示 -->
+                        <% s.tasks.each do |t| %>
+                        <tbody>
+                            <td>
+                                <%= link_to admin_task_path(t.id) do %>
+                                <span>　課題<%= t.task_number %>.<%= t.task_title %></span>
+                                <% end %>
+                            </td>
+                        </tbody>
+                        <% end %>
+                    <% end %>
+                <% end %>
+            </table>
+            <% end %>
         </ul>
     </div>
     <div class="col-sm-9  main">
-        <!-- メインコンテンツ -->
-<!-- メインコンテンツの一番下は３つのdivを閉じる記述をする？？？    </div>
-</div>
-</div>-->
-
-
-
-
-
-
-<!-- ブートストラップicon(仮)
-glyphicon glyphicon-flag
-glyphicon glyphicon-paperclip -->
