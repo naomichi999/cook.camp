@@ -14,8 +14,15 @@
         	<%= c.task_text %>
         	<% end %>
         </div>
+
 		<div class="">
+        <!-- 課題が採点済みであれば編集ページに遷移させる -->
+	    <% evaluation = SkillNote.find_by(user_id: current_user.id, task_id: @task.id) %>
+		<% if evaluation.nil? %>
 			<%= link_to "課題の自己採点をする", new_skill_note_path , class: 'btn btn-primary btn-lg btn-block'%>
+		<% else %>
+			<%= link_to "再度、自己採点する", edit_skill_note_path , class: 'btn btn-primary btn-lg btn-block'%>
+		<% end %>
 	    </div><br>
     </div><br>
 

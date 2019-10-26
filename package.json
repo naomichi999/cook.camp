@@ -1,5 +1,12 @@
 {
   "name": "cookcamp",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "chart.js": "^2.7.1"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:naomichi999/cook.camp.git",
+  "author": "vagrant",
+  "license": "MIT"
 }

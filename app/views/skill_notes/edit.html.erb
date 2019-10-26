@@ -7,10 +7,6 @@
 	<h3><span class="label label-default">自己採点の編集をしてください</span></h3><br>
 
 <%= form_for(@skill) do |f| %>
-  <div class="">
-  <p class="form-text">この課題を作ったのは何回目ですか？</p>
-  <%= f.number_field :made_times, min: 1, max: 99, autofocus: true, class:"form-control-sm" %>
-  </div><br>
 
   <!-- 評価 -->
   <div class="form-group row" id="star1">

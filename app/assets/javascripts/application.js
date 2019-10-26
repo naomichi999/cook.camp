@@ -14,6 +14,8 @@
   //= require jquery
   //= require bootstrap-sprockets
 
+// Chart.jsのライブラリを呼び出す記述
+  //= require Chart.min
 
 //= require rails-ujs
 //= require activestorage

@@ -3,8 +3,48 @@
 
 <main class="login-time-box">
 <h1>スキル管理ノート</h1>
+
     <div class="basic-box">
-	<h3><span class="label label-default"><%= current_user.nickname %>さんのスキル管理ノート</span></h3><br>
+<h3><span class="label label-default">レーダーチャート</span></h3><br>
+  <canvas id="myRaderChart"></canvas>
+  <!-- CDN -->
+　<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+
+  <script>
+    var ctx = document.getElementById("myRaderChart");
+    var myRadarChart = new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: ["料理の味", "料理の盛り付け", "課題の達成度", "カリキュラムの理解度", "調理の手際"],
+            datasets: [{
+                label: gon.nickname,
+                data: gon.bardata,
+                backgroundColor: 'RGBA(225,95,150, 0.5)',
+                borderColor: 'RGBA(225,95,150, 1)',
+                borderWidth: 1,
+                pointBackgroundColor: 'RGB(46,106,177)'
+            },]
+        },
+        options: {
+            title: {
+                display: true,
+                text: gon.nickname + 'さんの料理スキル'
+            },
+            scale:{
+                ticks:{
+                    suggestedMin: 0,
+                    suggestedMax: 5,
+                    stepSize: 1,
+                    callback: function(value, index, values){
+                        return  value +  ''
+                    }
+                }
+            }
+        }
+    });
+    </script>
+
+	<h3><span class="label label-default"><%= current_user.nickname %>のスキル管理ノート</span></h3><br>
         <% @skill.each do |m| %>
         <h3><span class="label label-info">課題<%= m.task.task_number %>.<%= m.task.task_title %></span></h3>
         <div class="my_recipe-box clearfix">
@@ -14,6 +54,10 @@
 	    			<p><%= attachment_image_tag m, :cooking_image, class:'img-fluid', fallback: "no_image.png", class: "my_recipe-image" %></p>
 	    			<% end %>
 	    		</div><br>
+		<!-- 総合評価(それぞれの評価の平均値) -->
+		<% total = (m.taste_evaluation + m.taste_evaluation + m.look_evaluation) / 3 %>
+		<h3>総合評価：<%= total.round(2) %>点</h3><br>
+
           <h4>料理の味：<%= m.taste_evaluation %>点</h4>
         <!--星評価-->
          <div id="star1<%= m.id %>"></div>
@@ -63,8 +107,6 @@
 	    	<div class="skill_note-right">
 	    		<p><作成日></p>
 	    		<p><%= m.created_at %></p>
-	    		<p><作った回数></p>
-	    		<p><%= m.made_times %>回目</p>
 	    		<p><注意点></p>
 	    		<p><%= m.important_point %></p>
 	    		<p><改善点></p>
@@ -73,16 +115,13 @@
 	    		<p><%= m.feeling %></p>
 	    	</div>
 	    	<div class="skill_note-bottom">
-	    		<p><%= link_to '編集する', skill_note_path(m.id), class: 'btn btn-primary btn-lg btn-block' %></p>
+	    		<p><%= link_to '編集する', edit_skill_note_path(m.id), class: 'btn btn-primary btn-lg btn-block' %></p>
 	    	</div>
 	    </div>
         <% end %>
         <div class="paginate">
             <%= paginate @pages, class: "paginate" %>
         </div>
-		<div class="">
-			<%= link_to "新しい課題の自己採点をする", new_skill_note_path , class: 'btn btn-primary btn-lg btn-block'%>
-	    </div><br>
     </div>
 </main>
 

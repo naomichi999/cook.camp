@@ -8,6 +8,20 @@ class SkillNotesController < ApplicationController
     @user = User.find(current_user.id)
     @skill = @user.skill_notes.order(:task_id)
     @pages = @skill.page(params[:page]).per(7)
+
+    # スキル管理ノートの味・盛り付け・手際の評価の平均
+    taste = SkillNote.where(user_id: current_user.id).average(:taste_evaluation)
+    look = SkillNote.where(user_id: current_user.id).average(:look_evaluation)
+    finesse = SkillNote.where(user_id: current_user.id).average(:finesse_evaluation)
+    # （カリキュラムの理解度の合計÷節の数）をグラフに反映する
+    section_qty = SkillNote.count
+    understanding_sum = SectionUnderstanding.where(user_id: current_user).sum(:understanding)
+    understanding = section_qty / understanding_sum
+    # 課題の達成度
+    achievement = SkillNote.where(user_id: current_user.id).count
+    # レーダーチャートの配列
+    gon.bardata = [taste, finesse, achievement, understanding, look]
+    gon.nickname = current_user.nickname
   end
 
   def edit
@@ -36,7 +50,18 @@ class SkillNotesController < ApplicationController
     redirect_to skill_note_path(current_user.id)
     end
   end
+
+  def destroy
+    @skill = SkillNote.find(params[:id])
+    if @skill.destroy
+      flash[:success] = '自己採点を削除しました。'
+      redirect_to skill_note_path(current_user.id)
+    else
+      flash[:danger] = "自己採点の削除に失敗しました。"
+      redirect_to skill_note_path(current_user.id)
+    end
+  end
   def skill_params
-    params.require(:skill_note).permit(:user_id, :task_id, :taste_evaluation, :look_evaluation, :finesse_evaluation, :important_point, :improve_point, :feeling, :cooking_image, :made_times)
+    params.require(:skill_note).permit(:user_id, :task_id, :taste_evaluation, :look_evaluation, :finesse_evaluation, :important_point, :improve_point, :feeling, :cooking_image)
   end
 end

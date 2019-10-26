@@ -13,11 +13,6 @@
     <%= f.collection_select(:task_id, Task.all, :id, :task_title, prompt: "課題を選択して下さい") %>
   </div><br>
 
-  <div class="">
-  <p class="form-text">この課題を作ったのは何回目ですか？</p>
-  <%= f.number_field :made_times, min: 1, max: 99, autofocus: true, class:"form-control-sm" %>
-  </div><br>
-
   <!-- 評価 -->
   <div class="form-group row" id="star1">
     <%= f.label :taste_evaluation,'料理の味：', class:'col-md-3 col-form-label' %>

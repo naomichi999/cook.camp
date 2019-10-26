@@ -6,6 +6,10 @@
     <%= csp_meta_tag %>
     <!-- Font Awesome のリンク -->
     <script src="https://kit.fontawesome.com/5b4e1b6848.js" crossorigin="anonymous"></script>
+    <!-- /Font Awesome のリンク -->
+    <!-- グラフのデータをRailsのコントローラ側から渡す為のgemであるGonを使用するための記述 -->
+    <%= Gon::Base.render_data %>
+    <!-- /グラフのデータをRailsのコントローラ側から渡す為のgemであるGonを使用するための記述 -->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>

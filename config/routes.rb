@@ -72,7 +72,7 @@ Rails.application.routes.draw do
   resources :tasks, only: [:show]
   resources :section_understandings, only: [:update, :create]
   resources :sections, only: [:show, :create, :update]
-  resources :skill_notes, only: [:new, :show, :edit, :create, :update]
+  resources :skill_notes, only: [:new, :show, :edit, :create, :update, :destroy]
   resources :my_recipes, only: [:index, :new, :show, :edit, :create, :update, :destroy]
   resources :users, only: [:index, :show, :edit, :update]
 
