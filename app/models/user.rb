@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :inquiries, dependent: :destroy
   has_many :my_recipes, dependent: :destroy
-  has_one :skill_notes, dependent: :destroy
+  has_many :skill_notes, dependent: :destroy
   has_one :section_understanding, dependent: :destroy
 
   validates :email, :encrypted_password, :sei_kanji, :mei_kanji, :sei_kana,

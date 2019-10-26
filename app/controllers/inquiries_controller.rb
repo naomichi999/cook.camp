@@ -9,8 +9,8 @@ class InquiriesController < ApplicationController
   def create
     @inquiry = Inquiry.new(inquiry_params)
     if @inquiry.save
-      flash[:success] = 'お問い合わせありがとうございます。内容が確認次第、管理者からご連絡させていただきます。'
-      if @inquiry.user_id == current_user.id
+      flash[:success] = 'お問い合わせありがとうございます。内容を確認次第、管理者からご連絡させていただきます。'
+      if user_signed_in?
         redirect_to users_path
       else
       	redirect_to root_path

@@ -3,11 +3,8 @@
 
 <main class="login-time-box">
 <h1>お問い合わせ一覧</h1>
-
-
     <div class="basic-box">
 	<h3><span class="label label-default">お問い合わせ一覧</span></h3>
-
                 <% @inquiry.each do |m| %>
                 <div class="my_recipe-box clearfix">
     	    		<div class="inquiry-box-left">
@@ -39,7 +36,6 @@
 			    	</div>
 			    </div>
                 <% end %>
-
             <div class="paginate">
                 <%= paginate @pages, class: "paginate" %>
             </div>

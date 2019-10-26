@@ -37,7 +37,7 @@
 
   <div class="normal_field">
     <p class="form-text">注意点</p>
-    <%= f.text_area :important_point, autofocus: true, placeholder: "次回、料理するときに気を付けることを入力してください", class:"form-control" %>
+    <%= f.text_area :important_point, autofocus: true, placeholder: "今回、料理したときに気を付けたことを入力してください", class:"form-control" %>
   </div><br>
   <div class="normal_field">
     <p class="form-text">改善できそうな点</p>
@@ -57,7 +57,7 @@
 <% end %>
 </div>
 
-<%= link_to "マイレシピへ戻る", my_recipes_path, class: 'btn btn-default' %>
+<%= link_to "戻る", :back, class: 'btn btn-default' %>
 </main>
 
 

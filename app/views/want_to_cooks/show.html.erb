@@ -1,14 +1,10 @@
-
-
 <!-- 作りたい料理リスト -->
 <%= render 'layouts/list' %>
 
 <main class="login-time-box">
 <h1>作りたい料理リスト</h1>
-
-
     <div class="basic-box">
-	<h3><span class="label label-default">さんの作りたい料理リスト</span></h3>
+	<h3><span class="label label-default"><%= current_user.nickname %>さんの作りたい料理リスト</span></h3>
                 <!-- 基本のレシピの中で作りたい料理リストに追加したものを表示する -->
                 <% @pages.each do |m| %>
                 <% if m.basic_recipe_id != nil %>
@@ -51,7 +47,6 @@
 			    </div>
                 <% end %>
                 <% end %>
-
             <div class="paginate">
                 <%= paginate @pages, class: "paginate" %>
             </div>

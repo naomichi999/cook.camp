@@ -1,1 +1,95 @@
-<%= link_to "自己採点する", new_skill_note_path , class: 'btn btn-primary btn-lg'%>
+<!-- スキル管理ノート -->
+<%= render 'layouts/list' %>
+
+<main class="login-time-box">
+<h1>スキル管理ノート</h1>
+    <div class="basic-box">
+	<h3><span class="label label-default"><%= current_user.nickname %>さんのスキル管理ノート</span></h3><br>
+        <% @skill.each do |m| %>
+        <h3><span class="label label-info">課題<%= m.task.task_number %>.<%= m.task.task_title %></span></h3>
+        <div class="my_recipe-box clearfix">
+    		<div class="skill_note-left">
+	    		<div class="my_recipe-image">
+	    			<%= link_to(task_path(m.task_id)) do %>
+	    			<p><%= attachment_image_tag m, :cooking_image, class:'img-fluid', fallback: "no_image.png", class: "my_recipe-image" %></p>
+	    			<% end %>
+	    		</div><br>
+          <h4>料理の味：<%= m.taste_evaluation %>点</h4>
+        <!--星評価-->
+         <div id="star1<%= m.id %>"></div>
+          <script>
+          $('#star1<%= m.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= m.taste_evaluation %>,
+          });
+          </script>
+        <!--/星評価-->
+          <h4>料理の盛付け：<%= m.look_evaluation %>点</h4>
+        <!--星評価-->
+         <div id="star2<%= m.id %>"></div>
+          <script>
+          $('#star2<%= m.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= m.look_evaluation %>,
+          });
+          </script>
+        <!--/星評価-->
+          <h4>調理の手際：<%= m.finesse_evaluation %>点</h4>
+        <!--星評価-->
+         <div id="star3<%= m.id %>"></div>
+          <script>
+          $('#star3<%= m.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= m.finesse_evaluation %>,
+          });
+          </script>
+        <!--/星評価-->
+	    	</div>
+	    	<div class="skill_note-right">
+	    		<p><作成日></p>
+	    		<p><%= m.created_at %></p>
+	    		<p><作った回数></p>
+	    		<p><%= m.made_times %>回目</p>
+	    		<p><注意点></p>
+	    		<p><%= m.important_point %></p>
+	    		<p><改善点></p>
+	    		<p><%= m.improve_point %></p>
+	    		<p><全体の感想></p>
+	    		<p><%= m.feeling %></p>
+	    	</div>
+	    	<div class="skill_note-bottom">
+	    		<p><%= link_to '編集する', skill_note_path(m.id), class: 'btn btn-primary btn-lg btn-block' %></p>
+	    	</div>
+	    </div>
+        <% end %>
+        <div class="paginate">
+            <%= paginate @pages, class: "paginate" %>
+        </div>
+		<div class="">
+			<%= link_to "新しい課題の自己採点をする", new_skill_note_path , class: 'btn btn-primary btn-lg btn-block'%>
+	    </div><br>
+    </div>
+</main>
+
+</div>
+</div>
+</div>
+
+
+
+

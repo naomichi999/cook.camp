@@ -1,2 +1,88 @@
-<h1>SkillNotes#edit</h1>
-<p>Find me in app/views/skill_notes/edit.html.erb</p>
+<!--課題の自己採点の編集(スキルノートの編集ページ) -->
+<%= render 'layouts/list' %>
+
+<main class="login-time-box">
+<h1>課題の自己採点の編集</h1>
+    <div class="basic-box">
+	<h3><span class="label label-default">自己採点の編集をしてください</span></h3><br>
+
+<%= form_for(@skill) do |f| %>
+  <div class="">
+  <p class="form-text">この課題を作ったのは何回目ですか？</p>
+  <%= f.number_field :made_times, min: 1, max: 99, autofocus: true, class:"form-control-sm" %>
+  </div><br>
+
+  <!-- 評価 -->
+  <div class="form-group row" id="star1">
+    <%= f.label :taste_evaluation,'料理の味：', class:'col-md-3 col-form-label' %>
+    <%= f.hidden_field :taste_evaluation, class: :review_star %>
+  </div>
+  <!-- 評価 -->
+  <div class="form-group row" id="star2">
+    <%= f.label :look_evaluation,'料理の盛り付け：', class:'col-md-3 col-form-label' %>
+    <%= f.hidden_field :look_evaluation, class: :review_star %>
+  </div>
+  <!-- 評価 -->
+  <div class="form-group row" id="star3">
+    <%= f.label :finesse_evaluation,'料理の手際：', class:'col-md-3 col-form-label' %>
+    <%= f.hidden_field :finesse_evaluation, class: :review_star %>
+  </div>
+
+
+  <div class="normal_field">
+    <p class="form-text">注意点</p>
+    <%= f.text_area :important_point, autofocus: true, placeholder: "次回、料理するときに気を付けることを入力してください", class:"form-control" %>
+  </div><br>
+  <div class="normal_field">
+    <p class="form-text">改善できそうな点</p>
+    <%= f.text_area :improve_point, autofocus: true, placeholder: "次回、料理するときに改善できそうな点を入力してください", class:"form-control" %>
+  </div><br>
+  <div class="normal_field">
+    <p class="form-text">全体の感想</p>
+    <%= f.text_area :feeling, autofocus: true, placeholder: "全体の感想を入力してください", class:"form-control" %>
+  </div><br>
+    <div class="">
+    <p class="form-text">料理の画像</p>
+    <%= f.attachment_field :cooking_image %>
+  </div><br>
+  <div class="actions">
+    <%= f.submit "編集する", class:"btn btn-primary" %>
+  </div><br>
+<% end %>
+</div>
+
+<%= link_to "戻る", :back, class: 'btn btn-default' %>
+</main>
+
+
+  <!-- 評価javascript -->
+  <script>
+  $('#star1').raty({
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'skill_note[taste_evaluation]',
+    half: true,
+  });
+  </script>
+  <script>
+  $('#star2').raty({
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'skill_note[look_evaluation]',
+    half: true,
+  });
+  </script>
+  <script>
+  $('#star3').raty({
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'skill_note[finesse_evaluation]',
+    half: true,
+  });
+  </script>
