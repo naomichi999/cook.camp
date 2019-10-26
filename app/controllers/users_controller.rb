@@ -5,8 +5,7 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
-  	@my_recipe = MyRecipe.all
-  	# ↑ここは@my_recipe = MyRecipe.find(params[:id])でいける？？
+  	@my_recipe = @user.my_recipes
   end
 
   def edit

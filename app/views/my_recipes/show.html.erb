@@ -3,8 +3,6 @@
 
 <main class="login-time-box">
 <h1>マイレシピ詳細</h1>
-
-
     <div class="basic-box">
 	<h3><span class="label label-default"><%= @my_recipe.cooking_name %>の作り方</span></h3>
 
@@ -30,7 +28,10 @@
 			    		<p><%= @my_recipe.how_to_cook %></p>
 			    	</div>
 			    </div>
-
+<!-- 料理の動画 -->
+<p><料理の動画></p>
+<p><%= video_tag @my_recipe.cooking_video_url.to_s,loop: true, controls: true, width: 550, id: "mv" %></p><br>
+<!-- loop: true loop処理 -->
 
 	<div class="">
         <%= link_to 'このレシピを編集する', edit_my_recipe_path, class: 'btn btn-default btn-lg' %>
@@ -50,8 +51,6 @@
     </div><br>
 <% end %>
 
-
-
     <!-- 公開フラグの切り替え -->
 		<%= form_for(@my_recipe, url: {controller: "my_recipes", action: "update"}) do |f| %>
 			<% if @my_recipe.publishment == false %>
@@ -60,15 +59,6 @@
     			<p><%= f.submit 'このレシピを非公開にする', class: "publishment_submit", :class=>"btn btn-danger" %></p></br>
 			<% end %>
 	    <% end %>
-
-
-<!-- 料理の動画 -->
-<p><料理の動画></p>
-<%= video_tag @my_recipe.cooking_video_url.to_s,loop: true, controls: true, width: 550, id: "mv" %>
-<!-- loop: true loop処理 -->
-
-
-
 
     </div>
 </div>

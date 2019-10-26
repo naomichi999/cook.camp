@@ -1,13 +1,16 @@
 <!-- マイページ -->
-<!-- カレントユーザーと他ユーザーで掲載情報を分ける -->
+<!-- 作成者と他ユーザーで掲載情報を分ける -->
 <%= render 'layouts/list' %>
 
 <main class="login-time-box">
-<h1><%= @user.nickname %>さんのページ</h1>
-
-
+<h1><%= @user.nickname %>のページ</h1>
     <div class="basic-box">
+    <!-- 作成者なら会員情報、他ユーザーならニックネームのラベルを表示する -->
+    <% if User.find(params[:id]) == current_user %>
 	<h3><span class="label label-default"><%= @user.sei_kanji %> <%= @user.mei_kanji %>さんの会員情報</span></h3>
+	<% else %>
+	<h3><span class="label label-default"><%= @user.nickname %>のページ</span></h3>
+	<% end %>
     	<div class="profile-box">
     		<div class="profile-box-left">
 	    		<div class="user-page-image"><%= attachment_image_tag @user, :profile_image, fallback: "no_image.png", class: "user-page-image" %></div>
@@ -19,16 +22,43 @@
 	    		<p><%= @user.introduction %></p>
 	    	</div>
 	    	<div class="profile-box-right-bottom">
-	    		<%= link_to 'ユーザー情報を編集する', edit_user_path, class: 'btn btn-primary btn-lg' %>
+		    <!-- 作成者なら会員情報、他ユーザーならニックネームのラベルを表示する -->
+			<% if User.find(params[:id]) == current_user %>
+	    		<%= link_to 'ユーザー情報を編集する', edit_user_path, class: 'btn btn-primary btn-lg btn-block' %>
+	    	<% end %>
 	    	</div>
         </div>
+        <!-- 作成者なら退会手続きを表示する -->
+        <% if User.find(params[:id]) == current_user %>
         <%= link_to 'ユーザー退会手続きへ', leafe_path, class: 'btn btn-danger btn-lg' %><br>
-        <h3><span class="label label-default"><%= @user.nickname %>さんのマイレシピ</span></h3>
-        <% @my_recipe.each do |m| %>
-	        <%= m.cooking_image %>
-	        <%= m.cooking_name %>
-	        <%= m.genre_name %>
-	        <%= m.cooking_explanation %>
+        <% else %>
+        <!-- 他ユーザーなら公開されているマイレシピを表示する -->
+        <h3><span class="label label-default"><%= @user.nickname %>のマイレシピ</span></h3>
+                <% @my_recipe.each do |m| %>
+                <% if m.publishment == true %>
+                <div class="my_recipe-box clearfix">
+    	    		<div class="my_recipe-box-left">
+			    		<div class="my_recipe-image">
+			    			<%= link_to(my_recipe_path(m.id)) do %>
+			    			<p><%= attachment_image_tag m, :cooking_image, fallback: "no_image.png", class: "my_recipe-image" %></p>
+			    			<% end %>
+				    		<p><%= link_to 'このレシピの詳細を見る', my_recipe_path(m.id), class: 'btn btn-primary' %></p>
+			    		</div><br>
+			    	</div>
+			    	<div class="my_recipe-box-right">
+			    		<p><%= m.cooking_name %></p>
+			    		<p><%= m.genre_name %></p>
+			    		<p><%= m.cooking_explanation %></p>
+			    		<p><%= m.user.nickname %></p>
+			    		<% if m.publishment == true %>
+			    	      <p class="flash-notice">※このレシピは公開されています</p>
+			    	    <% else %>
+			    	      <p class="flash-warning">※このレシピは非公開です</p>
+			    	    <% end %>
+			    	</div>
+			    </div>
+			     <% end %>
+                <% end %>
         <% end %>
     </div>
 </main>
