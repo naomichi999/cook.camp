@@ -58,7 +58,7 @@
 	    			<% end %>
 	    		</div><br>
 		<!-- 総合評価(それぞれの評価の平均値) -->
-		<% total = (m.taste_evaluation + m.taste_evaluation + m.look_evaluation) / 3 %>
+		<% total = (m.taste_evaluation + m.look_evaluation + m.finesse_evaluation) / 3 %>
 		<h3>総合評価：<%= total.round(2) %>点</h3><br>
 
           <h4>料理の味：<%= m.taste_evaluation %>点</h4>
