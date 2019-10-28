@@ -15,11 +15,10 @@
 			    			<%= link_to(my_recipe_path(m.id)) do %>
 			    			<p><%= attachment_image_tag m, :cooking_image, fallback: "no_image.png", class: "my_recipe-image" %></p>
 			    			<% end %>
-				    		<p><%= link_to 'このレシピの詳細を見る', my_recipe_path(m.id), class: 'btn btn-primary' %></p>
 			    		</div><br>
 			    	</div>
 			    	<div class="my_recipe-box-right">
-			    		<p><%= m.cooking_name %></p>
+			    		<h4><%= m.cooking_name %></h4>
 			    		<p><%= m.genre_name %></p>
 			    		<p><%= m.cooking_explanation %></p>
 			    		<p><%= m.user.nickname %></p>
@@ -28,6 +27,7 @@
 			    	    <% else %>
 			    	      <p class="flash-warning">※このレシピは非公開です</p>
 			    	    <% end %>
+				    		<p><%= link_to 'このレシピの詳細を見る', my_recipe_path(m.id), class: 'btn btn-primary' %></p>
 			    	</div>
 			    </div>
                 <% end %>

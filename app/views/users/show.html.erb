@@ -11,7 +11,7 @@
 	<% else %>
 	<h3><span class="label label-default"><%= @user.nickname %>のページ</span></h3>
 	<% end %>
-    	<div class="profile-box">
+    	<div class="profile-box clearfix">
     		<div class="profile-box-left">
 	    		<div class="user-page-image"><%= attachment_image_tag @user, :profile_image, fallback: "no_image.png", class: "user-page-image" %></div>
 	    		<p><%= @user.nickname %></p>
@@ -19,7 +19,7 @@
 	    		<p><%= @user.email %></p>
 	    	</div>
 	    	<div class="profile-box-right">
-	    		<p><%= @user.introduction %></p>
+	    		<p class="introduction-text"><%= @user.introduction %></p>
 	    	</div>
 	    	<div class="profile-box-right-bottom">
 		    <!-- 作成者なら会員情報、他ユーザーならニックネームのラベルを表示する -->

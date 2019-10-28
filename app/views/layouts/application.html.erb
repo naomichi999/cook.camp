@@ -41,6 +41,7 @@
       <ul class="nav navbar-nav navbar-right">
 
         <li><%= link_to 'ユーザーメニュー', users_path %></li>
+        <li><%= link_to 'スキル管理ノート', skill_note_path(current_user.id) %></li>
         <li><%= link_to 'マイページ', user_path(current_user.id) %></li>
         <li><%= link_to 'マイレシピ', my_recipes_path %></li>
         <li><%= link_to 'みんなのレシピ', everyone_recipes_path %></li>

@@ -45,7 +45,6 @@
 }
 .profile-box-left {
   width: 40%;
-  height: 350px;
   padding: 20px;
   margin-bottom: 30px;
   text-align: center;
@@ -54,15 +53,13 @@
 }
 .profile-box-right {
   width: 60%;
-  height: 250px;
   padding: 20px;
   margin: 0px;
   background-color: whitesmoke;
   float: left;
 }
 .profile-box-right-bottom {
-  width: 60%;
-  height: 100px;
+  width: 100%;
   padding: 20px;
   margin-bottom: 30px;
   background-color: whitesmoke;
@@ -80,6 +77,9 @@
 .leave-box {
   padding: 50px;
   margin: 50px auto;
-  background-color: whitesmoke;
+  background-color: lightgray;
   text-align: center;
+}
+.introduction-text {
+  font-size: 20px;
 }

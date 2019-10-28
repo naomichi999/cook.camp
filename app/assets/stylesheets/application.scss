@@ -41,11 +41,10 @@
 }
 .sidebar {
    margin: 0;
-   padding: 30px 0;
+   padding: 50px 10px 500px;
    box-sizing: border-box;
-   background-color: whitesmoke;
-   height: 100%;
-   border-right: 1px solid black;
+   background-color: #ccbd99  ;
+   border-right: 1px solid #ccbd99 ;
 }
 body {
   font-family: Meiryo, sans-serif;
@@ -55,12 +54,13 @@ body {
 }
 body {
   margin-top: 50px;
-  margin-bottom: 200px;
-  background-color: aliceblue;
+  margin-bottom: 50px;
+  background-color: #332f26;
 }
 
 h1 {
   margin-left: 30px;
+  color: white;
 }
 .paginate {
   text-align: center;
@@ -77,7 +77,7 @@ h1 {
   width: 100%;
   margin: 20px auto;
   padding: 30px 30px 30px;
-  background-color: white;
+  background-color: #eedcb3;
   border: 1px solid black;
 }
 
@@ -97,7 +97,7 @@ h1 {
 .registration {
  text-align: center;
  padding: 50px;
- background-color: ivory;
+ background-color: lemonchiffon;
  width: 100%;
  margin: 0 auto;
  margin-top: 50px;
@@ -108,7 +108,7 @@ h1 {
 .session {
  text-align: center;
  padding: 50px;
- background-color: ivory;
+ background-color: lemonchiffon;
  width: 100%;
  margin: 0 auto;
  margin-top: 50px;

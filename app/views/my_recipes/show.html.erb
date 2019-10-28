@@ -14,24 +14,120 @@
 			    		</div><br>
 			    	</div>
 			    	<div class="my_recipe-box-right">
-			    		<p><%= @my_recipe.cooking_name %></p>
-			    		<p><%= @my_recipe.genre_name %></p>
+			    		<h3><%= @my_recipe.cooking_name %></h3>
+			    		<h4><%= @my_recipe.genre.genre_name %></h4>
 			    		<p>:<%= @my_recipe.cooking_explanation %></p>
 			    		<% if @my_recipe.publishment == true %>
 			    	      <p class="flash-notice">※このレシピは公開されています</p>
 			    	    <% else %>
 			    	      <p class="flash-warning">※このレシピは非公開です</p>
 			    	    <% end %>
-			    	    <p><材料></p>
-			    		<p><%= @my_recipe.ingredient %></p>
-			    		<p><作り方></p>
-			    		<p><%= @my_recipe.how_to_cook %></p>
+					<!-- 発表用は直接ビューに書き込む -->
+			    	    <!-- <h4><材料></h4>
+			    	    	<p><%= @my_recipe.ingredient %></p> -->
+			    	    	<!-- 発表用のレイアウト -->
+							<table class="table">
+								<thead>
+									<tr>
+										<th>【材料】</th>
+										<th align="right">(1人前)</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>鶏モモ肉</td>
+										<td align="right">150g</td>
+									</tr>
+									<tr>
+										<th>(下味)</th>
+										<td></td>
+									</tr>
+									<tr>
+										<td>おろし生姜(チューブでもOK)</td>
+										<td align="right">小さじ1</td>
+									</tr>
+									<tr>
+										<td>おろしにんにく(チューブでもOK)</td>
+										<td align="right">小さじ1</td>
+									</tr>
+									<tr>
+										<td>料理酒</td>
+										<td align="right">大さじ1</td>
+									</tr>
+									<tr>
+										<td>醤油</td>
+										<td align="right">大さじ1/2</td>
+									</tr>
+									<tr>
+										<td>ごま油</td>
+										<td align="right">小さじ1</td>
+									</tr>
+									<tr>
+										<td>鶏ガラスープの素</td>
+										<td align="right">小さじ1/4</td>
+									</tr>
+									<tr>
+										<td>塩コショウ</td>
+										<td align="right">小さじ1/2</td>
+									</tr>
+									<tr>
+										<td>片栗粉</td>
+										<td align="right">大さじ1.5</td>
+									</tr>
+									<tr>
+										<td>揚げ油</td>
+										<td align="right">300~400ml程度</td>
+									</tr>
+								</tbody>
+							</table>
+							<!-- /発表用のレイアウト -->
+
+			    	    <!-- 発表用は直接ビューに書き込む -->
+			    	    <!-- <h4><作り方></h4>
+			    	    	<p><%= @my_recipe.how_to_cook %></p> -->
+			    	    	<!-- 発表用のレイアウト -->
+							<table class="table">
+								<thead>
+									<tr>
+										<th>【作り方】</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1．鶏モモ肉をフォークで数か所刺し、一口大に切ります。</td>
+									</tr>
+									<tr>
+										<td>2．ボウルに鶏もも肉と下味の材料を入れ、よく揉みこみます。</td>
+									</tr>
+									<tr>
+										<td>3．ボウルにラップをして、冷蔵庫で20分ほど漬け込みます。</td>
+									</tr>
+									<tr>
+										<td>4．片栗粉を全体にまぶします。</td>
+									</tr>
+									<tr>
+										<td>5．フライパンに3㎝程の揚げ油を注ぎ、180℃に熱します。</td>
+									</tr>
+									<tr>
+										<td>6．片栗粉をまぶした鶏もも肉を油の中へ入れ、4分ほど揚げます。</td>
+									</tr>
+									<tr>
+										<td>7．表面がカリッとして中まで火が通ったら、油から取り出して油を切ります。</td>
+									</tr>
+									<tr>
+										<td>8．お皿に盛りつけて完成です。</td>
+									</tr>
+								</tbody>
+							</table>
+			    			<!-- 発表用のレイアウト -->
 			    	</div>
 			    </div>
 <!-- 料理の動画 -->
+<% if @my_recipe.cooking_video.present? %>
 <p><料理の動画></p>
 <p><%= video_tag @my_recipe.cooking_video_url.to_s,loop: true, controls: true, width: 550, id: "mv" %></p><br>
 <!-- loop: true loop処理 -->
+<% end %>
 
 	<div class="">
         <%= link_to 'このレシピを編集する', edit_my_recipe_path, class: 'btn btn-default btn-lg' %>

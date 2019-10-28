@@ -17,13 +17,13 @@
 			    			<%= link_to(admin_basic_recipe_path(m.id)) do %>
 			    			<p><%= attachment_image_tag m, :cooking_image, fallback: "no_image.png", class: "my_recipe-image" %></p>
 			    			<% end %>
-				    		<p><%= link_to 'このレシピの作り方を見る', admin_basic_recipe_path(m.id), class: 'btn btn-primary' %></p>
 			    		</div><br>
 			    	</div>
 			    	<div class="my_recipe-box-right">
 			    		<p><span><u><b><%= link_to m.cooking_name, admin_basic_recipe_path(m.id) %></b></u></span>
 			    		<span><%= m.genre.genre_name %></span></p>
 			    		<p><%= m.cooking_explanation %></p><br>
+				    		<p><%= link_to 'このレシピの作り方を見る', admin_basic_recipe_path(m.id), class: 'btn btn-primary' %></p>
 			    	</div>
 			    </div>
                 <% end %>
@@ -33,7 +33,7 @@
             </div>
 
 	<div class="">
-        <%= link_to 'ジャンルの選択へ戻る', :back, class: 'btn btn-default btn-lg' %>
+        <%= link_to '戻る', :back, class: 'btn btn-default btn-lg' %>
     </div><br>
     </div>
 </main>

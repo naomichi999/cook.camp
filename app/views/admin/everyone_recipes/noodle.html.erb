@@ -16,7 +16,6 @@
 			    			<p><%= attachment_image_tag m, :cooking_image, fallback: "no_image.png", class: "my_recipe-image" %></p>
 			    			<% end %>
 			    			<p><u><b><%= link_to m.user.nickname, admin_user_path(m.user_id) %></b></u></p>
-				    		<p><%= link_to 'このレシピの作り方を見る', admin_my_recipe_path(m.id), class: 'btn btn-primary' %></p>
 			    		</div><br>
 			    	</div>
 			    	<div class="my_recipe-box-right">
@@ -28,6 +27,7 @@
 			    	    <% else %>
 			    	      <p class="flash-warning">※このレシピは非公開です</p>
 			    	    <% end %>
+				    		<p><%= link_to 'このレシピの作り方を見る', admin_my_recipe_path(m.id), class: 'btn btn-primary' %></p>
 			    	</div>
 			    </div>
                 <% end %>
@@ -37,7 +37,7 @@
             </div>
 
 	<div class="">
-        <%= link_to 'ジャンルの選択へ戻る', :back, class: 'btn btn-default btn-lg' %>
+        <%= link_to '戻る', :back, class: 'btn btn-default btn-lg' %>
     </div><br>
     </div>
 </main>
