@@ -14,10 +14,10 @@ class SkillNotesController < ApplicationController
     look = SkillNote.where(user_id: current_user.id).average(:look_evaluation)
     finesse = SkillNote.where(user_id: current_user.id).average(:finesse_evaluation)
     # カリキュラムの理解度の平均（カリキュラムの理解度の合計÷節の数×５）をグラフに反映する
-    section_qty = SkillNote.count
-    understanding_sum = SectionUnderstanding.where(user_id: current_user).sum(:understanding)
+    section_qty = Section.count
     section_stars = section_qty*5
-    understanding_bit = section_stars/understanding_sum
+    understanding_sum = SectionUnderstanding.where(user_id: current_user).sum(:understanding)
+    understanding_bit = understanding_sum/section_stars
     understanding_avg = understanding_bit*5
     # 課題の達成度(達成した数÷カリキュラムの数×５)をグラフに反映する
     task_qty = Task.count
@@ -41,7 +41,7 @@ class SkillNotesController < ApplicationController
       redirect_to skill_note_path(current_user.id)
     else
       flash[:danger] = '課題を自己採点できませんでした。'
-      redirect_to skill_note_path(current_user.id)
+      redirect_to new_skill_note_path
       # render :show
     end
   end
@@ -53,7 +53,7 @@ class SkillNotesController < ApplicationController
     redirect_to skill_note_path(current_user.id)
     else
     flash[:danger] = "自己採点は編集できませんでした。"
-    redirect_to skill_note_path(current_user.id)
+    redirect_to edit_skill_note_path(current_user.id)
     end
   end
 
