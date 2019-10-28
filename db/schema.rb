@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_25_131612) do
+ActiveRecord::Schema.define(version: 2019_10_22_060356) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -54,13 +54,6 @@ ActiveRecord::Schema.define(version: 2019_10_25_131612) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["chapter_number", "chapter_title"], name: "index_curriculums_on_chapter_number_and_chapter_title", unique: true
-  end
-
-  create_table "everyone_recipes", force: :cascade do |t|
-    t.integer "my_recipe_id"
-    t.integer "genre_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -136,6 +129,7 @@ ActiveRecord::Schema.define(version: 2019_10_25_131612) do
 
   create_table "skill_notes", force: :cascade do |t|
     t.integer "user_id"
+    t.integer "task_id"
     t.float "taste_evaluation"
     t.float "look_evaluation"
     t.float "finesse_evaluation"
@@ -145,7 +139,6 @@ ActiveRecord::Schema.define(version: 2019_10_25_131612) do
     t.string "cooking_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "task_id"
   end
 
   create_table "task_contents", force: :cascade do |t|

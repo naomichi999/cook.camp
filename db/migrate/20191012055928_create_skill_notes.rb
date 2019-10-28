@@ -3,8 +3,6 @@ class CreateSkillNotes < ActiveRecord::Migration[5.2]
     create_table :skill_notes do |t|
       t.integer :user_id
       t.integer :task_id
-      t.string :task_name
-      t.float :total_evaluation
       t.float :taste_evaluation
       t.float :look_evaluation
       t.float :finesse_evaluation
