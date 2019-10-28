@@ -16,7 +16,7 @@
     	    		<div class="my_recipe-box-left">
 			    		<div class="my_recipe-image">
 			    			<%= link_to(admin_basic_recipe_path(m.basic_recipe.id)) do %>
-			    			<p><%= attachment_image_tag m.basic_recipe, :cooking_image, fallback: "no_image.png", class: "my_recipe-image" %></p>
+			    			<p><%= attachment_image_tag m.basic_recipe, :cooking_image, fallback: "/images/no_image.png", class: "my_recipe-image" %></p>
 			    			<% end %>
 				    		<p><%= link_to 'このレシピの作り方を見る', admin_basic_recipe_path(m.basic_recipe.id), class: 'btn btn-primary' %></p>
 				    		<p><%= link_to "作りたい料理リストから削除する", admin_want_to_cook_path(m.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></p>
@@ -37,7 +37,7 @@
     	    		<div class="my_recipe-box-left">
 			    		<div class="my_recipe-image">
 			    			<%= link_to(admin_my_recipe_path(m.my_recipe_id)) do %>
-			    			<p><%= attachment_image_tag m.my_recipe, :cooking_image, fallback: "no_image.png", class: "my_recipe-image" %></p>
+			    			<p><%= attachment_image_tag m.my_recipe, :cooking_image, fallback: "/images/no_image.png", class: "my_recipe-image" %></p>
 			    			<% end %>
 				    		<p><%= link_to 'このレシピの作り方を見る', admin_my_recipe_path(m.my_recipe_id), class: 'btn btn-primary' %></p>
 				    		<p><%= link_to "作りたい料理リストから削除する", admin_want_to_cook_path(m.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></p>

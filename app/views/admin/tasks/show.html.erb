@@ -15,7 +15,7 @@
         	<%= c.task_text %> -->
         	<!-- 発表用のカリキュラムを直接書き込む -->
 	 		<div class="task-text-box-left">
-	 			<p><%= attachment_image_tag c, :task_image, fallback: "no_image.png", class: "my_recipe-image" %></p>
+	 			<p><%= attachment_image_tag c, :task_image, fallback: "/images/no_image.png", class: "my_recipe-image" %></p>
 	 		</div>
 	 		<div class="task-text-box-right">
 				<table class="table">

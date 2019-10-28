@@ -7,8 +7,8 @@
 	<h3><span class="label label-default"><%= @user.sei_kanji %> <%= @user.mei_kanji %>さんの会員情報</span></h3>
     	<div class="profile-box clearfix">
     		<div class="profile-box-left">
-	    		<div class="user-page-image"><%= attachment_image_tag @user, :profile_image, fallback: "no_image.png", class: "user-page-image" %></div>
-	    		<p><%= @user.nickname %></p>
+	    		<div class="user-page-image"><%= attachment_image_tag @user, :profile_image, fallback: "/images/no_image.png", class: "user-page-image" %></div>
+	    		<h4><%= @user.nickname %></h4>
 	    		<p><%= @user.sei_kanji %><%= @user.mei_kanji %></p>
 	    		<p><%= @user.email %></p>
 	    	</div>

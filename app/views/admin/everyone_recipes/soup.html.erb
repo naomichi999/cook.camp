@@ -13,7 +13,7 @@
     	    		<div class="my_recipe-box-left">
 			    		<div class="my_recipe-image">
 			    			<%= link_to(admin_my_recipe_path(m.id)) do %>
-			    			<p><%= attachment_image_tag m, :cooking_image, fallback: "no_image.png", class: "my_recipe-image" %></p>
+			    			<p><%= attachment_image_tag m, :cooking_image, fallback: "/images/no_image.png", class: "my_recipe-image" %></p>
 			    			<% end %>
 			    			<p><u><b><%= link_to m.user.nickname, admin_user_path(m.user_id) %></b></u></p>
 			    		</div><br>
