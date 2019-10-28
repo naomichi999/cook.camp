@@ -8,12 +8,139 @@
 	<h3><span class="label label-default">第<%= @task.section.section_number %>節 <%= @task.section.section_title %></span></h3><br>
 	<h4><span class="label label-info">課題<%= @task.task_number %>.<%= @task.task_title %></span></h4>
 		<!-- 課題の画像とテキストの表示 -->
-        <div class="my_recipe-box clearfix">
+        <div class="task-text-box clearfix">
         	<% @task.task_contents.each do |c| %>
+        	<!-- データベースの画像とテキストの表示用(発表では使えない)
         	<p><%= attachment_image_tag c, :task_image, class: "my_recipe-image" %></p>
-        	<%= c.task_text %>
+        	<%= c.task_text %>-->
+
+	 		<!-- 発表用のカリキュラムを直接書き込む -->
+	 		<div class="task-text-box-left">
+	 			<p><%= attachment_image_tag c, :task_image, fallback: "no_image.png", class: "my_recipe-image" %></p>
+	 		</div>
+	 		<div class="task-text-box-right">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>【今日の献立】</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>・鶏の唐揚げ</td>
+						</tr>
+						<tr>
+							<td>・豆腐の味噌汁</td>
+						</tr>
+						<tr>
+							<td>・グリーンサラダ</td>
+						</tr>
+						<tr>
+							<td>・ポテトサラダ</td>
+						</tr>
+						<tr>
+							<td>・ご飯</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="task-text-box-bottom clearfix">
+	 		<div class="task-text-box-left-bottom">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>【作り方】</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1．鶏モモ肉をフォークで数か所刺し、一口大に切ります。</td>
+						</tr>
+						<tr>
+							<td>2．ボウルに鶏もも肉と下味の材料を入れ、よく揉みこみます。</td>
+						</tr>
+						<tr>
+							<td>3．ボウルにラップをして、冷蔵庫で20分ほど漬け込みます。</td>
+						</tr>
+						<tr>
+							<td>4．片栗粉を全体にまぶします。</td>
+						</tr>
+						<tr>
+							<td>5．フライパンに3㎝程の揚げ油を注ぎ、180℃に熱します。</td>
+						</tr>
+						<tr>
+							<td>6．片栗粉をまぶした鶏もも肉を油の中へ入れ、4分ほど揚げます。</td>
+						</tr>
+						<tr>
+							<td>7．表面がカリッとして中まで火が通ったら、油から取り出して油を切ります。</td>
+						</tr>
+						<tr>
+							<td>8．お皿に盛りつけて完成です。</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="task-text-box-right-bottom">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>【材料】</th>
+							<th align="right">(1人前)</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>鶏モモ肉</td>
+							<td align="right">150g</td>
+						</tr>
+						<tr>
+							<th>(下味)</th>
+							<td></td>
+						</tr>
+						<tr>
+							<td>おろし生姜(チューブでもOK)</td>
+							<td align="right">小さじ1</td>
+						</tr>
+						<tr>
+							<td>おろしにんにく(チューブでもOK)</td>
+							<td align="right">小さじ1</td>
+						</tr>
+						<tr>
+							<td>料理酒</td>
+							<td align="right">大さじ1</td>
+						</tr>
+						<tr>
+							<td>醤油</td>
+							<td align="right">大さじ1/2</td>
+						</tr>
+						<tr>
+							<td>ごま油</td>
+							<td align="right">小さじ1</td>
+						</tr>
+						<tr>
+							<td>鶏ガラスープの素</td>
+							<td align="right">小さじ1/4</td>
+						</tr>
+						<tr>
+							<td>塩コショウ</td>
+							<td align="right">小さじ1/2</td>
+						</tr>
+						<tr>
+							<td>片栗粉</td>
+							<td align="right">大さじ1.5</td>
+						</tr>
+						<tr>
+							<td>揚げ油</td>
+							<td align="right">300~400ml程度</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+     	<!-- /発表用のカリキュラムを直接書き込む -->
         	<% end %>
-        </div>
 
 		<div class="">
         <!-- 課題が採点済みであれば編集ページに遷移させる -->

@@ -5,6 +5,7 @@
 <h1>スキル管理ノート</h1>
 
     <div class="basic-box">
+<!-- レーダーチャート部分 -->
 <h3><span class="label label-default">レーダーチャート</span></h3><br>
   <canvas id="myRaderChart"></canvas>
   <!-- CDN -->
@@ -28,7 +29,7 @@
         options: {
             title: {
                 display: true,
-                text: gon.nickname + 'さんの料理スキル'
+                text: gon.nickname + 'の料理スキル'
             },
             scale:{
                 ticks:{
@@ -43,8 +44,10 @@
         }
     });
     </script>
+<!-- /レーダーチャート部分 -->
 
-	<h3><span class="label label-default"><%= current_user.nickname %>のスキル管理ノート</span></h3><br>
+<!-- 自己採点リスト -->
+	<h3><span class="label label-default">自己採点リスト</span></h3><br>
         <% @skill.each do |m| %>
         <h3><span class="label label-info">課題<%= m.task.task_number %>.<%= m.task.task_title %></span></h3>
         <div class="my_recipe-box clearfix">
@@ -123,6 +126,7 @@
             <%= paginate @pages, class: "paginate" %>
         </div>
     </div>
+<!-- /自己採点リスト -->
 </main>
 
 </div>

@@ -1,3 +1,50 @@
 // Place all the styles related to the tasks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// 課題の詳細画面
+.task-text-box {
+  width: 100%;
+  padding: 0px;
+  margin: 50px 10px 0;
+  color: #333333;
+  background-color: white;
+}
+.merit {
+	font-size: 20px;
+}
+.task-text-box-bottom {
+  width: 100%;
+  padding: 0px;
+  margin: 0px 10px;
+  color: #333333;
+  background-color: white;
+}
+.task-text-box-left {
+  width: 60%;
+
+  padding: 20px;
+  background-color: white;
+  float: left;
+  text-align: center;
+}
+.task-text-box-left-bottom {
+  width: 60%;
+  padding: 20px;
+  background-color: white;
+  float: left;
+}
+.task-text-box-right {
+  width: 40%;
+  padding: 20px;
+  margin: 0px;
+  background-color: white;
+  float: left;
+}
+.task-text-box-right-bottom {
+  width: 40%;
+  padding: 20px;
+  margin: 0px;
+  background-color: white;
+  float: left;
+}

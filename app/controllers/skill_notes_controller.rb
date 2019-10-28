@@ -22,7 +22,7 @@ class SkillNotesController < ApplicationController
     # 課題の達成度(達成した数÷カリキュラムの数×５)をグラフに反映する
     task_qty = Task.count
     achievement_qty = SkillNote.where(user_id: current_user.id).count
-    achievement_bit = achievement_qty.to_f/task_qty.to_f
+    achievement_bit = achievement_qty.to_f/task_qty.to_f #sumは少数型で出力されるが、countは整数型で出力されるため、少数型に変換する必要がある
     achievement_avg = achievement_bit*5
     # レーダーチャートの配列
     gon.bardata = [taste, finesse, achievement_avg, understanding_avg, look]
