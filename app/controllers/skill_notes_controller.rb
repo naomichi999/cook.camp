@@ -27,7 +27,6 @@ class SkillNotesController < ApplicationController
     # レーダーチャートの配列
     gon.bardata = [taste, finesse, achievement_avg, understanding_avg, look]
     gon.nickname = current_user.nickname
-
   end
 
   def edit

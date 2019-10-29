@@ -48,7 +48,7 @@
 
 <!-- 自己採点リスト -->
 	<h3><span class="label label-default">自己採点リスト</span></h3><br>
-        <% @skill.each do |m| %>
+        <% @pages.each do |m| %>
         <h3><span class="label label-info">課題<%= m.task.task_number %>.<%= m.task.task_title %></span></h3>
         <div class="my_recipe-box clearfix">
     		<div class="skill_note-left">
