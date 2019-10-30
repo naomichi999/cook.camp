@@ -130,7 +130,7 @@
 <% end %>
 
 <!-- レシピの投稿者なら編集・削除、公開フラグの切り替えを表示する -->
-<% if MyRecipe.find(params[:id]) == current_user.id %>
+<% if @my_recipe.user_id == current_user.id%>
 	<div class="">
         <%= link_to 'このレシピを編集する', edit_my_recipe_path, class: 'btn btn-default btn-lg' %>
     </div><br>
