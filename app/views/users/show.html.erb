@@ -21,14 +21,14 @@
 	    	<div class="profile-box-right">
 	    		<p class="introduction-text"><%= @user.introduction %></p>
 	    	</div>
-	    	<div class="profile-box-right-bottom">
-		    <!-- 作成者なら会員情報、他ユーザーならニックネームのラベルを表示する -->
+    	<div class="profile-box-right-bottom">
+    	<!-- 作成者なら会員情報、他ユーザーならニックネームのラベルを表示する -->
 			<% if User.find(params[:id]) == current_user %>
 	    		<%= link_to 'ユーザー情報を編集する', edit_user_path, class: 'btn btn-primary btn-lg btn-block' %>
 	    	<% end %>
 	    	</div>
-        </div>
-        <!-- 作成者なら退会手続きを表示する -->
+	    </div>
+		<!-- 作成者なら退会手続きを表示する -->
         <% if User.find(params[:id]) == current_user %>
         <%= link_to 'ユーザー退会手続きへ', leafe_path, class: 'btn btn-danger btn-lg' %><br>
         <% else %>
