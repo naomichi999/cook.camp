@@ -1,24 +1,49 @@
-# README
+# cook.camp
+cook.campは、”料理スキルを習得し、その上達度を管理できるサイト”です。    
+カリキュラムを進め、星型評価し、レーダーチャートで料理スキルを管理します。
+## 使用した技術
+* AWS EC2を使用したデプロイ
+* JQuery raty(星型評価)
+* gem chart-js-rails, gon(レーダーチャート)
+* gem carrierwave(動画投稿)
+* gem paranoia(論理削除、論理削除の回復)
+* gem devise(ログイン認証機能) 
+* gem "refile", require: "refile/rails"(画像投稿)
+* gem "refile-mini_magick"(画像処理)
+* gem kaminari-bootstrap(ページネーション)
+* bootstrap(レイアウト)　など
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 機能一覧
 
-Things you may want to cover:
+#### 【共通】
+* ログイン認証機能 
 
-* Ruby version
+#### 【ユーザー側】
+* カリキュラムの閲覧
+* 理解度の自己評価(星型評価)
+* 課題の自己評価(星型評価)
+* 自己評価をレーダーチャートに反映
+* マイページの作成(画像投稿、自己紹介、ニックネーム、マイレシピ)
+* レシピの投稿(画像・動画)
+* 他ユーザーが投稿したレシピの閲覧
+* 定番レシピの閲覧
+* レシピを作りたいリストに保存
+* お問い合わせ  
 
-* System dependencies
+#### 【管理者側】
+* カリキュラムの投稿・編集
+* ユーザー情報一覧の閲覧
+* ユーザーの論理削除、論理削除の回復
+* レシピの投稿
+* お問い合わせの返信
 
-* Configuration
+## 使用言語
+* Ruby version 2.5.5
+* Rails version 5.2.3
 
-* Database creation
+## データベース
+* AWS RDS
+* MySQL version 5.7
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## ストレージ
+* AWS S3
