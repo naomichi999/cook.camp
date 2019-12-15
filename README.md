@@ -44,6 +44,3 @@ cook.campは、”料理スキルを習得し、その上達度を管理でき�
 ## データベース
 * AWS RDS
 * MySQL version 5.7
-
-## ストレージ
-* AWS S3
