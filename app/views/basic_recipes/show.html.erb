@@ -119,12 +119,12 @@
 			    	</div>
 			    </div>
 
-    <!-- 作りたい料理リストに追加 -->
+    <!-- 作りたい料理リストに追加 
 	  <%= form_for @want_to_cook, url: want_to_cooks_path, method: :post do |f| %>
       <%= f.hidden_field :basic_recipe_id, value: @basic_recipe.id %>
       <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.submit '作りたい料理リストに追加する', :my_recipe_id => nil, class: "btn btn-primary" %>
-      <% end %>
+      <% end %> -->
     </div><br>
 </div>
     <%= link_to "戻る", :back , class: 'btn btn-default' %>
