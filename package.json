@@ -2,7 +2,7 @@
   "name": "cookcamp",
   "private": true,
   "dependencies": {
-    "chart.js": "^2.7.1"
+    "chart.js": "^2.9.4"
   },
   "version": "1.0.0",
   "main": "index.js",
