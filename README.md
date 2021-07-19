@@ -11,7 +11,7 @@ cook.campは、”料理スキルを習得し、その上達度を管理でき�
 * gem "refile", require: "refile/rails"(画像投稿)
 * gem "refile-mini_magick"(画像処理)
 * gem kaminari-bootstrap(ページネーション)
-* bootstrap(レイアウト)　など
+* bootstrap
 
 ## 機能一覧
 
